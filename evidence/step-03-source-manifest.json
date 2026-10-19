@@ -1,0 +1,404 @@
+{
+  "project_root": "E:\\ai_agent_learning\\java_python",
+  "step": "step-03",
+  "attempt": 1,
+  "scope": "Canonical sources, scripts, tests, current guides; excludes private state, dependencies, history, generated output/evidence, mutable ROADMAP and removed maps.",
+  "files": [
+    {
+      "path": ".gitignore",
+      "sha256": "a68066d226e4932340c7f758fca0b2ce370cc010a46186433fb0bc3f3ff2eb5b"
+    },
+    {
+      "path": ".vscode/settings.json",
+      "sha256": "fa10d6e582beee60de7cc7fb681989982f4d1f48cb96b7f4fae9f954b48550f4"
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "bc758d82e66b064f52410437ea560b9e3df47e6eee1e70dd715b6ab30201e3bf"
+    },
+    {
+      "path": "DESIGN.md",
+      "sha256": "d4c96dfc4c23981fdffb3855bf088d41c87fdfa6b58609260a41636501511a0e"
+    },
+    {
+      "path": "PRODUCT.md",
+      "sha256": "ed4e0706fb4f5b7a6bd95f43baa95499b06100bcf1cb03e8861da003c4a6ae00"
+    },
+    {
+      "path": "README.md",
+      "sha256": "dc3f5623222ff76f63d919e1a6b112c2c82af9e1fcc009433163f550c163e4dd"
+    },
+    {
+      "path": "docs/DEVELOPMENT-CONTEXT.md",
+      "sha256": "84e3d4b2e1be5b1e831c374ab2722c512fccc1f954c57aa60f59cb9cf969e5bf"
+    },
+    {
+      "path": "docs/MIGRATION.md",
+      "sha256": "b38a641a44525fdadc6a759a05e1520cab4c28fe50ff20180ee8f9afc9dae957"
+    },
+    {
+      "path": "docs/step-01/CODE-GUIDE.md",
+      "sha256": "3f7b95e003a38519db9e427726cd58e33ca4b3f1530c73792ae98034c0842707"
+    },
+    {
+      "path": "docs/step-01/ENVIRONMENT.md",
+      "sha256": "325e974c06384178095aba13c8612b5c0ef3f19ffd972c131a4762d171f8b430"
+    },
+    {
+      "path": "docs/step-01/HANDOFF-step-01.md",
+      "sha256": "55cff1ec94a0d575720fc7efb10328e3a2027c9b0d57b44fdf63f8e91adb20b4"
+    },
+    {
+      "path": "docs/step-01/LEDGER-CODE-GUIDE.md",
+      "sha256": "6b7d558962b782712d5db323dc949a341b66d5edd8c7aba2f1451a49083d1671"
+    },
+    {
+      "path": "docs/step-02/BACKEND-CODE-GUIDE.md",
+      "sha256": "48961663bf9ff29d38e3d6caa7394d3361dcd103dd6d10ed3111ef1e0d5bf169"
+    },
+    {
+      "path": "docs/step-02/CODE-GUIDE.md",
+      "sha256": "eeb59168d81103deb9128b14adccbc040c614d05fa5878cebfa6597ec5c3da0b"
+    },
+    {
+      "path": "docs/step-02/DOCUMENTATION-AUDIT.md",
+      "sha256": "fcd29cb6cc5616b15bb874d88dbd9d50fb95ef7f7b09a4207cbaaaee70523889"
+    },
+    {
+      "path": "docs/step-02/ERROR-CODE-I18N-GUIDE.md",
+      "sha256": "ae3410abbac8750fd20e93a89cf0b1ff9f342d89de927910ee564e3ee98fc8b9"
+    },
+    {
+      "path": "docs/step-02/FRONTEND-CODE-GUIDE.md",
+      "sha256": "4f8242d519466027389965f475348187d8de760ef9d327a70fea0d509421a4a8"
+    },
+    {
+      "path": "docs/step-02/GETJSON-CODE-GUIDE.md",
+      "sha256": "bb64e4571660a0f77e0f79e8e8d4e483f8c050aa598840d049c2915c12287a1c"
+    },
+    {
+      "path": "docs/step-02/HANDOFF-step-02.md",
+      "sha256": "f9b6098a8dd4ab98df46f404b0ecad7f9436bb23773eeb0b1959c328e976defc"
+    },
+    {
+      "path": "docs/step-02/I18N-CODE-GUIDE.md",
+      "sha256": "01d13aff92b7bb6e62deb3789e3b36ba7f6e88069a8122e68815ef21e8f0bb58"
+    },
+    {
+      "path": "docs/step-02/OBSERVED-PITFALLS.md",
+      "sha256": "a49c2e70a5fc265d1dbc7ed9edda278946265ab32acfebe25b66e5ce50501f8d"
+    },
+    {
+      "path": "docs/step-02/STRUCTURE-REVIEW.md",
+      "sha256": "30304703f7fe0951ecf5ea58cabf31cc250b0793d633408b3e330c5abde814d4"
+    },
+    {
+      "path": "docs/step-03/CODE-GUIDE.md",
+      "sha256": "2c4afce573d60d008d3783764f9cfc9613ed17cc3140f6749fad62995badbea3"
+    },
+    {
+      "path": "docs/step-03/HANDOFF-step-03.md",
+      "sha256": "a9ea309c5c1f76dcc583919f656b74aee82f4607af3e7472dd863de2c9505ce8"
+    },
+    {
+      "path": "infra/maven-settings.xml",
+      "sha256": "9fa52b728d6369059fd3e8e4cb9f873002bf4e3faf0363bc805a8632fe0e2346"
+    },
+    {
+      "path": "infra/mysql/001-init.sql",
+      "sha256": "86d82be11929544fb11e59d14a9450ef3d9aefed95b6ba21520133e3de0cb882"
+    },
+    {
+      "path": "infra/mysql/002-orders.sql",
+      "sha256": "2a09fce45bd5a868dcd1941abbf03e954bd35904df5ddd149ae3e927ff50279b"
+    },
+    {
+      "path": "learning/__init__.py",
+      "sha256": "d79763967a76efb0842137b77b5c12f9695c1b4b0efc225703470233eb2232d7"
+    },
+    {
+      "path": "learning/curriculum.json",
+      "sha256": "2685bd398260161ff58d64394fac46fe94462b2b3cc6c4ca7bba3fc140ac8009"
+    },
+    {
+      "path": "learning/ledger.py",
+      "sha256": "78c5ed5c9e3e1d92295fe9d515ef9e6dd960bf33ca9fde1cbc1ebcb150c558a4"
+    },
+    {
+      "path": "learning/plan.md",
+      "sha256": "f45f19a30036140e732625027e945ac320977f5a91ed4516452966d8feef69ba"
+    },
+    {
+      "path": "learning/test_ledger.py",
+      "sha256": "59ca0b17fd9afa94a7bc35f0fe1fb08499e2ee3f82d2e82902a0c77049f4cdff"
+    },
+    {
+      "path": "scripts/Build-Lab.ps1",
+      "sha256": "6ffa0af77fd17c93ce14dd674f00471406e202a8fd11f8ea0550751ce789fef4"
+    },
+    {
+      "path": "scripts/Run-Api.ps1",
+      "sha256": "acc712c1b5d8b27c29294923bc25cf77409054989b7f127ee3f70c6e9ce48c9a"
+    },
+    {
+      "path": "scripts/Run-Lab.ps1",
+      "sha256": "cb3ed3424afc91f15d00e1ab3b48786f62c929cbed56a349511fdbe543864f21"
+    },
+    {
+      "path": "scripts/Run-Web.ps1",
+      "sha256": "e3f91edb863dd0d26c1590705fc4255653399a98bf7cd14582be2569010bf751"
+    },
+    {
+      "path": "scripts/Start-MySQL.ps1",
+      "sha256": "bd9665dba297da2800829cb6970647efc738d47e89bc743c77a543a14e79fb42"
+    },
+    {
+      "path": "scripts/Use-LabEnvironment.ps1",
+      "sha256": "3eaa2b356f5a256d4ecbb11abfe4c7e37f0f178865808115a95152c617191292"
+    },
+    {
+      "path": "scripts/initialize_database.py",
+      "sha256": "1c1132764f2e09798c337620ddfe9d555d1398e4a0a96ac4fc17ddf620060086"
+    },
+    {
+      "path": "scripts/verify-configuration.cjs",
+      "sha256": "6fe77d2c8f58c9e40eea72538f48cb9f09f6ee8d1e120aaf57253e89b5f377a5"
+    },
+    {
+      "path": "scripts/verify-error-i18n.cjs",
+      "sha256": "4f9f07eccee389d8aee88a2dbecd88a6ef64bff98aaea29df913a1260c991838"
+    },
+    {
+      "path": "scripts/verify-i18n.cjs",
+      "sha256": "9cb611131f6d7fcf798ac1ba6a3aa2fbaca3c40f50e9e1ccd6116146a4ef728c"
+    },
+    {
+      "path": "scripts/verify-orders.cjs",
+      "sha256": "184b4ac5da8d870f3ae2076290b78cc592e67ddee8aae80a9ccff097c5a6c627"
+    },
+    {
+      "path": "scripts/verify-web.cjs",
+      "sha256": "386003fd0a52b9719577302cefc8d0c6b67ae6e4625f5907786e0f48c6734fb3"
+    },
+    {
+      "path": "scripts/wait_for_services.py",
+      "sha256": "78976dc8a0d5d8e855719a405c8b0116fd6fd84af6a26c3bf016e072e0cc3f7c"
+    },
+    {
+      "path": "services/agent/README.md",
+      "sha256": "ed44b51d067435c648b93698c7d94cd22be8a8481619baf25d267ea605bb0648"
+    },
+    {
+      "path": "services/commerce/openapi.yaml",
+      "sha256": "a48e2273d5a6cc3706a16d733c0f12db23f89a0d1e80766706a9013fccd2c858"
+    },
+    {
+      "path": "services/commerce/pom.xml",
+      "sha256": "93d09e0a5b630cc9465d90654f66a0a99f288f12f99fb4844c86ca826581eae0"
+    },
+    {
+      "path": "services/commerce/src/main/java/lab/commerce/CommerceApplication.java",
+      "sha256": "41e96ac1205452bf971187abaefcc5cf448e52ff0e53d96fc2cf731d3c67f77b"
+    },
+    {
+      "path": "services/commerce/src/main/java/lab/commerce/config/SessionAccess.java",
+      "sha256": "b499108f7361cda6e0422c447d1f7bc9f69b2b02f9c4da01b752ce211b1a49f8"
+    },
+    {
+      "path": "services/commerce/src/main/java/lab/commerce/config/WebConfig.java",
+      "sha256": "e53904f0ebc5952a91734c1f3486fb0b2092323207c4fc2e3a8547d0524116d3"
+    },
+    {
+      "path": "services/commerce/src/main/java/lab/commerce/controller/AuthController.java",
+      "sha256": "2e81886fee5f2f1af75367c43bc2e66a1891440fa772a134289d4cef04074333"
+    },
+    {
+      "path": "services/commerce/src/main/java/lab/commerce/controller/OrderController.java",
+      "sha256": "a06cf5e8c7ad91c78f1677e713e2f04ef4cb9b412ee4302a585c1316271e51a1"
+    },
+    {
+      "path": "services/commerce/src/main/java/lab/commerce/controller/ProductController.java",
+      "sha256": "3138fc165fb7bb1638681e81d4ed88b4973facb048fa5b40281f18e5fe9750ad"
+    },
+    {
+      "path": "services/commerce/src/main/java/lab/commerce/dto/ProductStockRow.java",
+      "sha256": "e43fd6d9acc99223d96cb98873fd4080eb7db87a71ad3a45a36feee390ac74f6"
+    },
+    {
+      "path": "services/commerce/src/main/java/lab/commerce/entity/CommerceOrder.java",
+      "sha256": "9ebbbf019c5031ee08b4a7a73d143342df33829372afc7d19502ef78e9cfcf23"
+    },
+    {
+      "path": "services/commerce/src/main/java/lab/commerce/entity/LabUser.java",
+      "sha256": "2964b6b36352a05bb9688692862ac7fb578a5d7eeee1483c27b122d629b10275"
+    },
+    {
+      "path": "services/commerce/src/main/java/lab/commerce/entity/Product.java",
+      "sha256": "08766df371d2b55e3b2eb9b1ae0e89a01da387ca1b122e1aed7aa7b3f60b9a49"
+    },
+    {
+      "path": "services/commerce/src/main/java/lab/commerce/exception/GlobalExceptionHandler.java",
+      "sha256": "f62b79bc3ce787ed8f397a9593db8a654b5a6274b407055646f7580476961d79"
+    },
+    {
+      "path": "services/commerce/src/main/java/lab/commerce/exception/OrderAccessException.java",
+      "sha256": "61182f0defca8ae5858128e9892c1374fe925d4327408cd1795f47786c7a4287"
+    },
+    {
+      "path": "services/commerce/src/main/java/lab/commerce/exception/ProductNotFoundException.java",
+      "sha256": "ff9695eccea5649c7107a7cf3330013c7465e784101ca71e3b628b11d1fe67e5"
+    },
+    {
+      "path": "services/commerce/src/main/java/lab/commerce/mapper/OrderMapper.java",
+      "sha256": "02299ea17d84aa864ea2613a86aaef7e0821baf6060b82590575ccd508ae0477"
+    },
+    {
+      "path": "services/commerce/src/main/java/lab/commerce/mapper/ProductMapper.java",
+      "sha256": "d6c1604c2444b0d06e03709af06c2dc298dce563671d634f66d7387fae583478"
+    },
+    {
+      "path": "services/commerce/src/main/java/lab/commerce/mapper/UserMapper.java",
+      "sha256": "de8fb11ea2a8406472089457474f480962eb2e696d34c52a7836636090fde3d0"
+    },
+    {
+      "path": "services/commerce/src/main/java/lab/commerce/service/AuthService.java",
+      "sha256": "1c9f1639a91281c805e1da98aa3f4fa0fc17ceef37d7dae1600a9b8c5dd3803c"
+    },
+    {
+      "path": "services/commerce/src/main/java/lab/commerce/service/OrderService.java",
+      "sha256": "a4c8cd625b6aad4ee93c635a36913ff72d92a4b56bcd08f8f1d081f8792ab67b"
+    },
+    {
+      "path": "services/commerce/src/main/java/lab/commerce/service/ProductService.java",
+      "sha256": "0c08d65eff83b65e866254ffba021c05e4d1f4f4c0f15f2df6e6a7edf4d1754c"
+    },
+    {
+      "path": "services/commerce/src/main/java/lab/commerce/service/impl/AuthServiceImpl.java",
+      "sha256": "709b7c72305e807a0583ce340364ae7a50fed89cc18c024996bef41dda8b6c01"
+    },
+    {
+      "path": "services/commerce/src/main/java/lab/commerce/service/impl/OrderServiceImpl.java",
+      "sha256": "7973cfc4018f173aa2e4565b591f5897743af37131b1c1b07422a1cb5717c674"
+    },
+    {
+      "path": "services/commerce/src/main/java/lab/commerce/service/impl/ProductServiceImpl.java",
+      "sha256": "bd4e67e58f5e18112648bf325db0edb70eb2b638514b71167678b620e9fa9722"
+    },
+    {
+      "path": "services/commerce/src/main/java/lab/commerce/vo/OrderView.java",
+      "sha256": "4dc115afdefb25496a987c709d0c04b5dd92bc13b0bc5addc3d9176168655f4c"
+    },
+    {
+      "path": "services/commerce/src/main/java/lab/commerce/vo/ProductPage.java",
+      "sha256": "c5365375a2eb552ddfca93432d76e5bed02c5be0d83d449a261dc0741b2dcfc9"
+    },
+    {
+      "path": "services/commerce/src/main/java/lab/commerce/vo/ProductView.java",
+      "sha256": "7059ba6125f0ce71ff897ba431638298b6c0f1004f6bd38631f1305a8f4b330c"
+    },
+    {
+      "path": "services/commerce/src/main/java/lab/commerce/vo/SessionView.java",
+      "sha256": "1eabd60fe33fd2fcfd5ee2370ab14442615c6243563cc680c824859414da887c"
+    },
+    {
+      "path": "services/commerce/src/main/resources/application.yml",
+      "sha256": "1b9a8c0349ce5e3d1d4854a8729f1fcac16ae7319c6652d0653ab8c7524419e6"
+    },
+    {
+      "path": "services/commerce/src/main/resources/mapper/OrderMapper.xml",
+      "sha256": "c57f54586e815d741b8faa7d5574045173eda09754b73f51e14b99f891495c04"
+    },
+    {
+      "path": "services/commerce/src/main/resources/mapper/ProductMapper.xml",
+      "sha256": "8c1b5536ec2f87601f0b2041bd07211119f47dbd57f587b4ebcb9efeb716da34"
+    },
+    {
+      "path": "services/commerce/src/main/resources/mapper/UserMapper.xml",
+      "sha256": "eba3185b6f6b2b801f11b99b27c81b455e6abcc810529c78c2301811546f2171"
+    },
+    {
+      "path": "services/commerce/src/test/java/lab/commerce/OrdersApiIT.java",
+      "sha256": "378bbe8aa76d867a7e1d84cb1674b4ba7c1753868d277a0caf9bc42c76156134"
+    },
+    {
+      "path": "services/commerce/src/test/java/lab/commerce/ProductApiIT.java",
+      "sha256": "d85d753ff20fa1b9571f4f8477f0ee75dfc7c102db94bcdb4b4573e79ca2c893"
+    },
+    {
+      "path": "services/commerce/src/test/java/lab/commerce/config/SessionAccessTest.java",
+      "sha256": "ad063960acf37cbbd61c98934e66a5662a3fcc927237218716dce913750820a9"
+    },
+    {
+      "path": "services/commerce/src/test/java/lab/commerce/exception/GlobalExceptionHandlerTest.java",
+      "sha256": "214a74cd30ce9144ad262dbadd38b7c14fd4de888f49c6f80050e3b3e7add426"
+    },
+    {
+      "path": "services/commerce/src/test/java/lab/commerce/service/impl/ProductServiceImplTest.java",
+      "sha256": "82fded31c24ad979166609258d4cb30a2dbe04058def47884e03d013e27d1d4e"
+    },
+    {
+      "path": "web/index.html",
+      "sha256": "7dc87cdd699b9ff50394b209671cca9bbb82f8bf139f2c64656f143f192cbdd9"
+    },
+    {
+      "path": "web/package-lock.json",
+      "sha256": "2091b6c6e17f294722acb723b3ea24ffcf179aae47ad1a3d876a23ac63be5f5a"
+    },
+    {
+      "path": "web/package.json",
+      "sha256": "e5c8505fe900a112b45e501f2f856d498f6404b291ab0bd91221cd9666e78822"
+    },
+    {
+      "path": "web/src/App.vue",
+      "sha256": "8c56ce6e46f4e96c70de2db17b5d37ffed6335dfc61cd5a985368976c9fa4ee4"
+    },
+    {
+      "path": "web/src/OrderPanel.vue",
+      "sha256": "f9199fe19c8325428d45a25baf5bc7ebcc2db7c8df59f4ef00914485a50b4d91"
+    },
+    {
+      "path": "web/src/api.ts",
+      "sha256": "57eb74d18562add4fced282fae6b769390c15175a7fd8f41693a3af2b7791371"
+    },
+    {
+      "path": "web/src/i18n.ts",
+      "sha256": "408fe8ab5b33fe380af840c014ebccf5f5ae6956b317d71587d32753253bf03d"
+    },
+    {
+      "path": "web/src/main.ts",
+      "sha256": "0d42fb6bb74a51d647f20a0cd2bcdcc7b89b146f4cdfbf6f1f7b640e7e036119"
+    },
+    {
+      "path": "web/src/messages.ts",
+      "sha256": "69293a873dec3bcc036853965844de61946a250068301f7ab6ce56e7b5ac61ca"
+    },
+    {
+      "path": "web/src/style.css",
+      "sha256": "31044e0ad8bd7691822d77ba3091faff138acf6765544c308069f2413be04585"
+    },
+    {
+      "path": "web/tests/api.test.mjs",
+      "sha256": "283b6a6091c16d78d1df9e1fceedd6f872749b0232880daa5b94af9398b972c4"
+    },
+    {
+      "path": "web/tests/i18n.test.mjs",
+      "sha256": "ce3649e09c36233281b98495e68fa04fa9258d7c8a26cd64dda8bcd1312db451"
+    },
+    {
+      "path": "web/tests/order-panel.test.mjs",
+      "sha256": "d82cddb0de0d98c6f60fa56fe274fab28a79a2438adca9574688e3c1c02b13a9"
+    },
+    {
+      "path": "web/tests/orders-api.test.mjs",
+      "sha256": "32d37724ff4cf4dd1de2dc3d8a82cfb98019401121fabbbb7fe56a33ce3db45d"
+    },
+    {
+      "path": "web/tsconfig.json",
+      "sha256": "223b03f03bc1bc27750488afddf7988a8f19be0494bec26ed5a3bf93c93a21fd"
+    },
+    {
+      "path": "web/vite.config.ts",
+      "sha256": "c5115ddd2a05eb5ff6fc4bb8903dc3498feba4bbe80dd4bc47540e65f9f397a0"
+    }
+  ]
+}

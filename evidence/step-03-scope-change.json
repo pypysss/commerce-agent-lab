@@ -1,0 +1,760 @@
+{
+  "created_at": "2026-10-18T11:45:39+00:00",
+  "step": "step-03",
+  "user_instructions": [
+    "找到交接文档 继续向下开发 不用生成mind-map了 不够清晰",
+    "把原本的mindmap也删了吧"
+  ],
+  "scope": "Continue with step-03. Stop generating mind maps and remove active maps/tools/evidence. Frozen curriculum and completed attempts are preserved.",
+  "archive": {
+    "source_manifest_files_checked": 76,
+    "unique_files_frozen": 100,
+    "artifact_paths_updated": 35,
+    "registered_artifact_hashes_verified_before": 172,
+    "registered_artifact_hashes_verified_after": 172,
+    "frozen_curriculum_unchanged": true,
+    "files": [
+      {
+        "source": ".gitignore",
+        "frozen": "docs/history/step-02/attempt-07/.gitignore",
+        "sha256": "a68066d226e4932340c7f758fca0b2ce370cc010a46186433fb0bc3f3ff2eb5b"
+      },
+      {
+        "source": ".mindmap-config.json",
+        "frozen": "docs/history/step-02/attempt-07/.mindmap-config.json",
+        "sha256": "7171f2bd784a272573a0c38329df01a8a5f2004cffc589b1f79660ef59e1c16e"
+      },
+      {
+        "source": ".vscode/settings.json",
+        "frozen": "docs/history/step-02/attempt-07/.vscode/settings.json",
+        "sha256": "fa10d6e582beee60de7cc7fb681989982f4d1f48cb96b7f4fae9f954b48550f4"
+      },
+      {
+        "source": "AGENTS.md",
+        "frozen": "docs/history/step-02/attempt-07/AGENTS.md",
+        "sha256": "a66d692bd1fc5e73c8135a7e4f8548d641ae08536db6650e5ee85da3f1a3b9e6"
+      },
+      {
+        "source": "DESIGN.md",
+        "frozen": "docs/history/step-02/attempt-07/DESIGN.md",
+        "sha256": "37cdc79887ecc46fc0b7161c4f256b17543a19c3cc4654227f29150418b56508"
+      },
+      {
+        "source": "PRODUCT.md",
+        "frozen": "docs/history/step-02/attempt-07/PRODUCT.md",
+        "sha256": "2089cb55d3725df5b3537b292f267786f0d3c0621686e3aa29c21832d15cff22"
+      },
+      {
+        "source": "README.md",
+        "frozen": "docs/history/step-02/attempt-07/README.md",
+        "sha256": "e13dc5075bb6f68375fcb134b48daab790f0a984511d10e416fa90b9bede739c"
+      },
+      {
+        "source": "docs/DEVELOPMENT-CONTEXT.md",
+        "frozen": "docs/history/step-02/attempt-07/docs/DEVELOPMENT-CONTEXT.md",
+        "sha256": "83233f6984f79e6c89ea7321a007f8a73f34d5b3f608c98ee22f4944cb0a49b5"
+      },
+      {
+        "source": "docs/MIGRATION.md",
+        "frozen": "docs/history/step-02/attempt-07/docs/MIGRATION.md",
+        "sha256": "b38a641a44525fdadc6a759a05e1520cab4c28fe50ff20180ee8f9afc9dae957"
+      },
+      {
+        "source": "docs/step-01/CODE-GUIDE.md",
+        "frozen": "docs/history/step-02/attempt-07/docs/step-01/CODE-GUIDE.md",
+        "sha256": "7c2d41b48a656452ebe9a07e2d782fbc7b47a6512e41747666071975e91fa5fd"
+      },
+      {
+        "source": "docs/step-01/ENVIRONMENT.md",
+        "frozen": "docs/history/step-02/attempt-07/docs/step-01/ENVIRONMENT.md",
+        "sha256": "61f5d21649fc8b0b019d554851ecb35988360d538f9b8cb10cb4b414af3f78e3"
+      },
+      {
+        "source": "docs/step-01/HANDOFF-step-01.md",
+        "frozen": "docs/history/step-02/attempt-07/docs/step-01/HANDOFF-step-01.md",
+        "sha256": "ef1deb6200c2a54bb8e1f3dedb59e0451eecdf6ff71b545359dc4d95d311ce86"
+      },
+      {
+        "source": "docs/step-01/LEDGER-CODE-GUIDE.md",
+        "frozen": "docs/history/step-02/attempt-07/docs/step-01/LEDGER-CODE-GUIDE.md",
+        "sha256": "ff490d2c4ab5b4cb62545b2235d56cc78d664a00c52ca538ba6879df46515570"
+      },
+      {
+        "source": "docs/step-02/BACKEND-CODE-GUIDE.md",
+        "frozen": "docs/history/step-02/attempt-07/docs/step-02/BACKEND-CODE-GUIDE.md",
+        "sha256": "9d8e9a7d0e6f6c31a67c36d302ea911311cbdbb04a76297158accf4a572fefe4"
+      },
+      {
+        "source": "docs/step-02/CODE-GUIDE.md",
+        "frozen": "docs/history/step-02/attempt-07/docs/step-02/CODE-GUIDE.md",
+        "sha256": "12f18ce9346e16a7301878f72f515eddc12152d37906758acf468488954a0838"
+      },
+      {
+        "source": "docs/step-02/DOCUMENTATION-AUDIT.md",
+        "frozen": "docs/history/step-02/attempt-07/docs/step-02/DOCUMENTATION-AUDIT.md",
+        "sha256": "e03c5ca9a1df0232a6a54cb9a64ff5e4299cdbc36b99ec10ff8254af1201578e"
+      },
+      {
+        "source": "docs/step-02/ERROR-CODE-I18N-GUIDE.md",
+        "frozen": "docs/history/step-02/attempt-07/docs/step-02/ERROR-CODE-I18N-GUIDE.md",
+        "sha256": "4a27940c78468bed36ed88c6e1baba0e8e3d54fa54c75aad69910fc31a125ca6"
+      },
+      {
+        "source": "docs/step-02/FRONTEND-CODE-GUIDE.md",
+        "frozen": "docs/history/step-02/attempt-07/docs/step-02/FRONTEND-CODE-GUIDE.md",
+        "sha256": "b6b51636ce41c898d71bd460addae3d9974690c139ac8a164f17466acd0be87d"
+      },
+      {
+        "source": "docs/step-02/GETJSON-CODE-GUIDE.md",
+        "frozen": "docs/history/step-02/attempt-07/docs/step-02/GETJSON-CODE-GUIDE.md",
+        "sha256": "26489aa5458d1e694d402f2f3bfe734f247a687e258800a81a3c6a697d5f7c28"
+      },
+      {
+        "source": "docs/step-02/HANDOFF-step-02.md",
+        "frozen": "docs/history/step-02/attempt-07/docs/step-02/HANDOFF-step-02.md",
+        "sha256": "b6bddd5ebc8a14041168acc3615822c9ac46e2ed3b90477f8ffd1a7f1e1d00b6"
+      },
+      {
+        "source": "docs/step-02/I18N-CODE-GUIDE.md",
+        "frozen": "docs/history/step-02/attempt-07/docs/step-02/I18N-CODE-GUIDE.md",
+        "sha256": "4c1becd1f638659384274d995d4e9d895e4c0faf3e8425acaa85910e84a1a705"
+      },
+      {
+        "source": "docs/step-02/OBSERVED-PITFALLS.md",
+        "frozen": "docs/history/step-02/attempt-07/docs/step-02/OBSERVED-PITFALLS.md",
+        "sha256": "20d42421158a124868a9c4f465c08a908b8ba52f7e360386e321b45aa4476219"
+      },
+      {
+        "source": "docs/step-02/STRUCTURE-REVIEW.md",
+        "frozen": "docs/history/step-02/attempt-07/docs/step-02/STRUCTURE-REVIEW.md",
+        "sha256": "4ed2cc02d63d25ddd3e22ac6f3c8d5d25f5702e67a4c118e2739a14af6f10ab3"
+      },
+      {
+        "source": "infra/maven-settings.xml",
+        "frozen": "docs/history/step-02/attempt-07/infra/maven-settings.xml",
+        "sha256": "9fa52b728d6369059fd3e8e4cb9f873002bf4e3faf0363bc805a8632fe0e2346"
+      },
+      {
+        "source": "infra/mysql/001-init.sql",
+        "frozen": "docs/history/step-02/attempt-07/infra/mysql/001-init.sql",
+        "sha256": "86d82be11929544fb11e59d14a9450ef3d9aefed95b6ba21520133e3de0cb882"
+      },
+      {
+        "source": "learning/__init__.py",
+        "frozen": "docs/history/step-02/attempt-07/learning/__init__.py",
+        "sha256": "d79763967a76efb0842137b77b5c12f9695c1b4b0efc225703470233eb2232d7"
+      },
+      {
+        "source": "learning/curriculum.json",
+        "frozen": "docs/history/step-02/attempt-07/learning/curriculum.json",
+        "sha256": "2685bd398260161ff58d64394fac46fe94462b2b3cc6c4ca7bba3fc140ac8009"
+      },
+      {
+        "source": "learning/ledger.py",
+        "frozen": "docs/history/step-02/attempt-07/learning/ledger.py",
+        "sha256": "78c5ed5c9e3e1d92295fe9d515ef9e6dd960bf33ca9fde1cbc1ebcb150c558a4"
+      },
+      {
+        "source": "learning/plan.md",
+        "frozen": "docs/history/step-02/attempt-07/learning/plan.md",
+        "sha256": "2f38b62461e6cd5d624350238e94270159b345a9bb211d7e90e9ae1cabde7db7"
+      },
+      {
+        "source": "learning/test_ledger.py",
+        "frozen": "docs/history/step-02/attempt-07/learning/test_ledger.py",
+        "sha256": "59ca0b17fd9afa94a7bc35f0fe1fb08499e2ee3f82d2e82902a0c77049f4cdff"
+      },
+      {
+        "source": "scripts/Build-Lab.ps1",
+        "frozen": "docs/history/step-02/attempt-07/scripts/Build-Lab.ps1",
+        "sha256": "503364e61d3d8e37fdb2e947442f12c5f889ff4bede4ab0ad6b7814cf3736003"
+      },
+      {
+        "source": "scripts/Run-Api.ps1",
+        "frozen": "docs/history/step-02/attempt-07/scripts/Run-Api.ps1",
+        "sha256": "acc712c1b5d8b27c29294923bc25cf77409054989b7f127ee3f70c6e9ce48c9a"
+      },
+      {
+        "source": "scripts/Run-Lab.ps1",
+        "frozen": "docs/history/step-02/attempt-07/scripts/Run-Lab.ps1",
+        "sha256": "cb3ed3424afc91f15d00e1ab3b48786f62c929cbed56a349511fdbe543864f21"
+      },
+      {
+        "source": "scripts/Run-Web.ps1",
+        "frozen": "docs/history/step-02/attempt-07/scripts/Run-Web.ps1",
+        "sha256": "e3f91edb863dd0d26c1590705fc4255653399a98bf7cd14582be2569010bf751"
+      },
+      {
+        "source": "scripts/Start-MySQL.ps1",
+        "frozen": "docs/history/step-02/attempt-07/scripts/Start-MySQL.ps1",
+        "sha256": "bd9665dba297da2800829cb6970647efc738d47e89bc743c77a543a14e79fb42"
+      },
+      {
+        "source": "scripts/Use-LabEnvironment.ps1",
+        "frozen": "docs/history/step-02/attempt-07/scripts/Use-LabEnvironment.ps1",
+        "sha256": "f7306c26d29dd2ab5f3d2149e36f1984405c5ed4b9a87772d51c81bdb00a6768"
+      },
+      {
+        "source": "scripts/build_mindmap.py",
+        "frozen": "docs/history/step-02/attempt-07/scripts/build_mindmap.py",
+        "sha256": "17677c5bb8cd532e5c8972e4494f807af11dee96ba0e9bb91be280ab59ce0dba"
+      },
+      {
+        "source": "scripts/initialize_database.py",
+        "frozen": "docs/history/step-02/attempt-07/scripts/initialize_database.py",
+        "sha256": "50248bb336209cbcde21f334f0a8fc21cf45f6daf47ccfe6c19ae547f25fb258"
+      },
+      {
+        "source": "scripts/verify-configuration.cjs",
+        "frozen": "docs/history/step-02/attempt-07/scripts/verify-configuration.cjs",
+        "sha256": "6fe77d2c8f58c9e40eea72538f48cb9f09f6ee8d1e120aaf57253e89b5f377a5"
+      },
+      {
+        "source": "scripts/verify-error-i18n.cjs",
+        "frozen": "docs/history/step-02/attempt-07/scripts/verify-error-i18n.cjs",
+        "sha256": "4f9f07eccee389d8aee88a2dbecd88a6ef64bff98aaea29df913a1260c991838"
+      },
+      {
+        "source": "scripts/verify-i18n.cjs",
+        "frozen": "docs/history/step-02/attempt-07/scripts/verify-i18n.cjs",
+        "sha256": "9cb611131f6d7fcf798ac1ba6a3aa2fbaca3c40f50e9e1ccd6116146a4ef728c"
+      },
+      {
+        "source": "scripts/verify-map.cjs",
+        "frozen": "docs/history/step-02/attempt-07/scripts/verify-map.cjs",
+        "sha256": "320f74597ac5fb4ec066384ae77cb2280a5bc3ff873ee5260a5b64c1611cfb8e"
+      },
+      {
+        "source": "scripts/verify-web.cjs",
+        "frozen": "docs/history/step-02/attempt-07/scripts/verify-web.cjs",
+        "sha256": "386003fd0a52b9719577302cefc8d0c6b67ae6e4625f5907786e0f48c6734fb3"
+      },
+      {
+        "source": "scripts/wait_for_services.py",
+        "frozen": "docs/history/step-02/attempt-07/scripts/wait_for_services.py",
+        "sha256": "78976dc8a0d5d8e855719a405c8b0116fd6fd84af6a26c3bf016e072e0cc3f7c"
+      },
+      {
+        "source": "services/agent/README.md",
+        "frozen": "docs/history/step-02/attempt-07/services/agent/README.md",
+        "sha256": "ed44b51d067435c648b93698c7d94cd22be8a8481619baf25d267ea605bb0648"
+      },
+      {
+        "source": "services/commerce/openapi.yaml",
+        "frozen": "docs/history/step-02/attempt-07/services/commerce/openapi.yaml",
+        "sha256": "755245506011bae47b8174a6e72b0f0f30ce922e6137af1eed658debe9933e67"
+      },
+      {
+        "source": "services/commerce/pom.xml",
+        "frozen": "docs/history/step-02/attempt-07/services/commerce/pom.xml",
+        "sha256": "ca68c577ef17fc9e8bee4af213e65ffecd69aa02a1882e0752efc0443ced2826"
+      },
+      {
+        "source": "services/commerce/src/main/java/lab/commerce/CommerceApplication.java",
+        "frozen": "docs/history/step-02/attempt-07/services/commerce/src/main/java/lab/commerce/CommerceApplication.java",
+        "sha256": "41e96ac1205452bf971187abaefcc5cf448e52ff0e53d96fc2cf731d3c67f77b"
+      },
+      {
+        "source": "services/commerce/src/main/java/lab/commerce/controller/ProductController.java",
+        "frozen": "docs/history/step-02/attempt-07/services/commerce/src/main/java/lab/commerce/controller/ProductController.java",
+        "sha256": "3138fc165fb7bb1638681e81d4ed88b4973facb048fa5b40281f18e5fe9750ad"
+      },
+      {
+        "source": "services/commerce/src/main/java/lab/commerce/dto/ProductStockRow.java",
+        "frozen": "docs/history/step-02/attempt-07/services/commerce/src/main/java/lab/commerce/dto/ProductStockRow.java",
+        "sha256": "e43fd6d9acc99223d96cb98873fd4080eb7db87a71ad3a45a36feee390ac74f6"
+      },
+      {
+        "source": "services/commerce/src/main/java/lab/commerce/entity/Product.java",
+        "frozen": "docs/history/step-02/attempt-07/services/commerce/src/main/java/lab/commerce/entity/Product.java",
+        "sha256": "08766df371d2b55e3b2eb9b1ae0e89a01da387ca1b122e1aed7aa7b3f60b9a49"
+      },
+      {
+        "source": "services/commerce/src/main/java/lab/commerce/exception/GlobalExceptionHandler.java",
+        "frozen": "docs/history/step-02/attempt-07/services/commerce/src/main/java/lab/commerce/exception/GlobalExceptionHandler.java",
+        "sha256": "52e7fd4b03c24fab864f5c82ab8648578f73d580da8479d887504e4dbf0f622b"
+      },
+      {
+        "source": "services/commerce/src/main/java/lab/commerce/exception/ProductNotFoundException.java",
+        "frozen": "docs/history/step-02/attempt-07/services/commerce/src/main/java/lab/commerce/exception/ProductNotFoundException.java",
+        "sha256": "ff9695eccea5649c7107a7cf3330013c7465e784101ca71e3b628b11d1fe67e5"
+      },
+      {
+        "source": "services/commerce/src/main/java/lab/commerce/mapper/ProductMapper.java",
+        "frozen": "docs/history/step-02/attempt-07/services/commerce/src/main/java/lab/commerce/mapper/ProductMapper.java",
+        "sha256": "d6c1604c2444b0d06e03709af06c2dc298dce563671d634f66d7387fae583478"
+      },
+      {
+        "source": "services/commerce/src/main/java/lab/commerce/service/ProductService.java",
+        "frozen": "docs/history/step-02/attempt-07/services/commerce/src/main/java/lab/commerce/service/ProductService.java",
+        "sha256": "0c08d65eff83b65e866254ffba021c05e4d1f4f4c0f15f2df6e6a7edf4d1754c"
+      },
+      {
+        "source": "services/commerce/src/main/java/lab/commerce/service/impl/ProductServiceImpl.java",
+        "frozen": "docs/history/step-02/attempt-07/services/commerce/src/main/java/lab/commerce/service/impl/ProductServiceImpl.java",
+        "sha256": "bd4e67e58f5e18112648bf325db0edb70eb2b638514b71167678b620e9fa9722"
+      },
+      {
+        "source": "services/commerce/src/main/java/lab/commerce/vo/ProductPage.java",
+        "frozen": "docs/history/step-02/attempt-07/services/commerce/src/main/java/lab/commerce/vo/ProductPage.java",
+        "sha256": "c5365375a2eb552ddfca93432d76e5bed02c5be0d83d449a261dc0741b2dcfc9"
+      },
+      {
+        "source": "services/commerce/src/main/java/lab/commerce/vo/ProductView.java",
+        "frozen": "docs/history/step-02/attempt-07/services/commerce/src/main/java/lab/commerce/vo/ProductView.java",
+        "sha256": "7059ba6125f0ce71ff897ba431638298b6c0f1004f6bd38631f1305a8f4b330c"
+      },
+      {
+        "source": "services/commerce/src/main/resources/application.yml",
+        "frozen": "docs/history/step-02/attempt-07/services/commerce/src/main/resources/application.yml",
+        "sha256": "22e575b4cdecc7b2f7f59a822acb78c72f8d0ea916a2bcf3a658c33c27f79f67"
+      },
+      {
+        "source": "services/commerce/src/main/resources/mapper/ProductMapper.xml",
+        "frozen": "docs/history/step-02/attempt-07/services/commerce/src/main/resources/mapper/ProductMapper.xml",
+        "sha256": "8c1b5536ec2f87601f0b2041bd07211119f47dbd57f587b4ebcb9efeb716da34"
+      },
+      {
+        "source": "services/commerce/src/test/java/lab/commerce/ProductApiIT.java",
+        "frozen": "docs/history/step-02/attempt-07/services/commerce/src/test/java/lab/commerce/ProductApiIT.java",
+        "sha256": "d85d753ff20fa1b9571f4f8477f0ee75dfc7c102db94bcdb4b4573e79ca2c893"
+      },
+      {
+        "source": "services/commerce/src/test/java/lab/commerce/exception/GlobalExceptionHandlerTest.java",
+        "frozen": "docs/history/step-02/attempt-07/services/commerce/src/test/java/lab/commerce/exception/GlobalExceptionHandlerTest.java",
+        "sha256": "214a74cd30ce9144ad262dbadd38b7c14fd4de888f49c6f80050e3b3e7add426"
+      },
+      {
+        "source": "services/commerce/src/test/java/lab/commerce/service/impl/ProductServiceImplTest.java",
+        "frozen": "docs/history/step-02/attempt-07/services/commerce/src/test/java/lab/commerce/service/impl/ProductServiceImplTest.java",
+        "sha256": "82fded31c24ad979166609258d4cb30a2dbe04058def47884e03d013e27d1d4e"
+      },
+      {
+        "source": "web/index.html",
+        "frozen": "docs/history/step-02/attempt-07/web/index.html",
+        "sha256": "7dc87cdd699b9ff50394b209671cca9bbb82f8bf139f2c64656f143f192cbdd9"
+      },
+      {
+        "source": "web/package-lock.json",
+        "frozen": "docs/history/step-02/attempt-07/web/package-lock.json",
+        "sha256": "2091b6c6e17f294722acb723b3ea24ffcf179aae47ad1a3d876a23ac63be5f5a"
+      },
+      {
+        "source": "web/package.json",
+        "frozen": "docs/history/step-02/attempt-07/web/package.json",
+        "sha256": "e5c8505fe900a112b45e501f2f856d498f6404b291ab0bd91221cd9666e78822"
+      },
+      {
+        "source": "web/src/App.vue",
+        "frozen": "docs/history/step-02/attempt-07/web/src/App.vue",
+        "sha256": "f3d89365bbaba70148de7b47d1a77df5dd9227523d3d21defe439148683a5e5a"
+      },
+      {
+        "source": "web/src/api.ts",
+        "frozen": "docs/history/step-02/attempt-07/web/src/api.ts",
+        "sha256": "3b50167b5e5ab44c58be98d9c4d6c5e02913763f5b3c6a109366dfec294d455d"
+      },
+      {
+        "source": "web/src/i18n.ts",
+        "frozen": "docs/history/step-02/attempt-07/web/src/i18n.ts",
+        "sha256": "408fe8ab5b33fe380af840c014ebccf5f5ae6956b317d71587d32753253bf03d"
+      },
+      {
+        "source": "web/src/main.ts",
+        "frozen": "docs/history/step-02/attempt-07/web/src/main.ts",
+        "sha256": "0d42fb6bb74a51d647f20a0cd2bcdcc7b89b146f4cdfbf6f1f7b640e7e036119"
+      },
+      {
+        "source": "web/src/messages.ts",
+        "frozen": "docs/history/step-02/attempt-07/web/src/messages.ts",
+        "sha256": "5dd80694bf93ebaf6b530fd0f6772536e11195e463f2bcdc73b95be66daebc11"
+      },
+      {
+        "source": "web/src/style.css",
+        "frozen": "docs/history/step-02/attempt-07/web/src/style.css",
+        "sha256": "4b49b6be38b79fa7944b171ccee8cce324acdc4cf15b0653180710eaa1856579"
+      },
+      {
+        "source": "web/tests/api.test.mjs",
+        "frozen": "docs/history/step-02/attempt-07/web/tests/api.test.mjs",
+        "sha256": "283b6a6091c16d78d1df9e1fceedd6f872749b0232880daa5b94af9398b972c4"
+      },
+      {
+        "source": "web/tests/i18n.test.mjs",
+        "frozen": "docs/history/step-02/attempt-07/web/tests/i18n.test.mjs",
+        "sha256": "ce3649e09c36233281b98495e68fa04fa9258d7c8a26cd64dda8bcd1312db451"
+      },
+      {
+        "source": "web/tsconfig.json",
+        "frozen": "docs/history/step-02/attempt-07/web/tsconfig.json",
+        "sha256": "223b03f03bc1bc27750488afddf7988a8f19be0494bec26ed5a3bf93c93a21fd"
+      },
+      {
+        "source": "web/vite.config.ts",
+        "frozen": "docs/history/step-02/attempt-07/web/vite.config.ts",
+        "sha256": "c5115ddd2a05eb5ff6fc4bb8903dc3498feba4bbe80dd4bc47540e65f9f397a0"
+      },
+      {
+        "source": "docs/step-01/HANDOFF-step-01.md",
+        "frozen": "docs/history/step-01/attempt-01/docs/step-01/HANDOFF-step-01.md",
+        "sha256": "ef1deb6200c2a54bb8e1f3dedb59e0451eecdf6ff71b545359dc4d95d311ce86"
+      },
+      {
+        "source": "docs/step-01/CODE-GUIDE.md",
+        "frozen": "docs/history/step-01/attempt-01/docs/step-01/CODE-GUIDE.md",
+        "sha256": "7c2d41b48a656452ebe9a07e2d782fbc7b47a6512e41747666071975e91fa5fd"
+      },
+      {
+        "source": "docs/mindmaps/step-01-data.json",
+        "frozen": "docs/history/step-01/attempt-01/docs/mindmaps/step-01-data.json",
+        "sha256": "6fd70580b4be2298bb404ed39368f4182ba0da0e4330c7c599f45d49586ec5a2"
+      },
+      {
+        "source": "docs/mindmaps/step-01.html",
+        "frozen": "docs/history/step-01/attempt-01/docs/mindmaps/step-01.html",
+        "sha256": "a2a98071aeb35c7dcaf12dae425051b40cfc03023930e59ecba8d18314987bc0"
+      },
+      {
+        "source": "docs/step-01/ENVIRONMENT.md",
+        "frozen": "docs/history/step-01/attempt-01/docs/step-01/ENVIRONMENT.md",
+        "sha256": "61f5d21649fc8b0b019d554851ecb35988360d538f9b8cb10cb4b414af3f78e3"
+      },
+      {
+        "source": "evidence/step-01-source-manifest.json",
+        "frozen": "docs/history/step-01/attempt-01/evidence/step-01-source-manifest.json",
+        "sha256": "42bd2d20c409f531dfc9cc2a825ab157f656b70527f2cd1159a8dcf5c80f4055"
+      },
+      {
+        "source": "docs/mindmaps/step-02-data.json",
+        "frozen": "docs/history/step-02/attempt-07/docs/mindmaps/step-02-data.json",
+        "sha256": "9ef93f6020c14d5591c98696e3da009398cdbb017d0025fbad65bad549a94e38"
+      },
+      {
+        "source": "docs/mindmaps/step-02.html",
+        "frozen": "docs/history/step-02/attempt-07/docs/mindmaps/step-02.html",
+        "sha256": "523a25e6b69135c263259dc6e46fed59fdab63298570c8e2e95d3cdde4c8349b"
+      },
+      {
+        "source": "docs/mindmaps/step-02-scan.json",
+        "frozen": "docs/history/step-02/attempt-07/docs/mindmaps/step-02-scan.json",
+        "sha256": "13d5025ec3e1925c2a1a62ed38ca67daeef58d361c8b93414d9bbeb537f8eb50"
+      },
+      {
+        "source": "evidence/step-02-map-browser.json",
+        "frozen": "docs/history/step-02/attempt-07/evidence/step-02-map-browser.json",
+        "sha256": "f4a2840473b8d0d54589a7d358f088a118200b7a2c26f1503aa55718fb8b58e5"
+      },
+      {
+        "source": "evidence/step-02-mindmap.png",
+        "frozen": "docs/history/step-02/attempt-07/evidence/step-02-mindmap.png",
+        "sha256": "d63aac642acecfd427168f2bb7b906fecd387ea46ad20027d687983f664f91ba"
+      },
+      {
+        "source": "evidence/step-02-source-manifest.json",
+        "frozen": "docs/history/step-02/attempt-07/evidence/step-02-source-manifest.json",
+        "sha256": "064dff200ffde23823d4301b0a91a1c41eeec8afe37aad73d84e22766dd76da0"
+      },
+      {
+        "source": "evidence/step-02-source-snapshot.json",
+        "frozen": "docs/history/step-02/attempt-07/evidence/step-02-source-snapshot.json",
+        "sha256": "fc1b379fb4c332ab550c1bc029094f3c5645ad2c74b7c0562f920fede5f0e613"
+      },
+      {
+        "source": "evidence/step-02-acceptance.json",
+        "frozen": "docs/history/step-02/attempt-07/evidence/step-02-acceptance.json",
+        "sha256": "1a7050d2e1a473a92b1eb1bda5759f02a8c5e9ef1d6e62290f2e03c61e4e6766"
+      },
+      {
+        "source": "evidence/step-02-doc-audit-web-tests.txt",
+        "frozen": "docs/history/step-02/attempt-07/evidence/step-02-doc-audit-web-tests.txt",
+        "sha256": "8be9c8278444d9d5efcf382ecfaebc63895bcaa2069bde11a6e4b44d052fd764"
+      },
+      {
+        "source": "evidence/step-02-doc-audit-build.txt",
+        "frozen": "docs/history/step-02/attempt-07/evidence/step-02-doc-audit-build.txt",
+        "sha256": "33bff4fb11eb3ee14e218c90af855f89a1011a490c52c7a8ec239f215a867624"
+      },
+      {
+        "source": "evidence/step-02-doc-audit-api.json",
+        "frozen": "docs/history/step-02/attempt-07/evidence/step-02-doc-audit-api.json",
+        "sha256": "c251f6905b83da2295dc08e97bdd6085d7d151fa8312d840d4a863448a920603"
+      },
+      {
+        "source": "evidence/step-02-error-i18n-browser.json",
+        "frozen": "docs/history/step-02/attempt-07/evidence/step-02-error-i18n-browser.json",
+        "sha256": "dbd7e19fdc33fb9c9bbc5b486898d55a248e6acfc7a51c2eb6d3cfecb0b99d53"
+      },
+      {
+        "source": "evidence/step-02-documentation-audit.json",
+        "frozen": "docs/history/step-02/attempt-07/evidence/step-02-documentation-audit.json",
+        "sha256": "579e24c461e237cedd072f9f3ae1ee91373eee04d57f8e2a2d95652236676d17"
+      },
+      {
+        "source": "evidence/step-02-doc-audit-ledger-tests.txt",
+        "frozen": "docs/history/step-02/attempt-07/evidence/step-02-doc-audit-ledger-tests.txt",
+        "sha256": "47b6637d21d95d27b9c7ab18176ab0864a84e967da398b09c8b849a5d40865af"
+      },
+      {
+        "source": "ROADMAP.md",
+        "frozen": "docs/history/step-02/attempt-07/ROADMAP.md",
+        "sha256": "8d845d4ae14c2ac1da3cba8d06c91e578bd5e65ae566159be921040f0c53e2d7"
+      },
+      {
+        "source": "docs/mindmaps/step-01-scan.json",
+        "frozen": "docs/history/step-01/attempt-01/docs/mindmaps/step-01-scan.json",
+        "sha256": "df1abe4c357a982fef0c72b0ca9861a5f9189337f44b429cf25d93af73459a6a"
+      },
+      {
+        "source": "evidence/step-01-map-browser.json",
+        "frozen": "docs/history/step-01/attempt-01/evidence/step-01-map-browser.json",
+        "sha256": "7b8fbafb07aef3f618d0949660e9ee9b7e7ff9ab1655093da7737e4da9d8cad8"
+      },
+      {
+        "source": "evidence/step-01-mindmap.png",
+        "frozen": "docs/history/step-01/attempt-01/evidence/step-01-mindmap.png",
+        "sha256": "3defb8ec0c32f374c526b2f1ac7ff20e93d05aabfba6b6e138ecad612c5be776"
+      }
+    ],
+    "registered_artifact_hashes_verified_after_deletion": 172
+  },
+  "required_artifacts_changes": [
+    {
+      "step": "step-03",
+      "before": [
+        "handoff",
+        "code-guide",
+        "mindmap-data",
+        "mindmap"
+      ],
+      "after": [
+        "handoff",
+        "code-guide"
+      ]
+    },
+    {
+      "step": "step-04",
+      "before": [
+        "handoff",
+        "code-guide",
+        "mindmap-data",
+        "mindmap"
+      ],
+      "after": [
+        "handoff",
+        "code-guide"
+      ]
+    },
+    {
+      "step": "step-05",
+      "before": [
+        "handoff",
+        "code-guide",
+        "mindmap-data",
+        "mindmap"
+      ],
+      "after": [
+        "handoff",
+        "code-guide"
+      ]
+    },
+    {
+      "step": "step-06",
+      "before": [
+        "handoff",
+        "code-guide",
+        "mindmap-data",
+        "mindmap"
+      ],
+      "after": [
+        "handoff",
+        "code-guide"
+      ]
+    },
+    {
+      "step": "step-07",
+      "before": [
+        "handoff",
+        "code-guide",
+        "mindmap-data",
+        "mindmap"
+      ],
+      "after": [
+        "handoff",
+        "code-guide"
+      ]
+    },
+    {
+      "step": "step-08",
+      "before": [
+        "handoff",
+        "code-guide",
+        "mindmap-data",
+        "mindmap"
+      ],
+      "after": [
+        "handoff",
+        "code-guide"
+      ]
+    },
+    {
+      "step": "step-09",
+      "before": [
+        "handoff",
+        "code-guide",
+        "mindmap-data",
+        "mindmap"
+      ],
+      "after": [
+        "handoff",
+        "code-guide"
+      ]
+    },
+    {
+      "step": "step-10",
+      "before": [
+        "handoff",
+        "code-guide",
+        "mindmap-data",
+        "mindmap"
+      ],
+      "after": [
+        "handoff",
+        "code-guide"
+      ]
+    },
+    {
+      "step": "step-11",
+      "before": [
+        "handoff",
+        "code-guide",
+        "mindmap-data",
+        "mindmap"
+      ],
+      "after": [
+        "handoff",
+        "code-guide"
+      ]
+    },
+    {
+      "step": "step-12",
+      "before": [
+        "handoff",
+        "code-guide",
+        "mindmap-data",
+        "mindmap"
+      ],
+      "after": [
+        "handoff",
+        "code-guide"
+      ]
+    },
+    {
+      "step": "step-13",
+      "before": [
+        "handoff",
+        "code-guide",
+        "mindmap-data",
+        "mindmap"
+      ],
+      "after": [
+        "handoff",
+        "code-guide"
+      ]
+    },
+    {
+      "step": "step-14",
+      "before": [
+        "handoff",
+        "code-guide",
+        "mindmap-data",
+        "mindmap"
+      ],
+      "after": [
+        "handoff",
+        "code-guide"
+      ]
+    },
+    {
+      "step": "step-15",
+      "before": [
+        "handoff",
+        "code-guide",
+        "mindmap-data",
+        "mindmap"
+      ],
+      "after": [
+        "handoff",
+        "code-guide"
+      ]
+    }
+  ],
+  "deleted_active_files": [
+    {
+      "path": "docs/mindmaps/step-01-data.json",
+      "sha256": "6fd70580b4be2298bb404ed39368f4182ba0da0e4330c7c599f45d49586ec5a2",
+      "preserved_at": "docs/history/step-01/attempt-01/docs/mindmaps/step-01-data.json"
+    },
+    {
+      "path": "docs/mindmaps/step-01-scan.json",
+      "sha256": "df1abe4c357a982fef0c72b0ca9861a5f9189337f44b429cf25d93af73459a6a",
+      "preserved_at": "docs/history/step-01/attempt-01/docs/mindmaps/step-01-scan.json"
+    },
+    {
+      "path": "docs/mindmaps/step-01.html",
+      "sha256": "a2a98071aeb35c7dcaf12dae425051b40cfc03023930e59ecba8d18314987bc0",
+      "preserved_at": "docs/history/step-01/attempt-01/docs/mindmaps/step-01.html"
+    },
+    {
+      "path": "docs/mindmaps/step-02-data.json",
+      "sha256": "9ef93f6020c14d5591c98696e3da009398cdbb017d0025fbad65bad549a94e38",
+      "preserved_at": "docs/history/step-02/attempt-07/docs/mindmaps/step-02-data.json"
+    },
+    {
+      "path": "docs/mindmaps/step-02-scan.json",
+      "sha256": "13d5025ec3e1925c2a1a62ed38ca67daeef58d361c8b93414d9bbeb537f8eb50",
+      "preserved_at": "docs/history/step-02/attempt-07/docs/mindmaps/step-02-scan.json"
+    },
+    {
+      "path": "docs/mindmaps/step-02.html",
+      "sha256": "523a25e6b69135c263259dc6e46fed59fdab63298570c8e2e95d3cdde4c8349b",
+      "preserved_at": "docs/history/step-02/attempt-07/docs/mindmaps/step-02.html"
+    },
+    {
+      "path": ".mindmap-config.json",
+      "sha256": "7171f2bd784a272573a0c38329df01a8a5f2004cffc589b1f79660ef59e1c16e",
+      "preserved_at": "docs/history/step-02/attempt-07/.mindmap-config.json"
+    },
+    {
+      "path": "scripts/build_mindmap.py",
+      "sha256": "17677c5bb8cd532e5c8972e4494f807af11dee96ba0e9bb91be280ab59ce0dba",
+      "preserved_at": "docs/history/step-02/attempt-07/scripts/build_mindmap.py"
+    },
+    {
+      "path": "scripts/verify-map.cjs",
+      "sha256": "320f74597ac5fb4ec066384ae77cb2280a5bc3ff873ee5260a5b64c1611cfb8e",
+      "preserved_at": "docs/history/step-02/attempt-07/scripts/verify-map.cjs"
+    },
+    {
+      "path": "evidence/step-01-map-browser.json",
+      "sha256": "7b8fbafb07aef3f618d0949660e9ee9b7e7ff9ab1655093da7737e4da9d8cad8",
+      "preserved_at": "docs/history/step-01/attempt-01/evidence/step-01-map-browser.json"
+    },
+    {
+      "path": "evidence/step-01-mindmap.png",
+      "sha256": "3defb8ec0c32f374c526b2f1ac7ff20e93d05aabfba6b6e138ecad612c5be776",
+      "preserved_at": "docs/history/step-01/attempt-01/evidence/step-01-mindmap.png"
+    },
+    {
+      "path": "evidence/step-02-map-browser.json",
+      "sha256": "f4a2840473b8d0d54589a7d358f088a118200b7a2c26f1503aa55718fb8b58e5",
+      "preserved_at": "docs/history/step-02/attempt-07/evidence/step-02-map-browser.json"
+    },
+    {
+      "path": "evidence/step-02-mindmap.png",
+      "sha256": "d63aac642acecfd427168f2bb7b906fecd387ea46ad20027d687983f664f91ba",
+      "preserved_at": "docs/history/step-02/attempt-07/evidence/step-02-mindmap.png"
+    }
+  ],
+  "status": "PASSED",
+  "completed_at": "2026-10-18T11:45:50+00:00"
+}

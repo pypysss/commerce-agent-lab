@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "scenario": "actual lab MySQL stopped",
+  "http_status": 503,
+  "body": {
+    "code": "DATABASE_UNAVAILABLE",
+    "message": "数据服务暂不可用，请稍后重试"
+  },
+  "elapsed_seconds": 2.047,
+  "note": "first probe used incorrect expected code DEPENDENCY_UNAVAILABLE; corrected to documented DATABASE_UNAVAILABLE, no app change",
+  "recovered_http_status": 200,
+  "recovered_items": 3
+}

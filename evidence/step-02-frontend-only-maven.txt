@@ -1,0 +1,108 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------------< lab.commerce:commerce-service >--------------------
+[INFO] Building commerce-service 0.1.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.5.0:clean (default-clean) @ commerce-service ---
+[INFO] Deleting E:\ai_agent_learning\java_python\services\commerce\target
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ commerce-service ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ commerce-service ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 11 source files with javac [debug parameters release 21] to target\classes
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ commerce-service ---
+[INFO] Copying 0 resource from src\test\resources to target\test-classes
+[INFO] 
+[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ commerce-service ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 3 source files with javac [debug parameters release 21] to target\test-classes
+[INFO] 
+[INFO] --- surefire:3.5.6:test (default-test) @ commerce-service ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running lab.commerce.exception.GlobalExceptionHandlerTest
+19:26:10.479 [main] WARN lab.commerce.exception.GlobalExceptionHandler -- Database failure: type=CannotCreateTransactionException, rootCause=CannotCreateTransactionException, sqlState=null, vendorCode=null
+19:26:10.542 [main] WARN lab.commerce.exception.GlobalExceptionHandler -- Database failure: type=TransientDataAccessResourceException, rootCause=TransientDataAccessResourceException, sqlState=null, vendorCode=null
+19:26:10.555 [main] WARN lab.commerce.exception.GlobalExceptionHandler -- Database failure: type=DataAccessResourceFailureException, rootCause=DataAccessResourceFailureException, sqlState=null, vendorCode=null
+19:26:10.555 [main] ERROR lab.commerce.exception.GlobalExceptionHandler -- Database failure: type=DataIntegrityViolationException, rootCause=DataIntegrityViolationException, sqlState=null, vendorCode=null
+19:26:10.562 [main] WARN lab.commerce.exception.GlobalExceptionHandler -- Database failure: type=DataAccessResourceFailureException, rootCause=DataAccessResourceFailureException, sqlState=null, vendorCode=null
+19:26:10.563 [main] ERROR lab.commerce.exception.GlobalExceptionHandler -- Database failure: type=DataIntegrityViolationException, rootCause=DataIntegrityViolationException, sqlState=null, vendorCode=null
+19:26:10.567 [main] ERROR lab.commerce.exception.GlobalExceptionHandler -- Database failure: type=BadSqlGrammarException, rootCause=SQLException, sqlState=42000, vendorCode=1064
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.170 s -- in lab.commerce.exception.GlobalExceptionHandlerTest
+[INFO] Running lab.commerce.service.impl.ProductServiceImplTest
+[INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.095 s -- in lab.commerce.service.impl.ProductServiceImplTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 18, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- jar:3.5.1:jar (default-jar) @ commerce-service ---
+[INFO] Building jar: E:\ai_agent_learning\java_python\services\commerce\target\commerce-service-0.1.0.jar
+[INFO] 
+[INFO] --- spring-boot:4.1.1:repackage (repackage) @ commerce-service ---
+[INFO] Replacing main artifact E:\ai_agent_learning\java_python\services\commerce\target\commerce-service-0.1.0.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+[INFO] The original artifact has been renamed to E:\ai_agent_learning\java_python\services\commerce\target\commerce-service-0.1.0.jar.original
+[INFO] 
+[INFO] --- failsafe:3.5.6:integration-test (default) @ commerce-service ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running lab.commerce.ProductApiIT
+19:26:13.534 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [lab.commerce.ProductApiIT]: ProductApiIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+19:26:13.609 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration lab.commerce.CommerceApplication for test class lab.commerce.ProductApiIT
+19:26:13.675 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [lab.commerce.ProductApiIT]: ProductApiIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+19:26:13.676 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration lab.commerce.CommerceApplication for test class lab.commerce.ProductApiIT
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-10-18T19:26:14.173+08:00  INFO 17720 --- [commerce-service] [           main] lab.commerce.ProductApiIT                : Starting ProductApiIT using Java 21.0.12.1 with PID 17720 (started by Administrator in E:\ai_agent_learning\java_python\services\commerce)
+2026-10-18T19:26:14.174+08:00  INFO 17720 --- [commerce-service] [           main] lab.commerce.ProductApiIT                : No active profile set, falling back to 1 default profile: "default"
+2026-10-18T19:26:14.829+08:00  INFO 17720 --- [commerce-service] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+2026-10-18T19:26:14.841+08:00  INFO 17720 --- [commerce-service] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-18T19:26:14.841+08:00  INFO 17720 --- [commerce-service] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.24]
+2026-10-18T19:26:14.909+08:00  INFO 17720 --- [commerce-service] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 714 ms
+2026-10-18T19:26:15.461+08:00  INFO 17720 --- [commerce-service] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 64330 (http) with context path '/'
+2026-10-18T19:26:15.464+08:00  INFO 17720 --- [commerce-service] [           main] lab.commerce.ProductApiIT                : Started ProductApiIT in 1.526 seconds (process running for 3.832)
+2026-10-18T19:26:15.482+08:00  INFO 17720 --- [commerce-service] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-10-18T19:26:15.683+08:00  INFO 17720 --- [commerce-service] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4eb48298
+2026-10-18T19:26:15.684+08:00  INFO 17720 --- [commerce-service] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-10-18T19:26:15.812+08:00  INFO 17720 --- [commerce-service] [1-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-10-18T19:26:15.812+08:00  INFO 17720 --- [commerce-service] [1-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-10-18T19:26:15.813+08:00  INFO 17720 --- [commerce-service] [1-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-10-18T19:26:16.390+08:00  INFO 17720 --- [commerce-service] [           main] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-10-18T19:26:16.392+08:00  INFO 17720 --- [commerce-service] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-10-18T19:26:16.394+08:00  INFO 17720 --- [commerce-service] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-10-18T19:26:16.396+08:00  INFO 17720 --- [commerce-service] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+[INFO] Tests run: 20, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.030 s -- in lab.commerce.ProductApiIT
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 20, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- failsafe:3.5.6:verify (default) @ commerce-service ---
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  13.277 s
+[INFO] Finished at: 2026-10-18T19:26:16+08:00
+[INFO] ------------------------------------------------------------------------

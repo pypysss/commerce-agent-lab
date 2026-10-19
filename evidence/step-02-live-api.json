@@ -1,0 +1,31 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "sku": "COURSE-001",
+      "name": "Java 并发学习手册",
+      "description": "从线程安全到线程池，用可运行示例理解 JUC。",
+      "price": "129.90",
+      "availableStock": 10
+    },
+    {
+      "id": 2,
+      "sku": "TOOL-002",
+      "name": "开发者桌面工具包",
+      "description": "用于练习商品查询与后续订单、库存业务。",
+      "price": "59.00",
+      "availableStock": 25
+    },
+    {
+      "id": 3,
+      "sku": "GUIDE-003",
+      "name": "RAG 实践指南",
+      "description": "知识检索与引用的入门材料，目前暂时缺货。",
+      "price": "19.90",
+      "availableStock": 0
+    }
+  ],
+  "page": 1,
+  "size": 20,
+  "total": 3
+}

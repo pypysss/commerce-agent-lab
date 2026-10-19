@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-18T05:02:05Z",
+  "title": "Commerce Lab 界面约定",
+  "extensions": {
+    "shadows": [],
+    "motion": [
+      { "name": "interaction", "value": "background-color 160ms ease-out", "purpose": "按钮和表格行的状态反馈。" },
+      { "name": "loading-pulse", "value": "pulse 1.4s ease-in-out infinite alternate", "purpose": "加载骨架 opacity 从 1 变到 0.48；reduced motion 时关闭。" }
+    ],
+    "breakpoints": [
+      { "name": "compact-desktop", "value": "1100px" },
+      { "name": "single-column", "value": "900px" },
+      { "name": "mobile", "value": "560px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "主按钮",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "错误状态下重新加载列表。",
+      "html": "<button class=\"ds-primary\">重新加载</button>",
+      "css": ".ds-primary { display:inline-flex; align-items:center; justify-content:center; min-height:40px; padding:9px 15px; color:#fff; background:var(--accent, #17634c); border:1px solid transparent; border-radius:6px; font-family:Segoe UI, Microsoft YaHei, sans-serif; font-size:13px; font-weight:600; line-height:1.4; cursor:pointer; transition:background-color 160ms ease-out; } .ds-primary:hover:not(:disabled) { background:#104b39; } .ds-primary:active:not(:disabled) { background:#dcebe2; color:#174e3c; } .ds-primary:focus-visible { outline:3px solid #459a7c; outline-offset:3px; } .ds-primary:disabled { opacity:.45; cursor:default; }"
+    },
+    {
+      "name": "次要按钮",
+      "kind": "button",
+      "description": "刷新列表或清除当前页筛选。",
+      "html": "<button class=\"ds-secondary\">刷新列表</button>",
+      "css": ".ds-secondary { display:inline-flex; align-items:center; justify-content:center; min-height:40px; padding:9px 15px; color:#304c40; background:#fff; border:1px solid #bdcec5; border-radius:6px; font-family:Segoe UI, Microsoft YaHei, sans-serif; font-size:13px; font-weight:600; line-height:1.4; cursor:pointer; transition:background-color 160ms ease-out; } .ds-secondary:hover:not(:disabled) { background:#edf3ef; } .ds-secondary:active:not(:disabled) { background:#dcebe2; color:#174e3c; } .ds-secondary:focus-visible { outline:3px solid #459a7c; outline-offset:3px; } .ds-secondary:disabled { opacity:.45; cursor:default; }"
+    },
+    {
+      "name": "商品搜索框",
+      "kind": "input",
+      "refersTo": "input-search",
+      "description": "带可见标签的当前页筛选。",
+      "html": "<div class=\"ds-search\"><label for=\"ds-product-search\">筛选当前页</label><div class=\"ds-search-wrap\"><svg viewBox=\"0 0 20 20\" aria-hidden=\"true\"><circle cx=\"8.5\" cy=\"8.5\" r=\"5.5\"/><path d=\"m13 13 4 4\"/></svg><input id=\"ds-product-search\" type=\"search\" placeholder=\"商品名称或 SKU\"/></div></div>",
+      "css": ".ds-search { width:238px; max-width:100%; font-family:Segoe UI, Microsoft YaHei, sans-serif; } .ds-search label { display:block; font-size:12px; color:#52665c; margin-bottom:6px; } .ds-search-wrap { position:relative; } .ds-search svg { position:absolute; left:11px; top:10px; width:20px; height:20px; color:#728179; fill:none; stroke:currentColor; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round; pointer-events:none; } .ds-search input { box-sizing:border-box; width:100%; height:40px; padding:8px 10px 8px 38px; background:#fff; border:1px solid #b8c8c0; color:#253d35; border-radius:6px; font:13px Segoe UI, Microsoft YaHei, sans-serif; caret-color:var(--accent, #17634c); } .ds-search input::placeholder { color:#6b7b73; } .ds-search input:focus-visible { outline:3px solid #459a7c; outline-offset:3px; } .ds-search input:disabled { background:#f4f6f5; }"
+    },
+    {
+      "name": "详情操作",
+      "kind": "button",
+      "description": "表格中的查看详情操作，选择后同时显示文字与底色。",
+      "html": "<button class=\"ds-detail-action\" aria-pressed=\"false\">查看详情</button>",
+      "css": ".ds-detail-action { color:var(--accent, #17634c); background:transparent; border:1px solid transparent; border-radius:4px; padding:10px 4px; font:600 12px Segoe UI, Microsoft YaHei, sans-serif; white-space:nowrap; text-underline-offset:3px; cursor:pointer; } .ds-detail-action:hover { text-decoration:underline; } .ds-detail-action:active { background:#dcece2; } .ds-detail-action:focus-visible { outline:3px solid #459a7c; outline-offset:3px; } .ds-detail-action[aria-pressed=true] { color:#376e56; }"
+    },
+    {
+      "name": "选择标签",
+      "kind": "chip",
+      "description": "在详情面板标题旁说明已有商品被选择；不是可点击筛选器。",
+      "html": "<span class=\"ds-selected-label\">已选择</span>",
+      "css": ".ds-selected-label { display:inline-block; background:#e9f2eb; color:#306447; font:11px Segoe UI, Microsoft YaHei, sans-serif; border-radius:4px; padding:4px 7px; }"
+    },
+    {
+      "name": "内容面板",
+      "kind": "card",
+      "refersTo": "panel",
+      "description": "商品列表或详情的白色内容面板，以细边界划分，不使用阴影。",
+      "html": "<section class=\"ds-panel\"><h2>商品详情</h2><p>选择一件商品，查看价格与可用库存。</p></section>",
+      "css": ".ds-panel { color:#253d35; background:#fff; border:1px solid var(--line, #dce4df); border-radius:12px; overflow:hidden; font-family:Segoe UI, Microsoft YaHei, sans-serif; } .ds-panel h2 { margin:0; padding:24px 22px 20px; border-bottom:1px solid var(--line, #dce4df); font-size:17px; line-height:1.5; font-weight:650; } .ds-panel p { margin:0; padding:25px 22px 30px; color:var(--muted, #60716b); font-size:13px; line-height:1.9; }"
+    }
+  ],
+  "narrative": {
+    "overview": "第二步商品查询使用 Operate 模式。页面让使用者快速扫描商品、价格和库存，再打开详情；不增加与当前业务无关的数据图、指标或装饰。此处记录已实施的界面，未声称全项目设计系统已经完成。",
+    "keyCharacteristics": [],
+    "rules": [],
+    "dos": [],
+    "donts": []
+  }
+}

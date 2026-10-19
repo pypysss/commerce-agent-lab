@@ -1,0 +1,14 @@
+
+> commerce-agent-lab-web@0.1.0 build
+> vue-tsc --noEmit && vite build
+
+vite v8.3.4 building client environment for production...
+transforming...
+✓ 13 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                  0.46 kB │ gzip:  0.32 kB
+dist/assets/index-bUkkwI-P.css   8.89 kB │ gzip:  2.71 kB
+dist/assets/index-Cwsuyt8a.js   73.60 kB │ gzip: 28.93 kB
+
+✓ built in 86ms

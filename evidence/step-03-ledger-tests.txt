@@ -1,0 +1,17 @@
+test_artifact_cannot_escape_project (learning.test_ledger.LedgerTests.test_artifact_cannot_escape_project) ... ok
+test_changed_additional_artifact_blocks_completion_and_rolls_back (learning.test_ledger.LedgerTests.test_changed_additional_artifact_blocks_completion_and_rolls_back) ... ok
+test_completion_rolls_back_new_artifact_rows_on_missing_file (learning.test_ledger.LedgerTests.test_completion_rolls_back_new_artifact_rows_on_missing_file) ... ok
+test_completion_rolls_back_on_sql_write_failure (learning.test_ledger.LedgerTests.test_completion_rolls_back_on_sql_write_failure) ... ok
+test_failed_and_not_run_checks_block_completion (learning.test_ledger.LedgerTests.test_failed_and_not_run_checks_block_completion) ... ok
+test_idempotent_init_preserves_plan_progress_and_evidence (learning.test_ledger.LedgerTests.test_idempotent_init_preserves_plan_progress_and_evidence) ... ok
+test_missing_additional_artifact_blocks_completion_and_rolls_back (learning.test_ledger.LedgerTests.test_missing_additional_artifact_blocks_completion_and_rolls_back) ... ok
+test_missing_or_changed_artifact_blocks_completion (learning.test_ledger.LedgerTests.test_missing_or_changed_artifact_blocks_completion) ... ok
+test_missing_seeded_row_can_be_restored_without_resetting_progress (learning.test_ledger.LedgerTests.test_missing_seeded_row_can_be_restored_without_resetting_progress) ... ok
+test_parent_gate_and_reopen_persistence (learning.test_ledger.LedgerTests.test_parent_gate_and_reopen_persistence) ... ok
+test_reopen_requires_new_attempt_evidence (learning.test_ledger.LedgerTests.test_reopen_requires_new_attempt_evidence) ... ok
+test_unregistered_required_artifact_blocks_completion (learning.test_ledger.LedgerTests.test_unregistered_required_artifact_blocks_completion) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.486s
+
+OK

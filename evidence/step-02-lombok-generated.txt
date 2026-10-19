@@ -1,0 +1,49 @@
+Compiled from "Product.java"
+public class lab.commerce.entity.Product {
+  private long id;
+  private java.lang.String sku;
+  private java.lang.String name;
+  private java.lang.String description;
+  private java.math.BigDecimal price;
+  private java.lang.String status;
+  public long getId();
+  public java.lang.String getSku();
+  public java.lang.String getName();
+  public java.lang.String getDescription();
+  public java.math.BigDecimal getPrice();
+  public java.lang.String getStatus();
+  public void setId(long);
+  public void setSku(java.lang.String);
+  public void setName(java.lang.String);
+  public void setDescription(java.lang.String);
+  public void setPrice(java.math.BigDecimal);
+  public void setStatus(java.lang.String);
+  public lab.commerce.entity.Product();
+}
+Compiled from "ProductStockRow.java"
+public class lab.commerce.dto.ProductStockRow {
+  private long productId;
+  private lab.commerce.entity.Product product;
+  private int availableStock;
+  public long getProductId();
+  public lab.commerce.entity.Product getProduct();
+  public int getAvailableStock();
+  public void setProductId(long);
+  public void setProduct(lab.commerce.entity.Product);
+  public void setAvailableStock(int);
+  public lab.commerce.dto.ProductStockRow();
+}
+Compiled from "ProductController.java"
+public class lab.commerce.controller.ProductController {
+  private final lab.commerce.service.ProductService service;
+  public lab.commerce.vo.ProductPage list(int, int);
+  public lab.commerce.vo.ProductView detail(long);
+  public lab.commerce.controller.ProductController(lab.commerce.service.ProductService);
+}
+Compiled from "ProductServiceImpl.java"
+public class lab.commerce.service.impl.ProductServiceImpl implements lab.commerce.service.ProductService {
+  private final lab.commerce.mapper.ProductMapper mapper;
+  public lab.commerce.vo.ProductPage list(int, int);
+  public lab.commerce.vo.ProductView detail(long);
+  public lab.commerce.service.impl.ProductServiceImpl(lab.commerce.mapper.ProductMapper);
+}

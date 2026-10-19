@@ -1,0 +1,23 @@
+{
+  "step": "step-03",
+  "attempt": 1,
+  "checks": [
+    "Invalid credentials stay structured and retranslate in three languages without requests",
+    "Login, real order, exact CNY amount, simulation payment and refresh",
+    "Logout clears orders; second user cannot read first user order; missing CSRF rejected",
+    "Three-language 390px layout has no document overflow"
+  ],
+  "pageErrors": [],
+  "injectedCases": [
+    {
+      "scenario": "Response lost after a real committed order; retry uses same key",
+      "realServerCommit": true,
+      "clientNetworkFailureInjected": true,
+      "orderId": 60,
+      "sameKey": true,
+      "totalAmount": "25.00"
+    }
+  ],
+  "orderId": 60,
+  "outcome": "PASSED"
+}

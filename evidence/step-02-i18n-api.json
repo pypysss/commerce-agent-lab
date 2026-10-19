@@ -1,0 +1,51 @@
+{
+  "checked_at": "2026-10-18T10:15:35.791075+00:00",
+  "passed": true,
+  "database": {
+    "host": "127.0.0.1",
+    "port": 13306,
+    "schema": "commerce",
+    "user": "commerce_reader",
+    "version_and_account": "8.4.11\tcommerce_reader@localhost",
+    "product_count": 3,
+    "inventory_count": 3,
+    "first_price": "129.90",
+    "writes_performed": false
+  },
+  "api": {
+    "list_status": 200,
+    "detail_status": 200,
+    "invalid_page_status": 400,
+    "invalid_page_code": "INVALID_ARGUMENT",
+    "missing_product_status": 404,
+    "missing_product_code": "PRODUCT_NOT_FOUND",
+    "price_type": "string",
+    "products": [
+      {
+        "id": 1,
+        "sku": "COURSE-001",
+        "name": "Java 并发学习手册",
+        "description": "从线程安全到线程池，用可运行示例理解 JUC。",
+        "price": "129.90",
+        "availableStock": 10
+      },
+      {
+        "id": 2,
+        "sku": "TOOL-002",
+        "name": "开发者桌面工具包",
+        "description": "用于练习商品查询与后续订单、库存业务。",
+        "price": "59.00",
+        "availableStock": 25
+      },
+      {
+        "id": 3,
+        "sku": "GUIDE-003",
+        "name": "RAG 实践指南",
+        "description": "知识检索与引用的入门材料，目前暂时缺货。",
+        "price": "19.90",
+        "availableStock": 0
+      }
+    ]
+  },
+  "business_translation": "UI only; product names/descriptions remain database originals"
+}

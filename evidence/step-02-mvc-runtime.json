@@ -1,0 +1,39 @@
+{
+  "passed": true,
+  "attempt": 2,
+  "runtime": "Rebuilt executable JAR via Run-Lab.ps1",
+  "list_status": 200,
+  "list_items": 3,
+  "price": "129.90",
+  "detail_status": 200,
+  "zero_stock": 0,
+  "invalid_status": 400,
+  "missing_status": 404,
+  "internal_entity_fields_exposed": false,
+  "schema_sql_unchanged": true,
+  "openapi_unchanged": true,
+  "frontend_source_unchanged": true,
+  "java_suites": [
+    {
+      "name": "lab.commerce.exception.GlobalExceptionHandlerTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "lab.commerce.service.impl.ProductServiceImplTest",
+      "tests": 12,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "lab.commerce.ProductApiIT",
+      "tests": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  ]
+}

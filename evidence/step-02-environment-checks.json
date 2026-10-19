@@ -1,0 +1,7 @@
+{
+  "secrets_printed": false,
+  "scripts_parsed": 6,
+  "database_credentials_consistent": true,
+  "passed": true,
+  "database_port_override_verified": true
+}

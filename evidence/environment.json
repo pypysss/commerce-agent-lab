@@ -1,0 +1,17 @@
+{
+  "python": "3.12.10",
+  "node": "24.20.0",
+  "jdk": "21.0.12.1+1",
+  "maven": "3.9.16",
+  "mysql": "8.4.11",
+  "database_mode": "native-loopback",
+  "docker_engine": "UNAVAILABLE: missing dockerDesktopLinuxEngine pipe",
+  "wsl": "E_ACCESSDENIED",
+  "ports": {
+    "mysql_port": 13306,
+    "api_port": 18080,
+    "web_port": 15173
+  },
+  "application_db_privilege": "SELECT only",
+  "future_services": "NOT IMPLEMENTED"
+}

@@ -1,0 +1,316 @@
+{
+  "attempt": 5,
+  "checked_at": "2026-10-18T10:51:33+00:00",
+  "passed": true,
+  "custom_error_http_cases": [
+    {
+      "accept_language": null,
+      "resolved_language": "zh-CN",
+      "path": "/api/v1/products/999999999",
+      "status": 404,
+      "code": "PRODUCT_NOT_FOUND",
+      "message": "商品不存在或未上架"
+    },
+    {
+      "accept_language": null,
+      "resolved_language": "zh-CN",
+      "path": "/api/v1/products?page=0",
+      "status": 400,
+      "code": "INVALID_ARGUMENT",
+      "message": "参数必须为整数且在有效范围内"
+    },
+    {
+      "accept_language": null,
+      "resolved_language": "zh-CN",
+      "path": "/api/v1/products/abc",
+      "status": 400,
+      "code": "INVALID_ARGUMENT",
+      "message": "参数必须为整数且在有效范围内"
+    },
+    {
+      "accept_language": "zh-CN",
+      "resolved_language": "zh-CN",
+      "path": "/api/v1/products/999999999",
+      "status": 404,
+      "code": "PRODUCT_NOT_FOUND",
+      "message": "商品不存在或未上架"
+    },
+    {
+      "accept_language": "zh-CN",
+      "resolved_language": "zh-CN",
+      "path": "/api/v1/products?page=0",
+      "status": 400,
+      "code": "INVALID_ARGUMENT",
+      "message": "参数必须为整数且在有效范围内"
+    },
+    {
+      "accept_language": "zh-CN",
+      "resolved_language": "zh-CN",
+      "path": "/api/v1/products/abc",
+      "status": 400,
+      "code": "INVALID_ARGUMENT",
+      "message": "参数必须为整数且在有效范围内"
+    },
+    {
+      "accept_language": "zh",
+      "resolved_language": "zh",
+      "path": "/api/v1/products/999999999",
+      "status": 404,
+      "code": "PRODUCT_NOT_FOUND",
+      "message": "商品不存在或未上架"
+    },
+    {
+      "accept_language": "zh",
+      "resolved_language": "zh",
+      "path": "/api/v1/products?page=0",
+      "status": 400,
+      "code": "INVALID_ARGUMENT",
+      "message": "参数必须为整数且在有效范围内"
+    },
+    {
+      "accept_language": "zh",
+      "resolved_language": "zh",
+      "path": "/api/v1/products/abc",
+      "status": 400,
+      "code": "INVALID_ARGUMENT",
+      "message": "参数必须为整数且在有效范围内"
+    },
+    {
+      "accept_language": "en",
+      "resolved_language": "en",
+      "path": "/api/v1/products/999999999",
+      "status": 404,
+      "code": "PRODUCT_NOT_FOUND",
+      "message": "This product does not exist or is not listed."
+    },
+    {
+      "accept_language": "en",
+      "resolved_language": "en",
+      "path": "/api/v1/products?page=0",
+      "status": 400,
+      "code": "INVALID_ARGUMENT",
+      "message": "Parameters must be integers within the allowed range."
+    },
+    {
+      "accept_language": "en",
+      "resolved_language": "en",
+      "path": "/api/v1/products/abc",
+      "status": 400,
+      "code": "INVALID_ARGUMENT",
+      "message": "Parameters must be integers within the allowed range."
+    },
+    {
+      "accept_language": "ja",
+      "resolved_language": "ja",
+      "path": "/api/v1/products/999999999",
+      "status": 404,
+      "code": "PRODUCT_NOT_FOUND",
+      "message": "商品が存在しないか、公開されていません。"
+    },
+    {
+      "accept_language": "ja",
+      "resolved_language": "ja",
+      "path": "/api/v1/products?page=0",
+      "status": 400,
+      "code": "INVALID_ARGUMENT",
+      "message": "パラメーターには許容範囲内の整数を指定してください。"
+    },
+    {
+      "accept_language": "ja",
+      "resolved_language": "ja",
+      "path": "/api/v1/products/abc",
+      "status": 400,
+      "code": "INVALID_ARGUMENT",
+      "message": "パラメーターには許容範囲内の整数を指定してください。"
+    },
+    {
+      "accept_language": "en-US",
+      "resolved_language": "en",
+      "path": "/api/v1/products/999999999",
+      "status": 404,
+      "code": "PRODUCT_NOT_FOUND",
+      "message": "This product does not exist or is not listed."
+    },
+    {
+      "accept_language": "en-US",
+      "resolved_language": "en",
+      "path": "/api/v1/products?page=0",
+      "status": 400,
+      "code": "INVALID_ARGUMENT",
+      "message": "Parameters must be integers within the allowed range."
+    },
+    {
+      "accept_language": "en-US",
+      "resolved_language": "en",
+      "path": "/api/v1/products/abc",
+      "status": 400,
+      "code": "INVALID_ARGUMENT",
+      "message": "Parameters must be integers within the allowed range."
+    },
+    {
+      "accept_language": "ja-JP",
+      "resolved_language": "ja",
+      "path": "/api/v1/products/999999999",
+      "status": 404,
+      "code": "PRODUCT_NOT_FOUND",
+      "message": "商品が存在しないか、公開されていません。"
+    },
+    {
+      "accept_language": "ja-JP",
+      "resolved_language": "ja",
+      "path": "/api/v1/products?page=0",
+      "status": 400,
+      "code": "INVALID_ARGUMENT",
+      "message": "パラメーターには許容範囲内の整数を指定してください。"
+    },
+    {
+      "accept_language": "ja-JP",
+      "resolved_language": "ja",
+      "path": "/api/v1/products/abc",
+      "status": 400,
+      "code": "INVALID_ARGUMENT",
+      "message": "パラメーターには許容範囲内の整数を指定してください。"
+    },
+    {
+      "accept_language": "zh-TW",
+      "resolved_language": "zh",
+      "path": "/api/v1/products/999999999",
+      "status": 404,
+      "code": "PRODUCT_NOT_FOUND",
+      "message": "商品不存在或未上架"
+    },
+    {
+      "accept_language": "zh-TW",
+      "resolved_language": "zh",
+      "path": "/api/v1/products?page=0",
+      "status": 400,
+      "code": "INVALID_ARGUMENT",
+      "message": "参数必须为整数且在有效范围内"
+    },
+    {
+      "accept_language": "zh-TW",
+      "resolved_language": "zh",
+      "path": "/api/v1/products/abc",
+      "status": 400,
+      "code": "INVALID_ARGUMENT",
+      "message": "参数必须为整数且在有效范围内"
+    },
+    {
+      "accept_language": "fr-FR",
+      "resolved_language": "zh-CN",
+      "path": "/api/v1/products/999999999",
+      "status": 404,
+      "code": "PRODUCT_NOT_FOUND",
+      "message": "商品不存在或未上架"
+    },
+    {
+      "accept_language": "fr-FR",
+      "resolved_language": "zh-CN",
+      "path": "/api/v1/products?page=0",
+      "status": 400,
+      "code": "INVALID_ARGUMENT",
+      "message": "参数必须为整数且在有效范围内"
+    },
+    {
+      "accept_language": "fr-FR",
+      "resolved_language": "zh-CN",
+      "path": "/api/v1/products/abc",
+      "status": 400,
+      "code": "INVALID_ARGUMENT",
+      "message": "参数必须为整数且在有效范围内"
+    },
+    {
+      "accept_language": "fr-FR, en;q=0.8, ja;q=0.5",
+      "resolved_language": "en",
+      "path": "/api/v1/products/999999999",
+      "status": 404,
+      "code": "PRODUCT_NOT_FOUND",
+      "message": "This product does not exist or is not listed."
+    },
+    {
+      "accept_language": "fr-FR, en;q=0.8, ja;q=0.5",
+      "resolved_language": "en",
+      "path": "/api/v1/products?page=0",
+      "status": 400,
+      "code": "INVALID_ARGUMENT",
+      "message": "Parameters must be integers within the allowed range."
+    },
+    {
+      "accept_language": "fr-FR, en;q=0.8, ja;q=0.5",
+      "resolved_language": "en",
+      "path": "/api/v1/products/abc",
+      "status": 400,
+      "code": "INVALID_ARGUMENT",
+      "message": "Parameters must be integers within the allowed range."
+    },
+    {
+      "accept_language": "en;q=0.2, ja;q=0.8",
+      "resolved_language": "ja",
+      "path": "/api/v1/products/999999999",
+      "status": 404,
+      "code": "PRODUCT_NOT_FOUND",
+      "message": "商品が存在しないか、公開されていません。"
+    },
+    {
+      "accept_language": "en;q=0.2, ja;q=0.8",
+      "resolved_language": "ja",
+      "path": "/api/v1/products?page=0",
+      "status": 400,
+      "code": "INVALID_ARGUMENT",
+      "message": "パラメーターには許容範囲内の整数を指定してください。"
+    },
+    {
+      "accept_language": "en;q=0.2, ja;q=0.8",
+      "resolved_language": "ja",
+      "path": "/api/v1/products/abc",
+      "status": 400,
+      "code": "INVALID_ARGUMENT",
+      "message": "パラメーターには許容範囲内の整数を指定してください。"
+    }
+  ],
+  "database": {
+    "account": "commerce_reader",
+    "product_count": 3,
+    "inventory_count": 3,
+    "first_price": "129.90",
+    "writes_performed": false
+  },
+  "business_data_unchanged_across_languages": true,
+  "unchanged_against_attempt04": true,
+  "java_suites": [
+    {
+      "name": "lab.commerce.config.LocaleConfigTest",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "lab.commerce.exception.GlobalExceptionHandlerTest",
+      "tests": 8,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "lab.commerce.service.impl.ProductServiceImplTest",
+      "tests": 12,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "lab.commerce.ProductApiIT",
+      "tests": 28,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  ],
+  "java_tests": 49,
+  "java_unit_tests": 21,
+  "java_integration_tests": 28,
+  "packaged_resources_match_sources": true,
+  "jar_sha256": "86074c6bf9c85ac38d1904962572722e8de4f5f059fb5ea4f05bca4829249260",
+  "coverage_boundary": "Real 400/404 requests; custom 503/500 messages tested with simulated exceptions in unit tests. No production DB outage, product translation or default-framework-error claim."
+}

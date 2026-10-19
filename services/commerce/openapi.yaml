@@ -1,0 +1,288 @@
+openapi: 3.1.0
+info:
+  title: Commerce Lab 商品与订单 API
+  version: 0.1.0
+  description: >-
+    Step 03 本地学习接口，仅绑定回环地址；HttpSession 绑定用户，订单只允许本人查询与模拟支付。
+    先 GET /api/v1/auth/session 获取同步令牌，所有 POST 必须携带 X-CSRF-Token 与同一会话 cookie。
+    登录轮换 session ID 和 CSRF，退出销毁原会话并返回新的匿名会话。cookie 为 HttpOnly、SameSite=Strict。
+    模拟支付仅改变状态，不触发真实扣款；不包含注册、找回密码或生产级身份系统。
+    自定义错误返回稳定的 code、HTTP 状态和固定安全中文 message；界面根据 code 在前端翻译。
+    后端不协商错误文案语言，客户端或浏览器携带的 Accept-Language 不改变接口响应。
+    商品名称、描述、SKU 和 CNY 金额保持数据库原文，不随语言翻译或换汇。
+servers:
+  - url: http://127.0.0.1:18080
+paths:
+  /api/v1/products:
+    get:
+      operationId: listProducts
+      parameters:
+        - name: page
+          in: query
+          schema: {type: integer, minimum: 1, maximum: 100000, default: 1}
+        - name: size
+          in: query
+          schema: {type: integer, minimum: 1, maximum: 100, default: 20}
+      responses:
+        '200':
+          description: 按 ID 升序分页；超出末页返回空 items。
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [items, page, size, total]
+                properties:
+                  items: {type: array, items: {$ref: '#/components/schemas/Product'}}
+                  page: {type: integer}
+                  size: {type: integer}
+                  total: {type: integer, format: int64}
+        '400': {$ref: '#/components/responses/InvalidArgument'}
+        '500': {$ref: '#/components/responses/InternalError'}
+        '503': {$ref: '#/components/responses/DatabaseUnavailable'}
+  /api/v1/products/{id}:
+    get:
+      operationId: getProduct
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: {type: integer, format: int64, minimum: 1}
+      responses:
+        '200':
+          description: 上架商品，包括零库存商品。
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/Product'}
+        '400': {$ref: '#/components/responses/InvalidArgument'}
+        '404':
+          description: 不存在或未上架，code 为 PRODUCT_NOT_FOUND。
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/Error'}
+        '500': {$ref: '#/components/responses/InternalError'}
+        '503': {$ref: '#/components/responses/DatabaseUnavailable'}
+  /api/v1/auth/session:
+    get:
+      operationId: getSession
+      responses:
+        '200':
+          description: 当前用户或 null，以及 CSRF token；Cache-Control no-store。
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/Session'}
+  /api/v1/auth/login:
+    post:
+      operationId: login
+      parameters: [{$ref: '#/components/parameters/CsrfToken'}]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [username, password]
+              properties:
+                username: {type: string, minLength: 1, maxLength: 64}
+                password: {type: string, minLength: 1, maxLength: 128}
+      responses:
+        '200':
+          description: 登录成功，轮换 session ID 和 CSRF token。
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/Session'}
+        '400': {$ref: '#/components/responses/InvalidArgument'}
+        '401': {$ref: '#/components/responses/Unauthorized'}
+        '403': {$ref: '#/components/responses/Forbidden'}
+        '500': {$ref: '#/components/responses/InternalError'}
+        '503': {$ref: '#/components/responses/DatabaseUnavailable'}
+  /api/v1/auth/logout:
+    post:
+      operationId: logout
+      parameters: [{$ref: '#/components/parameters/CsrfToken'}]
+      responses:
+        '200':
+          description: 原会话失效，返回新匿名会话与新 CSRF token。
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/Session'}
+        '403': {$ref: '#/components/responses/Forbidden'}
+  /api/v1/orders:
+    get:
+      operationId: listOwnOrders
+      security: [{SessionCookie: []}]
+      responses:
+        '200':
+          description: 当前用户最近100条订单，按订单ID降序。
+          content:
+            application/json:
+              schema: {type: array, items: {$ref: '#/components/schemas/Order'}}
+        '401': {$ref: '#/components/responses/Unauthorized'}
+        '500': {$ref: '#/components/responses/InternalError'}
+        '503': {$ref: '#/components/responses/DatabaseUnavailable'}
+    post:
+      operationId: createOrder
+      security: [{SessionCookie: []}]
+      parameters: [{$ref: '#/components/parameters/CsrfToken'}]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [productId, quantity, requestKey]
+              properties:
+                productId: {type: integer, format: int64, minimum: 1}
+                quantity: {type: integer, minimum: 1, maximum: 100}
+                requestKey: {type: string, pattern: '^[A-Za-z0-9_-]{8,80}$'}
+      responses:
+        '200':
+          description: 新建或重试返回同一订单；同用户同key载荷必须相同，库存仅扣一次。订单与库存同事务。
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/Order'}
+        '400': {$ref: '#/components/responses/InvalidArgument'}
+        '401': {$ref: '#/components/responses/Unauthorized'}
+        '403': {$ref: '#/components/responses/Forbidden'}
+        '404': {$ref: '#/components/responses/NotFound'}
+        '409': {$ref: '#/components/responses/Conflict'}
+        '500': {$ref: '#/components/responses/InternalError'}
+        '503': {$ref: '#/components/responses/DatabaseUnavailable'}
+  /api/v1/orders/{id}:
+    get:
+      operationId: getOwnOrder
+      security: [{SessionCookie: []}]
+      parameters: [{$ref: '#/components/parameters/OrderId'}]
+      responses:
+        '200':
+          description: 当前用户的订单。
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/Order'}
+        '400': {$ref: '#/components/responses/InvalidArgument'}
+        '401': {$ref: '#/components/responses/Unauthorized'}
+        '403': {$ref: '#/components/responses/Forbidden'}
+        '404': {$ref: '#/components/responses/NotFound'}
+        '500': {$ref: '#/components/responses/InternalError'}
+        '503': {$ref: '#/components/responses/DatabaseUnavailable'}
+  /api/v1/orders/{id}/pay:
+    post:
+      operationId: simulateOwnOrderPayment
+      security: [{SessionCookie: []}]
+      parameters: [{$ref: '#/components/parameters/OrderId'}, {$ref: '#/components/parameters/CsrfToken'}]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: {type: object, example: {}}
+      responses:
+        '200':
+          description: PENDING_PAYMENT 转为 PAID；重复支付返回 PAID，不重复扣库存或触发真实支付。
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/Order'}
+        '400': {$ref: '#/components/responses/InvalidArgument'}
+        '401': {$ref: '#/components/responses/Unauthorized'}
+        '403': {$ref: '#/components/responses/Forbidden'}
+        '404': {$ref: '#/components/responses/NotFound'}
+        '500': {$ref: '#/components/responses/InternalError'}
+        '503': {$ref: '#/components/responses/DatabaseUnavailable'}
+components:
+  securitySchemes:
+    SessionCookie: {type: apiKey, in: cookie, name: JSESSIONID}
+  parameters:
+    CsrfToken:
+      name: X-CSRF-Token
+      in: header
+      required: true
+      description: 与当前会话绑定；从 session/login/logout 响应读取；不跟随界面语言变化。
+      schema: {type: string}
+    OrderId:
+      name: id
+      in: path
+      required: true
+      schema: {type: integer, format: int64, minimum: 1}
+  schemas:
+    Session:
+      type: object
+      required: [user, csrfToken]
+      properties:
+        user:
+          oneOf:
+            - type: 'null'
+            - type: object
+              required: [id, username]
+              properties:
+                id: {type: integer, format: int64}
+                username: {type: string}
+        csrfToken: {type: string}
+    Order:
+      type: object
+      required: [id, productId, productName, quantity, unitPrice, totalAmount, currency, status, createdAt]
+      properties:
+        id: {type: integer, format: int64}
+        productId: {type: integer, format: int64}
+        productName: {type: string, description: 下单时的数据库原文快照}
+        quantity: {type: integer, minimum: 1, maximum: 100}
+        unitPrice: {type: string, pattern: '^[0-9]+\.[0-9]{2}$', example: '129.90'}
+        totalAmount: {type: string, pattern: '^[0-9]+\.[0-9]{2}$', example: '389.70'}
+        currency: {type: string, const: CNY}
+        status: {type: string, enum: [PENDING_PAYMENT, PAID]}
+        createdAt: {type: string, format: date-time, description: UTC时间}
+    Product:
+      type: object
+      required: [id, sku, name, description, price, availableStock]
+      properties:
+        id: {type: integer, format: int64}
+        sku: {type: string}
+        name: {type: string}
+        description: {type: string}
+        price: {type: string, pattern: '^[0-9]+(\.[0-9]+)?$', example: '129.90'}
+        availableStock: {type: integer, minimum: 0}
+    Error:
+      type: object
+      required: [code, message]
+      properties:
+        code:
+          type: string
+          enum: [PRODUCT_NOT_FOUND, INVALID_ARGUMENT, DATABASE_UNAVAILABLE, INTERNAL_ERROR, AUTH_REQUIRED, INVALID_CREDENTIALS, CSRF_INVALID, ORDER_NOT_FOUND, ORDER_FORBIDDEN, INSUFFICIENT_STOCK, IDEMPOTENCY_CONFLICT]
+          description: 稳定的机器可读错误码，不翻译；客户端不应通过 message 判断错误类别。
+        message:
+          type: string
+          description: 固定安全中文兜底提示，不进行语言协商；界面使用 code 查前端词典，不直接展示此字段。不包含原始异常、SQL、连接地址或凭据。
+  responses:
+    Unauthorized:
+      description: AUTH_REQUIRED 未登录，或 INVALID_CREDENTIALS 用户名/密码错误。
+      content:
+        application/json:
+          schema: {$ref: '#/components/schemas/Error'}
+    Forbidden:
+      description: ORDER_FORBIDDEN 跨用户访问，或 CSRF_INVALID 会话同步令牌不符。
+      content:
+        application/json:
+          schema: {$ref: '#/components/schemas/Error'}
+    NotFound:
+      description: PRODUCT_NOT_FOUND 商品不存在或未上架，或 ORDER_NOT_FOUND 订单不存在。
+      content:
+        application/json:
+          schema: {$ref: '#/components/schemas/Error'}
+    Conflict:
+      description: INSUFFICIENT_STOCK 库存不足，或 IDEMPOTENCY_CONFLICT 同一请求标识载荷不同。
+      content:
+        application/json:
+          schema: {$ref: '#/components/schemas/Error'}
+    InvalidArgument:
+      description: 参数错误，code 为 INVALID_ARGUMENT。
+      content:
+        application/json:
+          schema: {$ref: '#/components/schemas/Error'}
+    DatabaseUnavailable:
+      description: 数据依赖暂不可用，code 为 DATABASE_UNAVAILABLE。
+      content:
+        application/json:
+          schema: {$ref: '#/components/schemas/Error'}
+    InternalError:
+      description: 数据查询或映射等服务内部错误，code 为 INTERNAL_ERROR；不返回 SQL、连接地址或驱动详情。
+      content:
+        application/json:
+          schema: {$ref: '#/components/schemas/Error'}
+

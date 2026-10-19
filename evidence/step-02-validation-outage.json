@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "database": "Actually shut down",
+  "scenarios": [
+    {
+      "scenario": "invalid page",
+      "status": 400,
+      "code": "INVALID_ARGUMENT",
+      "message": "参数必须为整数且在有效范围内"
+    },
+    {
+      "scenario": "invalid id",
+      "status": 400,
+      "code": "INVALID_ARGUMENT",
+      "message": "参数必须为整数且在有效范围内"
+    },
+    {
+      "scenario": "valid query with database stopped",
+      "status": 503,
+      "code": "DATABASE_UNAVAILABLE",
+      "message": "数据服务暂不可用，请稍后重试"
+    }
+  ],
+  "validation_before_transaction": true,
+  "recovered_http_status": 200
+}

@@ -1,0 +1,24 @@
+{
+  "step": "step-03",
+  "attempt": 1,
+  "productId": 880000003,
+  "seedBefore": "1\t10\t0\n2\t25\t0\n3\t0\t0",
+  "initialStock": 5,
+  "initialUnitPrice": "12.50",
+  "fixtureCreated": true,
+  "outcome": "PASSED",
+  "observedOrder": {
+    "quantity": 2,
+    "unitPrice": "12.50",
+    "totalAmount": "25.00",
+    "status": "PAID",
+    "count": 1
+  },
+  "observedInventory": {
+    "availableStock": 3,
+    "version": 1
+  },
+  "fixtureCleaned": true,
+  "seedAfter": "1\t10\t0\n2\t25\t0\n3\t0\t0",
+  "seedUnchanged": true
+}

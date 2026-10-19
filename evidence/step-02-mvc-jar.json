@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "jar": "services\\commerce\\target\\commerce-service-0.1.0.jar",
+  "mapper_xml_packaged": true,
+  "packaged_xml_matches_source": true,
+  "legacy_classes_present": false,
+  "mvc_classes": [
+    "controller/ProductController.class",
+    "service/ProductService.class",
+    "service/impl/ProductServiceImpl.class",
+    "mapper/ProductMapper.class",
+    "entity/Product.class",
+    "dto/ProductStockRow.class",
+    "vo/ProductView.class",
+    "exception/GlobalExceptionHandler.class"
+  ],
+  "jar_sha256": "228310124b95641f386cc3876d88064c540ddf2f8f4758de235ed1046903ebc8"
+}

@@ -1,0 +1,704 @@
+{
+  "id": "commerce-agent-lab",
+  "version": "2026-10-18.v1",
+  "plan_markdown": "# 首两步执行与持续交接方案\n\n计划版本：2026-10-18.v1。以下是用户确认的执行约定，实际完成状态以 SQLite 台账为准。\n\n## 执行范围\n\n沿用已确认的订单库存 + Vue 3 + TypeScript + Python Flask + RAG/OCR + Agent 方案。\n\n本轮依次完成：第一步环境准备、工程骨架、完整学习流程落库（原阶段 0）；第二步 Vue → Java → MyBatis → MySQL 商品查询链路（原阶段 1）。第一步验收和交接完成后直接进入第二步，不重复询问是否继续。两步均交付代码讲解、思维视图和 HANDOFF。\n\n项目位于 `C:\\Users\\Administrator\\Documents\\Codex\\2026-10-18\\gen\\outputs\\commerce-agent-lab`。\n\n## 第一步：工程底座与流程落库\n\nSQLite 学习台账与业务数据库分开。`learning_run` 保存完整计划正文、计划版本、项目标识、当前步骤；`learning_step` 保存所有阶段及小节、目标、前置条件、验收条件、进度与错误原因；`acceptance_check` 保存每次验证的预期、实际、通过/失败/未执行及证据；`artifact` 保存 HANDOFF 和代码讲解正文、思维视图数据、文件索引和内容哈希。\n\n源码在工程文件中，Markdown 正文同时入库并导出，思维视图是可离线打开的 HTML。重复初始化只补缺失内容，不清空已有进度，也不覆盖既有计划。\n\n具体完成：检查 JDK、Python、Node、Docker 引擎、端口和必要资源并锁定版本；建立 Java、Python、Vue、部署配置、学习文档目录；实现台账初始化、进度查询、验收登记、产物登记命令；完整课程和已确认技术选择入库；验证重复初始化、事务回滚、失败记录、重新打开数据库的一致性；生成第一步详细代码讲解、交互思维视图与 HANDOFF。环境阻塞如实记录，未通过的检查不标完成。\n\n## 第二步：第一条业务链路\n\n实现 Vue 页面 → HTTP API → Controller → Service → MyBatis Mapper → MySQL → 页面展示。交付商品及库存表和种子数据；商品列表和详情 API；精确小数价格；Vue 商品列表、加载、空数据、失败状态；真实数据库和浏览器操作验证；第二步详细代码讲解、交互思维视图与 HANDOFF。\n\n讲解 Spring 创建对象与依赖注入、HTTP 请求进入 Controller、Mapper 接口执行 SQL 的原因、`#{}` 参数绑定和 SQL 注入、连接池与结果映射、Vue 响应式和异步更新，以及容器网络、字符编码、金额精度和异常响应问题。先打通查询，订单、消息、RAG、Agent 依后续课程递进。\n\n## 每一步固定完成规范\n\n状态顺序：PENDING → IN_PROGRESS → VERIFYING → COMPLETED。\n\n必须依次完成实现和验收落库；生成详解、思维视图与 HANDOFF；检查产物可打开、对应当前源码且引用正确；在 SQLite 事务中验证验收和最终产物登记并标完成；更新课程总览，读取 HANDOFF，再进入下一步。任一必需产物失败均不提前完成。\n\nHANDOFF 包含已完成与对应代码、启动命令/API/入口、已验证/失败/未验证、数据库变化/问题/恢复、下一步目标/前置条件/具体切入点。\n\n思维视图采用中文、深色主题、展开折叠、搜索、代码预览和缩放，展示已实现模块、关键函数、数据流与风险；Java 节点依据真实源码补充，未来模块标明未实现。\n\n代码讲解固定为：业务场景 → 核心代码逐段解释 → 调用链和底层原理 → 正常输出 → 失败实验 → 生产问题 → 小练习。\n\n## 全课程和约束\n\n阶段 0 环境与台账；1 商品查询；2 订单与库存；3 Redis；4 RocketMQ；5 Kafka 与 PostgreSQL；6 Spring Cloud；7 Python Flask 与 MongoDB；8 基础 RAG；9 复杂文档/OCR；10 RAG 版本/权限/评测；11 小 Agent；12 确认后创建工单；13 JUC/JVM/SQL 性能实验；14 Docker、CI/CD、本地 K8s、备份恢复与回滚。课程小节、目标、前置条件、验收项以同目录 curriculum.json 的冻结快照入库。\n\n所有技术有实际用途：Spring/Boot/MyBatis 实现业务；MySQL 是交易、库存、工单和 Outbox 权威数据；Redis 做商品缓存；RocketMQ 做未支付到期检查并结合数据库补偿；Kafka 传事实事件并可重放；PostgreSQL 保存报表、知识目录/版本/权限与 pgvector；MongoDB 保存解析结果、会话和 Agent 轨迹；Flask 提供 Python API；Spring Cloud 提供网关与服务调用；Docker/K8s/CI/CD 逐步完成交付。\n\nRAG 包括 Markdown/TXT、文字 PDF、扫描 PDF、图片、多栏、复杂表格和跨页表格。原文件在卷中；OCR/索引独立 worker 执行持久任务；文档按版本构建、审核后发布；引用包含文档/版本/页码/块或表格位置；检索权限过滤；先精确向量检索，再对照 HNSW。模拟模型只能验证流程，真实中文检索质量另测。\n\nAgent 用 Python，有限工具循环（初始上限 4 轮、8 次工具执行），提供查询订单、库存、知识检索、工单提案；实时数据来自 Java API，政策来自 RAG；模型不能自称已确认。工单提案绑定用户/订单/参数/有效期，确认时 Java 重新鉴权并在事务中完成提案、工单和 Outbox，唯一约束保证幂等。支付为模拟，真实退款不在范围。\n\n最小 API 能力包括 Java 商品/订单/库存、Flask 文档上传与 job_id、任务状态、知识发布/删除、RAG 查询（答案/来源/诊断）、Agent 运行、Java 工单确认。最终需要交易/消息一致性、复杂文档解析、20 道开发题和 10 道留出题的检索评测、Agent 授权与超时、恢复和回滚实验。\n\n每轮一个可运行增量，参考少量 GitHub 核心代码，记录文件、commit 和许可证；展示约 20–40 行关键代码，讲清调用链/事务边界/消息时序，制造失败并修复，留下练习与下一课交接。技术版本由第 0 课实测后锁定；旧参考项目依赖不盲目照搬。\n",
+  "technology_choices": {
+    "frontend": "Vue 3 + TypeScript",
+    "business": "Java / Spring Boot / Spring Cloud / MyBatis / MySQL",
+    "agent": "Python + Flask; bounded manual tool loop",
+    "rag": "pgvector + PostgreSQL; Markdown/TXT/PDF/OCR/complex tables; citations/version/ACL/evaluation",
+    "cache": "Redis",
+    "events": "RocketMQ expiry checks + Kafka facts + Outbox",
+    "documents": "MongoDB parsed blocks / sessions / run traces",
+    "delivery": "Docker / local K8s / CI/CD",
+    "performance": "JUC / JVM / database tuning",
+    "write_boundary": "confirmed proposal -> Java reauthorization + idempotent local transaction; simulated payment, no real refund"
+  },
+  "steps": [
+    {
+      "id": "step-01",
+      "phase": 0,
+      "title": "环境、工程底座与学习台账",
+      "goal": "核实环境、建立工程目录、锁定可复现版本，并让计划、验收和交接可持久恢复。",
+      "prerequisites": [],
+      "acceptance": [
+        "报告真实版本和阻塞；必需运行条件就绪。",
+        "重复初始化不覆盖；失败、回滚、重开和产物门禁测试通过。",
+        "文件可打开，源代码引用和哈希一致。"
+      ],
+      "required_checks": [
+        "environment_ready",
+        "ledger_tests",
+        "curriculum_loaded",
+        "artifacts_verified"
+      ],
+      "required_artifacts": [
+        "handoff",
+        "code-guide",
+        "mindmap-data",
+        "mindmap"
+      ],
+      "lessons": [
+        {
+          "id": "step-01.01",
+          "title": "环境与版本",
+          "goal": "检查 JDK/Python/Node/Docker 引擎、端口、资源；版本以实测锁定。",
+          "acceptance": [
+            "报告真实版本和阻塞；必需运行条件就绪。"
+          ]
+        },
+        {
+          "id": "step-01.02",
+          "title": "SQLite 台账",
+          "goal": "初始化四表、导入完整计划；实现状态、检查、产物、重开与导出。",
+          "acceptance": [
+            "重复初始化不覆盖；失败、回滚、重开和产物门禁测试通过。"
+          ]
+        },
+        {
+          "id": "step-01.03",
+          "title": "目录与交接",
+          "goal": "建立 Java/Python/Vue/部署/文档目录，生成首份讲解、交互思维视图和 HANDOFF。",
+          "acceptance": [
+            "文件可打开，源代码引用和哈希一致。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-02",
+      "phase": 1,
+      "title": "Vue 到 MySQL 的商品查询",
+      "goal": "从页面进入 Java 分层 API、MyBatis 与真实 MySQL，再把结果展示到页面。",
+      "prerequisites": [
+        "step-01"
+      ],
+      "acceptance": [
+        "真实数据库查到中文和精确价格，库存字段映射正确。",
+        "浏览器验证列表、详情和各状态。",
+        "详解、视图与 HANDOFF 对应实际源码。"
+      ],
+      "required_checks": [
+        "mysql_real_query",
+        "api_contract",
+        "frontend_build",
+        "browser_flow",
+        "artifacts_verified"
+      ],
+      "required_artifacts": [
+        "handoff",
+        "code-guide",
+        "mindmap-data",
+        "mindmap"
+      ],
+      "lessons": [
+        {
+          "id": "step-02.01",
+          "title": "商品数据与 API",
+          "goal": "商品/库存建表和种子数据；列表/详情；DECIMAL 与 BigDecimal。",
+          "acceptance": [
+            "真实数据库查到中文和精确价格，库存字段映射正确。"
+          ]
+        },
+        {
+          "id": "step-02.02",
+          "title": "Vue 商品页",
+          "goal": "Vue 3 + TypeScript 异步查询；加载、空、失败与重试。",
+          "acceptance": [
+            "浏览器验证列表、详情和各状态。"
+          ]
+        },
+        {
+          "id": "step-02.03",
+          "title": "链路原理与交接",
+          "goal": "讲解 IoC、MVC、Mapper 代理、参数绑定、连接池和响应式更新。",
+          "acceptance": [
+            "详解、视图与 HANDOFF 对应实际源码。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-03",
+      "phase": 2,
+      "title": "订单与库存",
+      "goal": "登录、下单、模拟支付、本人订单；数据库保证库存和订单状态正确。",
+      "prerequisites": [
+        "step-02"
+      ],
+      "acceptance": [
+        "跨用户查询被拒绝。",
+        "库存 10 并发不超卖，中途异常回滚。",
+        "重复请求结果明确，可对账。"
+      ],
+      "required_checks": [
+        "transaction_concurrency",
+        "authorization",
+        "artifacts_verified"
+      ],
+      "required_artifacts": [
+        "handoff",
+        "code-guide",
+        "mindmap-data",
+        "mindmap"
+      ],
+      "lessons": [
+        {
+          "id": "step-03.01",
+          "title": "身份与资源权限",
+          "goal": "登录身份和本人订单检查。",
+          "acceptance": [
+            "跨用户查询被拒绝。"
+          ]
+        },
+        {
+          "id": "step-03.02",
+          "title": "事务与并发库存",
+          "goal": "条件更新、事务和状态机；解释隔离级别与唯一约束。",
+          "acceptance": [
+            "库存 10 并发不超卖，中途异常回滚。"
+          ]
+        },
+        {
+          "id": "step-03.03",
+          "title": "支付与查询",
+          "goal": "模拟支付、订单详情和异常响应。",
+          "acceptance": [
+            "重复请求结果明确，可对账。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-04",
+      "phase": 3,
+      "title": "Redis 商品缓存",
+      "goal": "在商品读路径实践 Cache Aside、TTL、热点和故障降级。",
+      "prerequisites": [
+        "step-03"
+      ],
+      "acceptance": [
+        "命中和未命中行为可观测。",
+        "明确一致性窗口，业务查询可降级。"
+      ],
+      "required_checks": [
+        "cache_behavior",
+        "redis_degradation",
+        "artifacts_verified"
+      ],
+      "required_artifacts": [
+        "handoff",
+        "code-guide",
+        "mindmap-data",
+        "mindmap"
+      ],
+      "lessons": [
+        {
+          "id": "step-04.01",
+          "title": "缓存读取与失效",
+          "goal": "序列化、TTL、写后失效。",
+          "acceptance": [
+            "命中和未命中行为可观测。"
+          ]
+        },
+        {
+          "id": "step-04.02",
+          "title": "并发与故障实验",
+          "goal": "复现旧值回填、热点和 Redis 停止。",
+          "acceptance": [
+            "明确一致性窗口，业务查询可降级。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-05",
+      "phase": 4,
+      "title": "RocketMQ 订单到期",
+      "goal": "通过 Outbox、到期检查和补偿扫描取消未支付订单。",
+      "prerequisites": [
+        "step-04"
+      ],
+      "acceptance": [
+        "数据库成功、消息失败后能够补发。",
+        "重复消息不重复释放，支付取消竞争结果正确。"
+      ],
+      "required_checks": [
+        "message_idempotency",
+        "payment_cancel_race",
+        "artifacts_verified"
+      ],
+      "required_artifacts": [
+        "handoff",
+        "code-guide",
+        "mindmap-data",
+        "mindmap"
+      ],
+      "lessons": [
+        {
+          "id": "step-05.01",
+          "title": "Outbox 与发布",
+          "goal": "本地事务保存订单和待发布事件，后台补偿。",
+          "acceptance": [
+            "数据库成功、消息失败后能够补发。"
+          ]
+        },
+        {
+          "id": "step-05.02",
+          "title": "取消和库存释放",
+          "goal": "到期消息、幂等消费和条件状态更新。",
+          "acceptance": [
+            "重复消息不重复释放，支付取消竞争结果正确。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-06",
+      "phase": 5,
+      "title": "Kafka 与 PostgreSQL 报表",
+      "goal": "业务事实事件、分区消费、报表投影和重放重建。",
+      "prerequisites": [
+        "step-05"
+      ],
+      "acceptance": [
+        "理解同分区顺序和组内分工。",
+        "写库后提交 offset 前终止，恢复不重复；重放可对账。"
+      ],
+      "required_checks": [
+        "consumer_recovery",
+        "replay_reconciliation",
+        "artifacts_verified"
+      ],
+      "required_artifacts": [
+        "handoff",
+        "code-guide",
+        "mindmap-data",
+        "mindmap"
+      ],
+      "lessons": [
+        {
+          "id": "step-06.01",
+          "title": "事件与消费组",
+          "goal": "Kafka 分区、key、消费组和 offset。",
+          "acceptance": [
+            "理解同分区顺序和组内分工。"
+          ]
+        },
+        {
+          "id": "step-06.02",
+          "title": "报表幂等和重建",
+          "goal": "去重记录与投影本地事务。",
+          "acceptance": [
+            "写库后提交 offset 前终止，恢复不重复；重放可对账。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-07",
+      "phase": 6,
+      "title": "Spring Cloud 服务拆分",
+      "goal": "从模块化单体拆报表服务，加入网关和受控服务调用。",
+      "prerequisites": [
+        "step-06"
+      ],
+      "acceptance": [
+        "网关路由和服务边界清楚。",
+        "报表故障不阻断下单。"
+      ],
+      "required_checks": [
+        "service_failure_isolation",
+        "gateway_routing",
+        "artifacts_verified"
+      ],
+      "required_artifacts": [
+        "handoff",
+        "code-guide",
+        "mindmap-data",
+        "mindmap"
+      ],
+      "lessons": [
+        {
+          "id": "step-07.01",
+          "title": "网关与服务调用",
+          "goal": "Gateway、OpenFeign、LoadBalancer。",
+          "acceptance": [
+            "网关路由和服务边界清楚。"
+          ]
+        },
+        {
+          "id": "step-07.02",
+          "title": "超时和隔离",
+          "goal": "超时预算、熔断、批量补全避免 N+1。",
+          "acceptance": [
+            "报表故障不阻断下单。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-08",
+      "phase": 7,
+      "title": "Python Flask 与 MongoDB",
+      "goal": "独立 Python API、持久任务、解析记录、会话及执行轨迹。",
+      "prerequisites": [
+        "step-07"
+      ],
+      "acceptance": [
+        "API、错误处理和配置可运行。",
+        "多进程状态一致，重启恢复；不在视图中临时起线程当队列。",
+        "超时与进程数有可复现实验。"
+      ],
+      "required_checks": [
+        "worker_recovery",
+        "flask_api",
+        "artifacts_verified"
+      ],
+      "required_artifacts": [
+        "handoff",
+        "code-guide",
+        "mindmap-data",
+        "mindmap"
+      ],
+      "lessons": [
+        {
+          "id": "step-08.01",
+          "title": "Python 与 Flask 基础",
+          "goal": "用 Java 对照模块、异常、类型提示和 app factory。",
+          "acceptance": [
+            "API、错误处理和配置可运行。"
+          ]
+        },
+        {
+          "id": "step-08.02",
+          "title": "持久任务和 MongoDB",
+          "goal": "PostgreSQL 任务租约/重试，MongoDB 保存页块解析及会话。",
+          "acceptance": [
+            "多进程状态一致，重启恢复；不在视图中临时起线程当队列。"
+          ]
+        },
+        {
+          "id": "step-08.03",
+          "title": "WSGI 部署边界",
+          "goal": "解释 worker、长请求和 async 的真实能力。",
+          "acceptance": [
+            "超时与进程数有可复现实验。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-09",
+      "phase": 8,
+      "title": "基础可引用 RAG",
+      "goal": "文字文档经过切分、Embedding、pgvector 检索和带来源回答。",
+      "prerequisites": [
+        "step-08"
+      ],
+      "acceptance": [
+        "可查看片段、元数据和向量版本。",
+        "先验证检索再生成；无证据不编造。"
+      ],
+      "required_checks": [
+        "retrieval_baseline",
+        "citation_validity",
+        "artifacts_verified"
+      ],
+      "required_artifacts": [
+        "handoff",
+        "code-guide",
+        "mindmap-data",
+        "mindmap"
+      ],
+      "lessons": [
+        {
+          "id": "step-09.01",
+          "title": "文档到向量",
+          "goal": "Markdown/TXT/文字 PDF 解析、切分和向量入库。",
+          "acceptance": [
+            "可查看片段、元数据和向量版本。"
+          ]
+        },
+        {
+          "id": "step-09.02",
+          "title": "检索到回答",
+          "goal": "参数化向量 SQL、top_k=5、来源和拒答。",
+          "acceptance": [
+            "先验证检索再生成；无证据不编造。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-10",
+      "phase": 9,
+      "title": "复杂文档与 OCR",
+      "goal": "解析扫描 PDF、图片、多栏、复杂表格、跨页表格并审核。",
+      "prerequisites": [
+        "step-09"
+      ],
+      "acceptance": [
+        "原图和解析块可对照，错误有记录。",
+        "区分解析错误与检索错误；审核后发布。"
+      ],
+      "required_checks": [
+        "ocr_layout_samples",
+        "table_fidelity",
+        "artifacts_verified"
+      ],
+      "required_artifacts": [
+        "handoff",
+        "code-guide",
+        "mindmap-data",
+        "mindmap"
+      ],
+      "lessons": [
+        {
+          "id": "step-10.01",
+          "title": "OCR 与阅读顺序",
+          "goal": "PP-StructureV3、页码、坐标和多栏排序。",
+          "acceptance": [
+            "原图和解析块可对照，错误有记录。"
+          ]
+        },
+        {
+          "id": "step-10.02",
+          "title": "结构化表格切分",
+          "goal": "表头、单位、合并单元格；长表按行组保留上下文。",
+          "acceptance": [
+            "区分解析错误与检索错误；审核后发布。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-11",
+      "phase": 10,
+      "title": "RAG 版本、权限与评测",
+      "goal": "增量改版、删除和权限过滤，并对照精确检索与 HNSW。",
+      "prerequisites": [
+        "step-10"
+      ],
+      "acceptance": [
+        "索引失败保留旧可用版本；旧版退出检索。",
+        "记录 Recall@5/引用/拒答，标准答案不进模型上下文。",
+        "报告速度和召回取舍，不以近似结果冒充真值。"
+      ],
+      "required_checks": [
+        "version_acl",
+        "retrieval_evaluation",
+        "artifacts_verified"
+      ],
+      "required_artifacts": [
+        "handoff",
+        "code-guide",
+        "mindmap-data",
+        "mindmap"
+      ],
+      "lessons": [
+        {
+          "id": "step-11.01",
+          "title": "知识发布状态",
+          "goal": "构建新版本后切 active_version，撤销与删除。",
+          "acceptance": [
+            "索引失败保留旧可用版本；旧版退出检索。"
+          ]
+        },
+        {
+          "id": "step-11.02",
+          "title": "权限和质量",
+          "goal": "统一权限过滤，20 开发题、10 留出题。",
+          "acceptance": [
+            "记录 Recall@5/引用/拒答，标准答案不进模型上下文。"
+          ]
+        },
+        {
+          "id": "step-11.03",
+          "title": "检索性能",
+          "goal": "同数据集比较精确查询和 HNSW。",
+          "acceptance": [
+            "报告速度和召回取舍，不以近似结果冒充真值。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-12",
+      "phase": 11,
+      "title": "Python 小 Agent",
+      "goal": "手写受控工具循环，查询实时业务和知识政策。",
+      "prerequisites": [
+        "step-11"
+      ],
+      "acceptance": [
+        "get_order/get_stock/search_knowledge/propose_after_sales 可追踪。",
+        "坏参数、工具失败、注入、超时、超限均受控。"
+      ],
+      "required_checks": [
+        "agent_tool_safety",
+        "agent_failure_cases",
+        "artifacts_verified"
+      ],
+      "required_artifacts": [
+        "handoff",
+        "code-guide",
+        "mindmap-data",
+        "mindmap"
+      ],
+      "lessons": [
+        {
+          "id": "step-12.01",
+          "title": "工具协议和上下文",
+          "goal": "JSON Schema、工具白名单、参数校验和上下文预算。",
+          "acceptance": [
+            "get_order/get_stock/search_knowledge/propose_after_sales 可追踪。"
+          ]
+        },
+        {
+          "id": "step-12.02",
+          "title": "有限循环与评测",
+          "goal": "最多 4 轮、8 次工具执行和总时限。",
+          "acceptance": [
+            "坏参数、工具失败、注入、超时、超限均受控。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-13",
+      "phase": 12,
+      "title": "确认后创建售后工单",
+      "goal": "Agent 提案、页面确认、Java 重新校验和事务提交。",
+      "prerequisites": [
+        "step-12"
+      ],
+      "acceptance": [
+        "模型生成 confirmed=true 不能授权。",
+        "重复确认只有一单；过期、越权、订单变化拒绝。"
+      ],
+      "required_checks": [
+        "confirmation_authorization",
+        "ticket_idempotency",
+        "artifacts_verified"
+      ],
+      "required_artifacts": [
+        "handoff",
+        "code-guide",
+        "mindmap-data",
+        "mindmap"
+      ],
+      "lessons": [
+        {
+          "id": "step-13.01",
+          "title": "提案与人工确认",
+          "goal": "绑定用户、订单、参数、有效期。",
+          "acceptance": [
+            "模型生成 confirmed=true 不能授权。"
+          ]
+        },
+        {
+          "id": "step-13.02",
+          "title": "幂等创建",
+          "goal": "唯一约束与提案/工单/Outbox 同事务。",
+          "acceptance": [
+            "重复确认只有一单；过期、越权、订单变化拒绝。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-14",
+      "phase": 13,
+      "title": "JUC、JVM 与 SQL 性能",
+      "goal": "固定负载、一次一个变量，通过证据理解和调优。",
+      "prerequisites": [
+        "step-13"
+      ],
+      "acceptance": [
+        "记录排队、连接等待、CPU/内存和延迟。",
+        "对比基线与变更，不用单次耗时下结论。"
+      ],
+      "required_checks": [
+        "performance_comparison",
+        "resource_bounds",
+        "artifacts_verified"
+      ],
+      "required_artifacts": [
+        "handoff",
+        "code-guide",
+        "mindmap-data",
+        "mindmap"
+      ],
+      "lessons": [
+        {
+          "id": "step-14.01",
+          "title": "并发和背压",
+          "goal": "JMM、有界线程池、连接池、队列和超时。",
+          "acceptance": [
+            "记录排队、连接等待、CPU/内存和延迟。"
+          ]
+        },
+        {
+          "id": "step-14.02",
+          "title": "JVM 与数据库",
+          "goal": "JFR、GC、B+Tree、MVCC、索引和执行计划。",
+          "acceptance": [
+            "对比基线与变更，不用单次耗时下结论。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-15",
+      "phase": 14,
+      "title": "Docker、CI/CD 与本地 K8s",
+      "goal": "构建镜像、自动检查、滚动发布、备份恢复和回滚。",
+      "prerequisites": [
+        "step-14"
+      ],
+      "acceptance": [
+        "干净环境构建与启动可复现。",
+        "本地滚动更新与应用回滚通过。",
+        "恢复数据可对账，故障有入口。"
+      ],
+      "required_checks": [
+        "deployment_recovery",
+        "backup_restore",
+        "artifacts_verified"
+      ],
+      "required_artifacts": [
+        "handoff",
+        "code-guide",
+        "mindmap-data",
+        "mindmap"
+      ],
+      "lessons": [
+        {
+          "id": "step-15.01",
+          "title": "镜像与 CI",
+          "goal": "依赖锁定、分层镜像和自动验收。",
+          "acceptance": [
+            "干净环境构建与启动可复现。"
+          ]
+        },
+        {
+          "id": "step-15.02",
+          "title": "K8s 与运维",
+          "goal": "探针、资源限制、优雅退出和兼容迁移。",
+          "acceptance": [
+            "本地滚动更新与应用回滚通过。"
+          ]
+        },
+        {
+          "id": "step-15.03",
+          "title": "恢复与监控",
+          "goal": "备份恢复、队列积压、接口延迟、模型用量。",
+          "acceptance": [
+            "恢复数据可对账，故障有入口。"
+          ]
+        }
+      ]
+    }
+  ]
+}

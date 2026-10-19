@@ -1,0 +1,19 @@
+{
+  "step": "step-03",
+  "attempt": 1,
+  "outcome": "PASSED",
+  "checks": {
+    "inventory": "unchanged",
+    "orders": "unchanged",
+    "users": "unchanged",
+    "writer_grants": "unchanged",
+    "reader_grants": "unchanged"
+  },
+  "privateCredentials": "unchanged bytes; values not captured",
+  "migrationFiles": [
+    "001-init.sql",
+    "002-orders.sql"
+  ],
+  "writerGrantSummary": "SELECT product/lab_user; SELECT+UPDATE inventory; SELECT+INSERT+UPDATE commerce_order; no DELETE/DDL; reader unchanged",
+  "initialProbeCorrection": "Reader grant lookup now uses configured reader CURRENT_USER rather than assuming a username/host. Initial lookup failed before initialization ran."
+}

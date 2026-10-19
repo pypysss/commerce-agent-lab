@@ -1,0 +1,283 @@
+{
+  "attempt": 6,
+  "checked_at": "2026-10-18T11:26:43+00:00",
+  "passed": true,
+  "backend_language_independent": true,
+  "custom_error_http_cases": [
+    {
+      "accept_language": null,
+      "path": "/api/v1/products/999999999",
+      "status": 404,
+      "code": "PRODUCT_NOT_FOUND",
+      "message": "商品不存在或未上架"
+    },
+    {
+      "accept_language": null,
+      "path": "/api/v1/products?page=0",
+      "status": 400,
+      "code": "INVALID_ARGUMENT",
+      "message": "参数必须为整数且在有效范围内"
+    },
+    {
+      "accept_language": null,
+      "path": "/api/v1/products/abc",
+      "status": 400,
+      "code": "INVALID_ARGUMENT",
+      "message": "参数必须为整数且在有效范围内"
+    },
+    {
+      "accept_language": "zh-CN",
+      "path": "/api/v1/products/999999999",
+      "status": 404,
+      "code": "PRODUCT_NOT_FOUND",
+      "message": "商品不存在或未上架"
+    },
+    {
+      "accept_language": "zh-CN",
+      "path": "/api/v1/products?page=0",
+      "status": 400,
+      "code": "INVALID_ARGUMENT",
+      "message": "参数必须为整数且在有效范围内"
+    },
+    {
+      "accept_language": "zh-CN",
+      "path": "/api/v1/products/abc",
+      "status": 400,
+      "code": "INVALID_ARGUMENT",
+      "message": "参数必须为整数且在有效范围内"
+    },
+    {
+      "accept_language": "zh",
+      "path": "/api/v1/products/999999999",
+      "status": 404,
+      "code": "PRODUCT_NOT_FOUND",
+      "message": "商品不存在或未上架"
+    },
+    {
+      "accept_language": "zh",
+      "path": "/api/v1/products?page=0",
+      "status": 400,
+      "code": "INVALID_ARGUMENT",
+      "message": "参数必须为整数且在有效范围内"
+    },
+    {
+      "accept_language": "zh",
+      "path": "/api/v1/products/abc",
+      "status": 400,
+      "code": "INVALID_ARGUMENT",
+      "message": "参数必须为整数且在有效范围内"
+    },
+    {
+      "accept_language": "en",
+      "path": "/api/v1/products/999999999",
+      "status": 404,
+      "code": "PRODUCT_NOT_FOUND",
+      "message": "商品不存在或未上架"
+    },
+    {
+      "accept_language": "en",
+      "path": "/api/v1/products?page=0",
+      "status": 400,
+      "code": "INVALID_ARGUMENT",
+      "message": "参数必须为整数且在有效范围内"
+    },
+    {
+      "accept_language": "en",
+      "path": "/api/v1/products/abc",
+      "status": 400,
+      "code": "INVALID_ARGUMENT",
+      "message": "参数必须为整数且在有效范围内"
+    },
+    {
+      "accept_language": "ja",
+      "path": "/api/v1/products/999999999",
+      "status": 404,
+      "code": "PRODUCT_NOT_FOUND",
+      "message": "商品不存在或未上架"
+    },
+    {
+      "accept_language": "ja",
+      "path": "/api/v1/products?page=0",
+      "status": 400,
+      "code": "INVALID_ARGUMENT",
+      "message": "参数必须为整数且在有效范围内"
+    },
+    {
+      "accept_language": "ja",
+      "path": "/api/v1/products/abc",
+      "status": 400,
+      "code": "INVALID_ARGUMENT",
+      "message": "参数必须为整数且在有效范围内"
+    },
+    {
+      "accept_language": "en-US",
+      "path": "/api/v1/products/999999999",
+      "status": 404,
+      "code": "PRODUCT_NOT_FOUND",
+      "message": "商品不存在或未上架"
+    },
+    {
+      "accept_language": "en-US",
+      "path": "/api/v1/products?page=0",
+      "status": 400,
+      "code": "INVALID_ARGUMENT",
+      "message": "参数必须为整数且在有效范围内"
+    },
+    {
+      "accept_language": "en-US",
+      "path": "/api/v1/products/abc",
+      "status": 400,
+      "code": "INVALID_ARGUMENT",
+      "message": "参数必须为整数且在有效范围内"
+    },
+    {
+      "accept_language": "ja-JP",
+      "path": "/api/v1/products/999999999",
+      "status": 404,
+      "code": "PRODUCT_NOT_FOUND",
+      "message": "商品不存在或未上架"
+    },
+    {
+      "accept_language": "ja-JP",
+      "path": "/api/v1/products?page=0",
+      "status": 400,
+      "code": "INVALID_ARGUMENT",
+      "message": "参数必须为整数且在有效范围内"
+    },
+    {
+      "accept_language": "ja-JP",
+      "path": "/api/v1/products/abc",
+      "status": 400,
+      "code": "INVALID_ARGUMENT",
+      "message": "参数必须为整数且在有效范围内"
+    },
+    {
+      "accept_language": "zh-TW",
+      "path": "/api/v1/products/999999999",
+      "status": 404,
+      "code": "PRODUCT_NOT_FOUND",
+      "message": "商品不存在或未上架"
+    },
+    {
+      "accept_language": "zh-TW",
+      "path": "/api/v1/products?page=0",
+      "status": 400,
+      "code": "INVALID_ARGUMENT",
+      "message": "参数必须为整数且在有效范围内"
+    },
+    {
+      "accept_language": "zh-TW",
+      "path": "/api/v1/products/abc",
+      "status": 400,
+      "code": "INVALID_ARGUMENT",
+      "message": "参数必须为整数且在有效范围内"
+    },
+    {
+      "accept_language": "fr-FR",
+      "path": "/api/v1/products/999999999",
+      "status": 404,
+      "code": "PRODUCT_NOT_FOUND",
+      "message": "商品不存在或未上架"
+    },
+    {
+      "accept_language": "fr-FR",
+      "path": "/api/v1/products?page=0",
+      "status": 400,
+      "code": "INVALID_ARGUMENT",
+      "message": "参数必须为整数且在有效范围内"
+    },
+    {
+      "accept_language": "fr-FR",
+      "path": "/api/v1/products/abc",
+      "status": 400,
+      "code": "INVALID_ARGUMENT",
+      "message": "参数必须为整数且在有效范围内"
+    },
+    {
+      "accept_language": "fr-FR, en;q=0.8, ja;q=0.5",
+      "path": "/api/v1/products/999999999",
+      "status": 404,
+      "code": "PRODUCT_NOT_FOUND",
+      "message": "商品不存在或未上架"
+    },
+    {
+      "accept_language": "fr-FR, en;q=0.8, ja;q=0.5",
+      "path": "/api/v1/products?page=0",
+      "status": 400,
+      "code": "INVALID_ARGUMENT",
+      "message": "参数必须为整数且在有效范围内"
+    },
+    {
+      "accept_language": "fr-FR, en;q=0.8, ja;q=0.5",
+      "path": "/api/v1/products/abc",
+      "status": 400,
+      "code": "INVALID_ARGUMENT",
+      "message": "参数必须为整数且在有效范围内"
+    },
+    {
+      "accept_language": "en;q=0.2, ja;q=0.8",
+      "path": "/api/v1/products/999999999",
+      "status": 404,
+      "code": "PRODUCT_NOT_FOUND",
+      "message": "商品不存在或未上架"
+    },
+    {
+      "accept_language": "en;q=0.2, ja;q=0.8",
+      "path": "/api/v1/products?page=0",
+      "status": 400,
+      "code": "INVALID_ARGUMENT",
+      "message": "参数必须为整数且在有效范围内"
+    },
+    {
+      "accept_language": "en;q=0.2, ja;q=0.8",
+      "path": "/api/v1/products/abc",
+      "status": 400,
+      "code": "INVALID_ARGUMENT",
+      "message": "参数必须为整数且在有效范围内"
+    }
+  ],
+  "database": {
+    "account": "commerce_reader",
+    "product_count": 3,
+    "inventory_count": 3,
+    "first_price": "129.90",
+    "writes_performed": false
+  },
+  "business_data_unchanged_across_languages": true,
+  "unchanged_against_original_product_data": true,
+  "java_suites": [
+    {
+      "name": "lab.commerce.exception.GlobalExceptionHandlerTest",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "lab.commerce.service.impl.ProductServiceImplTest",
+      "tests": 12,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "lab.commerce.ProductApiIT",
+      "tests": 20,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  ],
+  "java_tests": 38,
+  "java_unit_tests": 18,
+  "java_integration_tests": 20,
+  "packaged_resources_match_sources": true,
+  "removed_custom_i18n_entries_absent_from_jar": [
+    "BOOT-INF/classes/lab/commerce/config/LocaleConfig.class",
+    "BOOT-INF/classes/messages.properties",
+    "BOOT-INF/classes/messages_en.properties",
+    "BOOT-INF/classes/messages_ja.properties"
+  ],
+  "jar_sha256": "75d77d8ccb342cec74cd2f8fd8bbeddfa2f181173920f7a01b114af62df7b10a",
+  "coverage_boundary": "Real custom400/404 independent of Accept-Language;503/500 simulated unit exceptions. No actual database outage or production verification."
+}

@@ -1,0 +1,9 @@
+{
+  "step": "step-03",
+  "attempt": 1,
+  "outcome": "FAILED",
+  "cause": "Browser verification route removed itself before abort; Playwright marked route handled. Application had committed normally.",
+  "fixtureOrdersBeforeReset": "59\t2\tPENDING_PAYMENT",
+  "fix": "Use one-shot route times=1; abort before automatic route disposal.",
+  "scope": "Only dedicated browser fixture orders removed, its stock restored to5; no seed mutation."
+}

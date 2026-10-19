@@ -1,0 +1,35 @@
+{
+  "step": "step-03",
+  "attempt": 1,
+  "outcome": "PASSED",
+  "canonicalSourceFiles": 99,
+  "historicalArtifactHashesVerified": 172,
+  "markdownLinksChecked": 78,
+  "brokenLinks": [],
+  "privateCredentialLeaks": [],
+  "removedActiveMaps": true,
+  "mapperXmlParsed": true,
+  "powerShellScriptsParsed": true,
+  "openApi": "Existing SnakeYAML parse passed: 8 paths, 9 order fields (backend agent actual execution)",
+  "runtime": {
+    "products": 3,
+    "seedStock": [
+      10,
+      25,
+      0
+    ],
+    "firstExactPrice": "129.90",
+    "authSession": "anonymous with CSRF and no-store (values excluded)",
+    "api": "http://127.0.0.1:18080",
+    "web": "http://127.0.0.1:15173/"
+  },
+  "reviewFixes": [
+    "Own-property lookup for unknown frontend API codes",
+    "Immutable authentication state bound to verified request identity",
+    "Explicit READ_COMMITTED for create retry after unique constraint conflict",
+    "Reject fractional JSON values for integer request fields"
+  ],
+  "baselineSourceCoverage": "All still-existing attempt07 manifest files included; Java and SQL included explicitly",
+  "javaSourceFiles": 31,
+  "sqlMigrations": 2
+}

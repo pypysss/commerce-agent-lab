@@ -1,0 +1,56 @@
+{
+  "step": "step-03",
+  "attempt": 1,
+  "outcome": "PASSED",
+  "backend": {
+    "surefire-reports": {
+      "tests": 19,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "failsafe-reports": {
+      "tests": 31,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "frontendTests": 69,
+  "ledgerTests": 12,
+  "transactionConcurrency": {
+    "initialStock": 10,
+    "parallelRequests": 20,
+    "successfulOrders": 10,
+    "remainingStock": 0,
+    "sameKeyRequests": 20,
+    "sameKeyOrders": 1,
+    "stockDeductionsForSameKey": 1,
+    "failureAfterUpdate": "order and inventory rolled back"
+  },
+  "authorization": [
+    "anonymous401",
+    "other user detail/payment403",
+    "CSRF missing/wrong403",
+    "login session rotation",
+    "verified request identity bound across other-tab login"
+  ],
+  "browser": "Real Java/MySQL commit; injected lost response retries same key:1 order/1 deduction; exact CNY25.00; three languages390px;0 page errors",
+  "initialization": "Repeated setup preserved records/grants/private credential bytes",
+  "sourceFiles": 99,
+  "history": "172 registered artifacts match; active maps removed; frozen curriculum unchanged",
+  "failuresRetained": [
+    "step-03-backend-maven-initial-failed.txt",
+    "step-03-browser-initial-not-ready.json",
+    "step-03-browser-route-initial-failed.json"
+  ],
+  "notVerified": [
+    "Docker",
+    "production",
+    "real payment/refund",
+    "distributed sessions",
+    "order expiry/release",
+    "Redis/messages/RAG/Agent"
+  ],
+  "completion": "Submitted to ledger.complete; SQLite status is authoritative"
+}

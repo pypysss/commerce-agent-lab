@@ -1,0 +1,1215 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#17634c"><meta name="description" content="第三阶段新增代码学习手册：从 Vue 登录与下单，读懂 Spring Boot、MyBatis、MySQL 事务、库存、幂等和模拟支付。手机离线阅读。"><title>第三阶段代码手册 · 登录、订单与库存</title><style>
+:root{color-scheme:light;--page:#f4f6f5;--paper:#fff;--ink:#253d35;--muted:#52675e;--green:#17634c;--line:#dce4df;--soft:#edf5f0;--code:#f1f4f2;--body-size:18px;font-family:"Segoe UI","Microsoft YaHei","PingFang SC",sans-serif}
+*{box-sizing:border-box}html{scroll-padding-top:100px}body{margin:0;color:var(--ink);background:var(--page);font-size:var(--body-size);line-height:1.85;overflow-wrap:anywhere}::selection{background:#c7e6d5;color:#123e2e}a{color:var(--green);text-underline-offset:4px}a:hover{text-decoration-thickness:2px}button,select{font:inherit;min-height:44px;color:var(--ink);border:1px solid #9baea2;border-radius:6px;background:var(--paper);padding:7px 12px;cursor:pointer}button:hover:not(:disabled){background:var(--soft)}button.primary{background:var(--green);color:white;border-color:var(--green)}button.primary:hover:not(:disabled){background:#124d3b}button:disabled{opacity:.48;cursor:default}button[aria-pressed=true]{background:var(--soft);border-color:var(--green)}:focus-visible{outline:3px solid #459a7c;outline-offset:3px}select{max-width:100%;width:100%;caret-color:var(--green)}.skip{position:absolute;top:0;left:12px;transform:translateY(-130%);z-index:20;background:white;padding:8px}.skip:focus{transform:none}.toolbar{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--line)}.toolbar-inner{max-width:1180px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 24px}.toolbar-title{font-size:15px;font-weight:700;text-decoration:none}.toolbar-actions{display:flex;gap:8px}.toolbar-actions button{font-size:14px;padding:6px 10px}.layout{display:grid;grid-template-columns:230px minmax(0,760px);gap:48px;max-width:1134px;margin:0 auto;padding:36px 24px 80px}.toc{align-self:start;position:sticky;top:88px;font-size:14px;max-height:calc(100vh - 110px);overflow:auto;scrollbar-color:#9baea2 var(--page)}.toc summary{font-weight:700;font-size:17px;cursor:pointer;min-height:44px;padding:8px 0}.toc ol{list-style:none;margin:4px 0;padding:0}.toc a{display:block;padding:8px 0;line-height:1.5;text-decoration:none;color:var(--muted)}.toc a:hover,.toc a[aria-current=true]{color:var(--green);text-decoration:underline}.toc a[aria-current=true]{font-weight:700}main{min-width:0}header.cover{padding:10px 0 40px;border-bottom:1px solid var(--line)}h1{font-size:clamp(32px,5.5vw,46px);font-weight:750;line-height:1.35;letter-spacing:-.025em;margin:0 0 22px;text-wrap:balance}.subtitle{font-size:20px;color:var(--muted);margin:0 0 26px;line-height:1.75}.meta{font-size:13px;color:var(--muted);margin:24px 0 0}.read-start{display:inline-flex;align-items:center;min-height:44px;text-decoration:underline;font-weight:700}.chapter{padding:44px 0 12px;border-bottom:1px solid var(--line);scroll-margin-top:0}.chapter:last-of-type{border-bottom:0}h2{font-size:27px;line-height:1.5;margin:0 0 18px;font-weight:700;letter-spacing:-.015em}h3{font-size:21px;line-height:1.6;margin:32px 0 12px}h4{font-size:20px;line-height:1.6;margin:8px 0 12px}p{margin:0 0 20px}.lead{font-size:20px;color:var(--muted);line-height:1.8;margin-bottom:24px}ul,ol{padding-left:1.45em;margin:16px 0 24px}li{margin:10px 0}strong{font-weight:700}.takeaway{padding:20px 22px;background:var(--soft);border-radius:12px;margin:26px 0}.takeaway p:last-child,.takeaway ol:last-child{margin-bottom:0}.note{color:var(--muted);font-size:.86em;line-height:1.85}.file-list,.glossary,.endpoint-list,.error-list,.file-index{margin:22px 0}.file-list>div,.glossary>div,.endpoint-list>div,.error-list>div,.file-index>div{padding:15px 0;border-bottom:1px solid var(--line)}dt{font-weight:700;line-height:1.65}dd{margin:7px 0 0;color:var(--muted)}.journey{padding-left:1.6em}.journey li{padding:0 0 12px 8px}.journey p{margin:6px 0 0;color:var(--muted)}code,pre{font-family:Consolas,"Cascadia Code",monospace}p code,li code,dt code,dd code{background:var(--code);padding:2px 4px;border-radius:3px;font-size:.85em;box-decoration-break:clone;-webkit-box-decoration-break:clone}figure{margin:26px 0}.code-block{border:1px solid var(--line);border-radius:12px;overflow:hidden}.code-block figcaption{padding:13px 16px;background:#f8faf8;font-size:12px;line-height:1.65}.code-block figcaption strong{display:block;font-size:13px}.code-block figcaption span{display:block;color:var(--muted);margin-top:4px}pre{margin:0;background:var(--code);padding:18px 16px;font-size:13px;line-height:1.85;white-space:pre-wrap;overflow-wrap:anywhere;word-break:normal;tab-size:2;max-width:100%;overflow-x:auto;scrollbar-color:#9baea2 var(--code)}pre code{font:inherit}.code-scroll pre{white-space:pre;overflow-wrap:normal}.sample figcaption{background:var(--soft)}details{margin:22px 0}summary{cursor:pointer;font-weight:650;line-height:1.75;min-height:48px;padding:12px 0}summary::marker{color:var(--green)}details[open]>summary{margin-bottom:10px}details>p{margin-top:12px}.quiz{border-bottom:1px solid var(--line);margin:0}.quiz summary{padding:18px 0}.quiz p{color:var(--muted)}.lesson-lab{background:var(--paper);border:1px solid #a9bbb0;border-radius:12px;padding:24px;margin:28px 0}.lesson-lab h3{margin-top:0}.lesson-lab label{display:block;font-size:15px;font-weight:700;margin:0 0 7px}.lab-status{padding-top:24px}.lab-status>#lab-step{font-size:13px;color:var(--green);font-weight:700;margin:0}.lab-facts{margin:22px 0;display:grid;grid-template-columns:1fr 1fr;gap:14px}.lab-facts>div:last-child{grid-column:1/-1}.lab-facts dt{font-size:13px;color:var(--muted)}.lab-facts dd{font-size:17px;color:var(--ink);margin:4px 0 0}.lab-buttons{display:flex;gap:8px;flex-wrap:wrap}.lab-buttons button{font-size:15px;flex:1;white-space:nowrap}.full-source{border-top:1px solid var(--line);padding:2px 0}.full-source summary{font-size:16px}.full-source summary span{display:block;color:var(--muted);font-size:12px;font-weight:400;padding-left:18px}.full-source pre{border-radius:6px}.source-hash{font-family:Consolas,monospace;font-size:13px;color:var(--muted);line-height:1.6}.file-index dt{font-family:Consolas,monospace;font-size:12px}.file-index dd{font-size:15px}.change{font-family:"Segoe UI","Microsoft YaHei",sans-serif;display:block;color:var(--green);font-size:13px;margin-bottom:6px}.footer{margin-top:32px;padding-top:24px;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}.footer a{min-height:44px;display:inline-flex;align-items:center}.large{--body-size:20px}.large .lead{font-size:22px}.large pre{font-size:15px}.large .note{font-size:17px}
+@media(max-width:900px){html{scroll-padding-top:90px}.layout{display:block;max-width:740px;padding:20px 22px 56px}.toc{position:static;max-height:none;border-bottom:1px solid var(--line);margin:0 0 28px;padding:0 0 12px}.toc summary{padding:8px 0}.toc ol{display:grid;grid-template-columns:1fr 1fr;gap:0 20px}.toolbar-inner{max-width:740px;padding:10px 22px}header.cover{padding-top:4px}}
+@media(max-width:480px){.toolbar-inner{padding:8px 16px;gap:8px}.toolbar-title{font-size:12px;max-width:95px;line-height:1.5}.toolbar-actions{gap:6px}.toolbar-actions button{font-size:12px;padding:6px 8px}.layout{padding:14px 20px 40px}.toc{margin-bottom:22px}.toc ol{display:block}.toc a{padding:10px 0;min-height:44px;font-size:15px}h1{font-size:34px}h2{font-size:26px}h3{font-size:21px}.subtitle{font-size:19px}.chapter{padding-top:36px}.lead{font-size:19px}.takeaway{padding:18px}.lesson-lab{padding:18px}.code-block{margin:24px 0}pre{font-size:14px;padding:16px 12px}.code-block figcaption{padding:12px}.lab-buttons button{padding:8px;font-size:14px}.meta{font-size:12px}.full-source summary span{padding-left:0}}
+@media print{.toolbar,.toc,.lab-buttons,select,label,.read-start{display:none}.layout{display:block;max-width:none;padding:0}body{font-size:12pt;background:white}.chapter{break-inside:auto}pre{white-space:pre-wrap!important;font-size:9pt}.code-block{break-inside:avoid}.cover{padding:0}a{color:inherit}.full-source:not([open]){display:none}.footer{margin:0}}
+</style></head><body id="top">
+<a href="#main" class="skip">跳到学习正文</a><div class="toolbar"><div class="toolbar-inner"><a class="toolbar-title" href="#top">第三阶段<br>代码学习手册</a><div class="toolbar-actions"><button type="button" id="font-toggle" aria-pressed="false">放大字号</button><button type="button" id="wrap-toggle" aria-pressed="false">代码横滑</button><a href="#contents" class="read-start" style="font-size:14px;font-weight:400">目录</a></div></div></div>
+<div class="layout"><nav class="toc" aria-label="手册目录"><details id="contents" open><summary>阅读目录</summary><ol><li><a href="#changes">先知道，这一阶段多了什么</a></li><li><a href="#journey">跟一笔订单，走完前后端</a></li><li><a href="#vue">前端：把“收银台”接到商品页</a></li><li><a href="#auth">登录：身份放在服务端，写操作再核票</a></li><li><a href="#api">请求层：统一发件，还要验货</a></li><li><a href="#controller">后端入口：只收购买信息，不收“我是谁”</a></li><li><a href="#transaction">下单事务：一张订单和一笔扣减，一起落账</a></li><li><a href="#stock">防超卖：把“够不够”和“扣多少”写进同一条 SQL</a></li><li><a href="#idempotency">幂等：同一次购买，重试不能再买一遍</a></li><li><a href="#pay">本人订单、金额与模拟支付</a></li><li><a href="#stale">旧响应别回来覆盖新页面</a></li><li><a href="#errors">错误翻译：记住“错在哪里”，显示时再翻译</a></li><li><a href="#database">数据库与初始化：不只靠 Java 记规矩</a></li><li><a href="#review">把原理讲出来，就算真正懂了</a></li><li><a href="#sources">回到真实文件，继续读代码</a></li></ol></details></nav><main id="main"><header class="cover"><h1>一笔订单，<br>读懂前端与后端。</h1><p class="subtitle">第三阶段新增代码学习手册<br>从点击下单，到数据库真正落账。</p><p>先用白话理解它为什么存在，再对照真实源码看它怎样工作。前端、Java 和 SQL 放在同一条业务线上读。</p><a class="read-start" href="#changes">从新增功能开始读</a><p class="meta">依据 step-03 · attempt-01 已完成源码<br>2026-10-19 制作 · 中文 · 单文件离线阅读<br>可点演练 / 折叠源码 / 放大字号</p></header><section class="chapter" id="changes" aria-labelledby="changes-title"><h2 id="changes-title">先知道，这一阶段多了什么</h2><p class="lead">第二阶段能“看商品”，第三阶段开始能“登录后买商品”。最大的变化，是系统开始修改真实数据。</p>
+<p>你可以把项目想成一家小店：Vue 是店面，Java 是负责办事的柜台，MySQL 是记订单和库存的账本。第三阶段把三者连起来：<strong>登录 → 选择商品和数量 → 下单并扣库存 → 查看本人订单 → 模拟支付。</strong></p>
+<div class="takeaway"><strong>先记住这三句话</strong><ol><li>前端负责交互；身份、价格、库存由后端和数据库决定。</li><li>订单写入与库存扣减必须一起成功，失败就一起撤销。</li><li>请求失败可能只是回执丢了；重试同一次购买要用同一个 requestKey。</li></ol></div>
+<dl class="file-list"><div><dt>前端新增 OrderPanel.vue</dt><dd>把登录、数量输入、本人订单和支付放进一个新组件。</dd></div><div><dt>前端扩展 api.ts、App.vue、messages.ts、style.css</dt><dd>补写请求、CSRF、订单校验、库存刷新、三语文案和手机布局。</dd></div><div><dt>后端新增身份与订单链路</dt><dd>AuthController / OrderController → Service 接口与实现 → Mapper 接口 → XML → MySQL。</dd></div><div><dt>数据库新增 lab_user、commerce_order</dt><dd>原商品与库存表继续使用；增加用户、订单和防重复约束。</dd></div></dl>
+<p class="note">三语切换、商品查询、10 秒超时和原有商品请求保护来自第二阶段，本阶段是在它们上面扩展。Python Flask、RAG、Agent 还未开始。</p>
+</section><section class="chapter" id="journey" aria-labelledby="journey-title"><h2 id="journey-title">跟一笔订单，走完前后端</h2><p class="lead">先串通整个过程，再进入具体方法。每层只做自己那一份工作。</p>
+<ol class="journey"><li><strong>页面先问：现在是谁？</strong><p>OrderPanel 挂载时调用 GET /api/v1/auth/session，拿到 user 和 csrfToken。user 为 null 就显示登录表单。</p></li><li><strong>用户登录</strong><p>前端先取当前 CSRF，再 POST 用户名和密码。Java 校验密码，轮换 Session ID 和 CSRF，返回当前用户。</p></li><li><strong>前端提交购买意图</strong><p>只发送 productId、quantity、requestKey。浏览器另带会话 Cookie，请求头带 X-CSRF-Token。</p></li><li><strong>Java 取得身份并办业务</strong><p>拦截器检查 CSRF、绑定请求身份。Controller 检查参数，Service 查数据库商品、检查幂等并开启订单事务。</p></li><li><strong>MySQL 写订单、扣库存</strong><p>先由唯一键确定是否是新订单，再执行条件扣减。缺货抛异常，两项修改一起回滚。</p></li><li><strong>前端拿到结果</strong><p>更新订单列表，通知 App 刷新商品列表和详情库存。模拟支付时只改订单状态。</p></li></ol>
+<p><strong>返回成功前要经过事务提交。</strong>Service 方法里的 return 先回到 Spring 事务代理；代理提交成功，Controller 才能把成功结果交出去。提交失败仍可能得到服务错误。</p>
+</section><section class="chapter" id="vue" aria-labelledby="vue-title"><h2 id="vue-title">前端：把“收银台”接到商品页</h2><p class="lead">先认识 Vue 的三个工具：ref 记状态，computed 自动判断，watch 监听变化。</p>
+<p>App.vue 是父组件，原本管理商品列表与详情。新增的 OrderPanel.vue 是子组件，专门处理身份和订单。父组件把当前商品传进去，子组件下单成功后通知父组件刷新库存。</p>
+<figure class="code-block"><figcaption><strong>真实源码节选</strong><span>web/src/App.vue · L216–216</span></figcaption><pre tabindex="0" aria-label="web/src/App.vue 代码"><code>&lt;OrderPanel :product=&quot;detailState === &#x27;success&#x27; ? detail : null&quot; @created=&quot;refreshAfterOrder&quot; /&gt;</code></pre></figure>
+<dl class="glossary"><div><dt>:product</dt><dd>把表达式的值作为商品参数交给子组件。详情没成功时传 null，避免对旧商品下单。</dd></div><div><dt>@created</dt><dd>监听子组件的 created 事件。这里是本项目定义的“订单创建成功”通知。</dd></div></dl>
+<figure class="code-block"><figcaption><strong>真实源码节选</strong><span>web/src/OrderPanel.vue · L11–17</span></figcaption><pre tabindex="0" aria-label="web/src/OrderPanel.vue 代码"><code>const session = ref&lt;AuthSession&gt;({ user: null, csrfToken: &#x27;&#x27; })
+const sessionReady = ref(false)
+const authBusy = ref(false)
+const username = ref(&#x27;&#x27;)
+const password = ref(&#x27;&#x27;)
+const quantity = ref&lt;number | string&gt;(1)
+const orders = ref&lt;OrderView[]&gt;([])</code></pre></figure>
+<p><code>ref</code> 像界面的记事本；在脚本中通过 <code>.value</code> 读写。<code>session</code> 记身份，<code>quantity</code> 记输入，<code>orders</code> 记订单列表。Vue 会据此更新显示。模板中通常不必写 <code>.value</code>。</p>
+<figure class="code-block"><figcaption><strong>真实源码节选</strong><span>web/src/OrderPanel.vue · L33–36</span></figcaption><pre tabindex="0" aria-label="web/src/OrderPanel.vue 代码"><code>const quantityValid = computed(() =&gt; typeof quantity.value === &#x27;number&#x27;
+  &amp;&amp; Number.isSafeInteger(quantity.value) &amp;&amp; quantity.value &gt;= 1 &amp;&amp; quantity.value &lt;= 100)
+const canCreate = computed(() =&gt; session.value.user &amp;&amp; props.product
+  &amp;&amp; props.product.availableStock &gt; 0 &amp;&amp; quantityValid.value &amp;&amp; !authBusy.value &amp;&amp; mutation.value === null)</code></pre></figure>
+<p><code>computed</code> 像一张自动重算的检查单：登录了吗？选了商品吗？数量是 1～100 的整数吗？现在有别的写操作吗？这些决定按钮能否点击。<strong>按钮可点不代表库存已经保留</strong>，真正下单时还要由数据库判定。</p>
+<figure class="code-block"><figcaption><strong>真实源码节选</strong><span>web/src/App.vue · L87–90</span></figcaption><pre tabindex="0" aria-label="web/src/App.vue 代码"><code>function refreshAfterOrder(productId: number) {
+  void loadPage(page.value.page, true)
+  if (selectedId.value === productId) void loadDetail(productId)
+}</code></pre></figure>
+<p>下单成功后，<code>emit('created', productId)</code> 触发上面的方法，重新查询列表和所选商品。<code>void</code> 表示这里有意不等待 Promise，并不表示请求同步完成。<code>true</code> 让列表刷新时保留当前商品选择。</p>
+</section><section class="chapter" id="auth" aria-labelledby="auth-title"><h2 id="auth-title">登录：身份放在服务端，写操作再核票</h2><p class="lead">Cookie、Session、CSRF 不是三个同义词。用“寄存柜和操作校验票”来理解最直接。</p>
+<dl class="glossary"><div><dt>Session：服务端的寄存柜</dt><dd>Java 记住当前用户。业务接口从这里取身份，不让前端自报 userId。</dd></div><div><dt>Cookie：浏览器带的柜号</dt><dd>浏览器同源请求自动携带。页面没有把密码或 Session ID 保存到 localStorage。</dd></div><div><dt>CSRF token：写操作的额外校验票</dt><dd>前端放在 X-CSRF-Token 请求头，后端和 Session 内的随机令牌比较。它不能代替登录身份与订单归属检查。</dd></div></dl>
+<figure class="code-block"><figcaption><strong>真实源码节选</strong><span>web/src/OrderPanel.vue · L108–111</span></figcaption><pre tabindex="0" aria-label="web/src/OrderPanel.vue 代码"><code>if (mode === &#x27;login&#x27;) {
+      // Refresh CSRF before login, including after a session has expired.
+      const current = await fetchSession(controller.signal)
+      result = await login(credentials.username, credentials.password, current.csrfToken, controller.signal)</code></pre></figure>
+<p>登录前再拿一次令牌，是为了应对会话已经过期的情况。密码随这次登录请求发送；输入框内容在提交时被清空，页面不会持久化密码。</p>
+<figure class="code-block"><figcaption><strong>真实源码节选</strong><span>services/commerce/src/main/java/lab/commerce/controller/AuthController.java · L33–40</span></figcaption><pre tabindex="0" aria-label="services/commerce/src/main/java/lab/commerce/controller/AuthController.java 代码"><code>@PostMapping(&quot;/login&quot;)
+    public SessionView login(@Valid @RequestBody LoginRequest input, HttpServletRequest request) {
+        var user = service.login(input.username(), input.password());
+        var session = request.getSession(true);
+        request.changeSessionId();
+        sessions.signIn(session, user);
+        return sessions.view(session);
+    }</code></pre></figure>
+<p><code>service.login</code> 先验证用户名和密码。成功后 <code>changeSessionId()</code> 换掉旧柜号，<code>signIn</code> 同时发布新身份与新 CSRF 令牌。密码校验使用 JDK 的 PBKDF2WithHmacSHA256 和安全比较；数据库保存加盐派生哈希。</p>
+<figure class="code-block"><figcaption><strong>真实源码节选</strong><span>services/commerce/src/main/java/lab/commerce/config/SessionAccess.java · L59–69</span></figcaption><pre tabindex="0" aria-label="services/commerce/src/main/java/lab/commerce/config/SessionAccess.java 代码"><code>var session = request.getSession(false);
+        var state = session == null ? null : (SessionView) session.getAttribute(STATE);
+        if (state != null &amp;&amp; state.user() != null) request.setAttribute(REQUEST_USER, state.user());
+        if (!&quot;POST&quot;.equals(request.getMethod())) return true;
+        String expected = state == null ? null : state.csrfToken();
+        String actual = request.getHeader(&quot;X-CSRF-Token&quot;);
+        if (expected == null || actual == null || !MessageDigest.isEqual(
+                expected.getBytes(StandardCharsets.UTF_8), actual.getBytes(StandardCharsets.UTF_8))) {
+            throw new OrderAccessException(CSRF_INVALID);
+        }
+        return true;</code></pre></figure>
+<p>拦截器先取<strong>同一份不可变会话状态</strong>，把用户绑定到当前 request，再核对 CSRF。Controller 之后读取的是这次请求的身份快照。这样，另一标签页切成 Bob，也不会让已经按 Alice 校验的旧请求突然变成 Bob 的操作。</p>
+<div class="takeaway"><strong>登录、退出、下单、支付都要 CSRF。</strong><p>匿名 GET 订单会得到 401；如果匿名 POST 连令牌也没带，会先被 CSRF 拦成 403。检查顺序决定了先看到哪个错误。</p></div>
+<p>退出会让旧 Session 失效，再创建新的匿名会话。当前 Session 保存在应用内存，Java 应用重启后需要重新登录。</p>
+</section><section class="chapter" id="api" aria-labelledby="api-title"><h2 id="api-title">请求层：统一发件，还要验货</h2><p class="lead">TypeScript 的 interface 是说明书；网络数据进来后，运行时校验才是真正拆箱验货。</p>
+<p><code>api.ts</code> 继续复用原来的 <code>getJson</code>。名字虽然含 get，它现在也能发 POST，统一处理 JSON、10 秒超时、取消和错误分类。</p>
+<figure class="code-block"><figcaption><strong>真实源码节选</strong><span>web/src/api.ts · L74–84</span></figcaption><pre tabindex="0" aria-label="web/src/api.ts 代码"><code>response = await fetch(path, {
+      signal: requestSignal,
+      method: post ? &#x27;POST&#x27; : &#x27;GET&#x27;,
+      headers: {
+        Accept: &#x27;application/json&#x27;,
+        ...(post ? { &#x27;Content-Type&#x27;: &#x27;application/json&#x27;, &#x27;X-CSRF-Token&#x27;: post.csrfToken } : {}),
+      },
+      body: post ? JSON.stringify(post.body) : undefined,
+      credentials: &#x27;same-origin&#x27;,
+      cache: &#x27;no-store&#x27;,
+    })</code></pre></figure>
+<ul><li><code>method</code>：有 post 参数就写入，否则读取。</li><li><code>Content-Type</code>：说明请求体是 JSON；<code>X-CSRF-Token</code>：带操作校验票。</li><li><code>credentials: 'same-origin'</code>：携带同源会话 Cookie；开发时浏览器访问 Vue 的同源 /api，再由 Vite 代理给 Java。</li><li><code>signal</code>：合并取消与超时；停止等待不等于服务端停止办事。</li><li><code>cache: 'no-store'</code>：请求不使用缓存；身份和订单响应后端也禁止缓存。</li></ul>
+<figure class="code-block"><figcaption><strong>真实源码节选</strong><span>web/src/api.ts · L163–173</span></figcaption><pre tabindex="0" aria-label="web/src/api.ts 代码"><code>function isOrder(value: unknown): value is OrderView {
+  return isObject(value)
+    &amp;&amp; isIntegerAtLeast(value.id, 1) &amp;&amp; isIntegerAtLeast(value.productId, 1)
+    &amp;&amp; typeof value.productName === &#x27;string&#x27;
+    &amp;&amp; isIntegerAtLeast(value.quantity, 1) &amp;&amp; value.quantity &lt;= 100
+    &amp;&amp; typeof value.unitPrice === &#x27;string&#x27; &amp;&amp; /^[0-9]+(?:\.[0-9]+)?$/.test(value.unitPrice)
+    &amp;&amp; typeof value.totalAmount === &#x27;string&#x27; &amp;&amp; /^[0-9]+(?:\.[0-9]+)?$/.test(value.totalAmount)
+    &amp;&amp; value.currency === &#x27;CNY&#x27;
+    &amp;&amp; (value.status === &#x27;PENDING_PAYMENT&#x27; || value.status === &#x27;PAID&#x27;)
+    &amp;&amp; typeof value.createdAt === &#x27;string&#x27; &amp;&amp; value.createdAt.length &gt; 0
+}</code></pre></figure>
+<p>远程 JSON 最初是 <code>unknown</code>。即使写了 <code>OrderView</code> 类型，服务器仍可能返回坏结构。这里实际检查编号、数量、金额字符串、CNY 币种和两个合法状态，失败就报 <code>INVALID_DATA</code>，不会假装拿到了正常订单。</p>
+<details><summary>请求层怎样分类失败？</summary><dl class="glossary"><div><dt>NETWORK / TIMEOUT</dt><dd>网络或读取响应体失败 / 超过 10 秒。</dd></div><div><dt>INVALID_JSON / INVALID_DATA</dt><dd>成功响应不能解析成 JSON / 能解析但不符合约定。</dd></div><div><dt>HTTP + apiCode</dt><dd>服务端返回非成功状态，再保留稳定业务码。HTML 错误页也不会掩盖原 HTTP 状态。</dd></div></dl></details>
+</section><section class="chapter" id="controller" aria-labelledby="controller-title"><h2 id="controller-title">后端入口：只收购买信息，不收“我是谁”</h2><p class="lead">Controller 接 HTTP 和参数；Service 负责业务。把两层分开，才能清楚知道规则在哪里。</p>
+<figure class="code-block"><figcaption><strong>真实源码节选</strong><span>services/commerce/src/main/java/lab/commerce/controller/OrderController.java · L24–25</span></figcaption><pre tabindex="0" aria-label="services/commerce/src/main/java/lab/commerce/controller/OrderController.java 代码"><code>public record CreateRequest(@Positive long productId, @Min(1) @Max(100) int quantity,
+            @NotBlank @Pattern(regexp = &quot;[A-Za-z0-9_-]{8,80}&quot;) String requestKey) {}</code></pre></figure>
+<p>下单只接受三个字段：<code>productId</code> 选哪件、<code>quantity</code> 买多少、<code>requestKey</code> 哪一次购买。没有 userId、单价和总价字段：身份从会话取，价格从数据库查，总额由后端算。</p>
+<figure class="code-block sample"><figcaption><strong>请求形状；商品编号为虚构值，不能直接作为本机测试数据 · 教学示例</strong></figcaption><pre tabindex="0"><code>POST /api/v1/orders
+X-CSRF-Token: &lt;当前会话令牌&gt;
+
+{
+  &quot;productId&quot;: 101,
+  &quot;quantity&quot;: 2,
+  &quot;requestKey&quot;: &quot;lesson-intent-001&quot;
+}</code></pre></figure><figure class="code-block"><figcaption><strong>真实源码节选</strong><span>services/commerce/src/main/java/lab/commerce/controller/OrderController.java · L38–41</span></figcaption><pre tabindex="0" aria-label="services/commerce/src/main/java/lab/commerce/controller/OrderController.java 代码"><code>@PostMapping
+    public OrderView create(@Valid @RequestBody CreateRequest input, HttpServletRequest request) {
+        return service.create(sessions.requireUser(request), input.productId(), input.quantity(), input.requestKey());
+    }</code></pre></figure>
+<p><code>@RestController</code> 让返回对象变成 JSON；<code>@RequestBody</code> 把 JSON 读成请求对象；<code>@Valid</code> 触发正整数、数量范围和键格式校验；<code>sessions.requireUser(request)</code> 取已绑定的请求身份，未登录就拒绝。</p>
+<p>Service 是接口，OrderServiceImpl 是实现；<code>@RequiredArgsConstructor</code> 让 Lombok 生成构造器，Spring 注入所需对象。Service 仍再做一次参数防御，因为它将来可能被 HTTP 之外的调用者使用。</p>
+<details><summary>这一阶段的 7 个新增接口操作</summary><dl class="endpoint-list"><div><dt>GET /api/v1/auth/session</dt><dd>匿名也可取会话与 CSRF。</dd></div><div><dt>POST /api/v1/auth/login</dt><dd>用户名、密码 + CSRF；成功轮换会话标识。</dd></div><div><dt>POST /api/v1/auth/logout</dt><dd>CSRF；退出并换匿名会话。</dd></div><div><dt>GET /api/v1/orders</dt><dd>登录；本人最近 100 单。</dd></div><div><dt>POST /api/v1/orders</dt><dd>登录 + CSRF；创建或返回同键订单。</dd></div><div><dt>GET /api/v1/orders/{id}</dt><dd>登录 + 订单归属。</dd></div><div><dt>POST /api/v1/orders/{id}/pay</dt><dd>登录 + CSRF + 归属；模拟支付。</dd></div></dl><p>当前这些接口成功默认返回 HTTP 200；下单未设置为 201。订单详情接口与前端封装存在，当前页面没有单独订单详情页。</p></details>
+</section><section class="chapter" id="transaction" aria-labelledby="transaction-title"><h2 id="transaction-title">下单事务：一张订单和一笔扣减，一起落账</h2><p class="lead">事务可以理解为“一次完整办理”：中途失败，已经做的数据库修改也要撤销。</p>
+<p>这里沿用 <strong>Controller → Service 接口 → ServiceImpl → Mapper 接口 → XML → MySQL</strong>。Mapper 接口声明 Java 方法，XML 里的同名 id 写真正的 SQL，MyBatis 把参数绑定进去。</p>
+<figure class="code-block"><figcaption><strong>真实源码节选</strong><span>services/commerce/src/main/java/lab/commerce/service/impl/OrderServiceImpl.java · L48–53</span></figcaption><pre tabindex="0" aria-label="services/commerce/src/main/java/lab/commerce/service/impl/OrderServiceImpl.java 代码"><code>@Transactional(isolation = Isolation.READ_COMMITTED)
+    public OrderView create(long userId, long productId, int quantity, String requestKey) {
+        if (productId &lt; 1 || quantity &lt; 1 || quantity &gt; 100 || requestKey == null
+                || !requestKey.matches(&quot;[A-Za-z0-9_-]{8,80}&quot;)) throw new IllegalArgumentException();
+        var previous = mapper.findByRequestKey(userId, requestKey);
+        if (previous != null) return repeated(previous, productId, quantity);</code></pre></figure>
+<ol><li><strong>检查输入，先找同键旧单。</strong>存在就核对商品与数量；相同则返回原单。</li><li><strong>从数据库取商品。</strong>复制商品名和价格，算好金额，状态设为待支付。</li><li><strong>先插订单。</strong>让数据库唯一约束裁决是不是一次新的购买。</li><li><strong>再条件扣库存。</strong>扣不到就抛运行时异常，插入的订单也回滚。</li><li><strong>事务正常完成后提交。</strong>浏览器收到成功响应，再更新页面。</li></ol>
+<figure class="code-block"><figcaption><strong>真实源码节选</strong><span>services/commerce/src/main/java/lab/commerce/service/impl/OrderServiceImpl.java · L66–80</span></figcaption><pre tabindex="0" aria-label="services/commerce/src/main/java/lab/commerce/service/impl/OrderServiceImpl.java 代码"><code>try {
+            // The unique key serializes concurrent retries BEFORE any inventory deduction.
+            mapper.insert(order);
+        } catch (DuplicateKeyException exception) {
+            // InnoDB rolls back the failed statement only. READ_COMMITTED gives this
+            // SELECT a fresh snapshot after the winner commits, without lock upgrades.
+            var existing = mapper.findByRequestKey(userId, requestKey);
+            if (existing == null) throw exception;
+            return repeated(existing, productId, quantity);
+        }
+        if (mapper.deductStock(productId, quantity) != 1) {
+            // Runtime exception also rolls back the just-inserted order.
+            throw new OrderAccessException(INSUFFICIENT_STOCK);
+        }
+        return OrderView.from(order);</code></pre></figure>
+<p><code>mapper.insert(order)</code> 执行时还没提交。库存不足会抛 <code>OrderAccessException</code>，它是运行时异常，Spring 默认会回滚。于是不会留下“订单创建了，库存却没扣”的半截结果。</p>
+<p><code>@Transactional</code> 通过 Spring 代理生效，MyBatis 使用同一事务连接。本项目是<strong>同一个 MySQL 数据库内的本地事务</strong>；没有跨服务分布式事务，也没有用 Java 的 synchronized 保护所有买家。</p>
+<details><summary>进阶：为什么只给 create 设置 READ_COMMITTED？</summary><p>两个请求可能先后查到同键不存在。唯一 INSERT 会让输家等赢家提交，然后报重复键。输家接着普通 SELECT，需要读到赢家刚提交的订单。READ_COMMITTED 让每条查询读取新的已提交快照；REPEATABLE_READ 的旧快照可能看不到赢家。</p><p>这里还依赖 InnoDB 在重复键失败时只回滚失败语句的行为。没有把整个应用的隔离级别改成 RC；RC 本身也不是防超卖措施。死锁、连接或提交失败仍可能返回服务错误，同一次意图仍应保持同键重试。</p></details>
+</section><section class="chapter" id="stock" aria-labelledby="stock-title"><h2 id="stock-title">防超卖：把“够不够”和“扣多少”写进同一条 SQL</h2><p class="lead">库存只剩 1 件，两个人同时买，谁都可能在旧页面看到“有货”。所以不能相信前端显示或 Java 先查的旧值。</p>
+<figure class="code-block"><figcaption><strong>真实源码节选</strong><span>services/commerce/src/main/resources/mapper/OrderMapper.xml · L35–38</span></figcaption><pre tabindex="0" aria-label="services/commerce/src/main/resources/mapper/OrderMapper.xml 代码"><code>&lt;update id=&quot;deductStock&quot;&gt;
+        UPDATE inventory SET available_stock = available_stock - #{quantity}, version = version + 1
+        WHERE product_id = #{productId} AND available_stock &gt;= #{quantity}
+    &lt;/update&gt;</code></pre></figure>
+<dl class="glossary"><div><dt>SET available_stock = available_stock - quantity</dt><dd>执行真正扣减。</dd></div><div><dt>WHERE available_stock &gt;= quantity</dt><dd>扣减发生时还得有足够库存；检查和修改在同一语句中。</dd></div><div><dt>影响 1 行 / 0 行</dt><dd>1 行说明扣成功；0 行说明没有满足条件的库存行，Service 抛缺货异常。</dd></div></dl>
+<p>InnoDB 更新时锁住这条库存记录。后来的人要等待，轮到他时再用当时的库存判断。例如 A 买走最后 1 件并提交，B 再判断时库存已经是 0，扣减失败。</p>
+<div class="takeaway"><strong>version 自增，不等于这里用了乐观锁。</strong><p>当前 WHERE 没有比较旧 version，因此直接防超卖的是条件 UPDATE 与行锁。原库存表的非负 CHECK 约束再做兜底。</p></div>
+<p>如果只在 Java 里先 SELECT 库存再判断，两个人都可能看到 1。前端限制数量、禁用按钮也只能减少误操作，不能替代数据库里的这个条件。</p>
+</section><section class="chapter" id="idempotency" aria-labelledby="idempotency-title"><h2 id="idempotency-title">幂等：同一次购买，重试不能再买一遍</h2><p class="lead">幂等听起来抽象，可以理解为：拿同一张取号票再来，拿回原结果，而不是再办一单。</p>
+<figure class="code-block"><figcaption><strong>真实源码节选</strong><span>web/src/OrderPanel.vue · L151–160</span></figcaption><pre tabindex="0" aria-label="web/src/OrderPanel.vue 代码"><code>async function submitOrder() {
+  if (!canCreate.value || !props.product || typeof quantity.value !== &#x27;number&#x27;) return
+  requestKey ??= crypto.randomUUID()
+  const intent = { productId: props.product.id, quantity: quantity.value, requestKey }
+  await mutate(&#x27;create&#x27;, signal =&gt; createOrder(intent, session.value.csrfToken, signal), result =&gt; {
+    if (props.product?.id === intent.productId &amp;&amp; quantity.value === intent.quantity) requestKey = null
+    notice.value = { key: &#x27;orderCreated&#x27;, id: result.id }
+    emit(&#x27;created&#x27;, intent.productId)
+  })
+}</code></pre></figure>
+<p>最关键的是 <code>requestKey ??= crypto.randomUUID()</code>：只有当前没有键才生成。网络失败时不清空，所以不改商品和数量再点一次，还是原来的键。</p>
+<figure class="code-block"><figcaption><strong>真实源码节选</strong><span>infra/mysql/002-orders.sql · L23–23</span></figcaption><pre tabindex="0" aria-label="infra/mysql/002-orders.sql 代码"><code>UNIQUE KEY uk_order_user_request (user_id, request_key),</code></pre></figure><figure class="code-block"><figcaption><strong>真实源码节选</strong><span>services/commerce/src/main/java/lab/commerce/service/impl/OrderServiceImpl.java · L83–88</span></figcaption><pre tabindex="0" aria-label="services/commerce/src/main/java/lab/commerce/service/impl/OrderServiceImpl.java 代码"><code>private OrderView repeated(CommerceOrder existing, long productId, int quantity) {
+        if (existing.getProductId() != productId || existing.getQuantity() != quantity) {
+            throw new OrderAccessException(IDEMPOTENCY_CONFLICT);
+        }
+        return OrderView.from(existing);
+    }</code></pre></figure>
+<p>数据库按 <code>(user_id, request_key)</code> 唯一：同一用户、同一键只能有一张订单。不同用户用同一个键互不影响。相同商品与数量返回原单，改参数却硬用原键就返回 <code>409 IDEMPOTENCY_CONFLICT</code>。</p>
+<p>前面的 SELECT 只是提前省工作；两个并发请求都能查到空，最后要靠<strong>唯一 INSERT</strong> 裁决。它放在扣库存之前，重复请求才不会先扣一遍再发现重复。</p>
+<details><summary>键什么时候保留，什么时候换？</summary><ul><li>网络错误、超时：保留；相同商品详情刷新短暂变 null：也保留。</li><li>换商品、改变数量、切身份：清空；这些是新的购买意图。</li><li>明确成功后清空；下一次点击可以再买一单。</li><li>刷新或关闭页面：内存键会丢失，先查本人订单确认，不能盲目重新购买。</li></ul><p>下面的“同键改数量”展示后端防御规则；正常页面监听数量变化，会主动创建新意图。</p></details>
+<div class="lesson-lab" id="order-lab"><h3>点着看：数据库里到底发生了什么？</h3><p class="note">纯本地教学示意，使用固定虚构编号和数据，不连接 API、不改业务数据库。每步显示的是该时刻的状态。</p><label for="scenario">选择要理解的情况</label><select id="scenario"><option value="normal">正常下单：一起提交</option><option value="stock">库存不足：一起回滚</option><option value="lost">订单成功，响应丢失：同键重试</option><option value="conflict">同键改数量：拒绝冲突</option></select><div class="lab-status" role="status" aria-live="polite" aria-atomic="true"><p id="lab-step"></p><h4 id="lab-title"></h4><p id="lab-copy"></p><dl class="lab-facts"><div><dt>已提交订单</dt><dd id="lab-orders"></dd></div><div><dt>可用库存</dt><dd id="lab-stock"></dd></div><div><dt>页面看到</dt><dd id="lab-ui"></dd></div></dl></div><div class="lab-buttons"><button type="button" id="lab-prev">上一步</button><button type="button" id="lab-next" class="primary">下一步</button><button type="button" id="lab-reset">从头看</button></div><noscript><p>浏览器关闭了 JavaScript，演练不可点击；正文与全部源码仍可直接阅读。正常下单一起提交，缺货一起回滚，丢响应同键取回原单，同键换参数返回 409。</p></noscript></div>
+</section><section class="chapter" id="pay" aria-labelledby="pay-title"><h2 id="pay-title">本人订单、金额与模拟支付</h2><p class="lead">这三个问题都不能交给客户端自行决定：订单属于谁？当时多少钱？现在能否支付？</p>
+<figure class="code-block"><figcaption><strong>真实源码节选</strong><span>services/commerce/src/main/resources/mapper/OrderMapper.xml · L16–18</span></figcaption><pre tabindex="0" aria-label="services/commerce/src/main/resources/mapper/OrderMapper.xml 代码"><code>&lt;select id=&quot;findForUser&quot; resultMap=&quot;OrderMap&quot;&gt;
+        SELECT * FROM commerce_order WHERE user_id = #{userId} ORDER BY id DESC LIMIT 100
+    &lt;/select&gt;</code></pre></figure>
+<p>列表直接在 SQL 按会话用户过滤，只取最近 100 单。详情与支付都再次检查订单归属；知道别人的订单编号也不能读取或支付。当前规则：不存在返回 404，存在但不是本人返回 403，因此会暴露这个编号存在。</p>
+<figure class="code-block"><figcaption><strong>真实源码节选</strong><span>services/commerce/src/main/java/lab/commerce/service/impl/OrderServiceImpl.java · L59–62</span></figcaption><pre tabindex="0" aria-label="services/commerce/src/main/java/lab/commerce/service/impl/OrderServiceImpl.java 代码"><code>order.setProductName(product.getProduct().getName());
+        order.setQuantity(quantity);
+        order.setUnitPrice(product.getProduct().getPrice());
+        order.setTotalAmount(order.getUnitPrice().multiply(BigDecimal.valueOf(quantity)));</code></pre></figure>
+<p>订单像收据，保存下单当时的商品名、单价与总额。商品以后改名改价，不会把旧收据一起改掉。总额由 Java <code>BigDecimal</code> 乘整数数量，JSON 通过 <code>toPlainString()</code> 输出十进制字符串，前端只排版。</p>
+<figure class="code-block sample"><figcaption><strong>OrderView 的 9 个返回字段；数值与编号均为虚构示例 · 教学示例</strong></figcaption><pre tabindex="0"><code>{
+  &quot;id&quot;: 501,
+  &quot;productId&quot;: 101,
+  &quot;productName&quot;: &quot;教学示例商品&quot;,
+  &quot;quantity&quot;: 2,
+  &quot;unitPrice&quot;: &quot;12.50&quot;,
+  &quot;totalAmount&quot;: &quot;25.00&quot;,
+  &quot;currency&quot;: &quot;CNY&quot;,
+  &quot;status&quot;: &quot;PENDING_PAYMENT&quot;,
+  &quot;createdAt&quot;: &quot;2026-10-19T00:00:00Z&quot;
+}</code></pre></figure><figure class="code-block"><figcaption><strong>真实源码节选</strong><span>services/commerce/src/main/java/lab/commerce/service/impl/OrderServiceImpl.java · L91–100</span></figcaption><pre tabindex="0" aria-label="services/commerce/src/main/java/lab/commerce/service/impl/OrderServiceImpl.java 代码"><code>@Transactional
+    public OrderView pay(long userId, long id) {
+        var order = mapper.findByIdForUpdate(id);
+        if (order == null) throw new OrderAccessException(ORDER_NOT_FOUND);
+        if (order.getUserId() != userId) throw new OrderAccessException(ORDER_FORBIDDEN);
+        // Conditional transition is idempotent; no money moves in this learning simulation.
+        mapper.markPaid(id, userId);
+        order.setStatus(&quot;PAID&quot;);
+        return OrderView.from(order);
+    }</code></pre></figure><figure class="code-block"><figcaption><strong>真实源码节选</strong><span>services/commerce/src/main/resources/mapper/OrderMapper.xml · L39–42</span></figcaption><pre tabindex="0" aria-label="services/commerce/src/main/resources/mapper/OrderMapper.xml 代码"><code>&lt;update id=&quot;markPaid&quot;&gt;
+        UPDATE commerce_order SET status = &#x27;PAID&#x27;
+        WHERE id = #{id} AND user_id = #{userId} AND status = &#x27;PENDING_PAYMENT&#x27;
+    &lt;/update&gt;</code></pre></figure>
+<p>先 <code>SELECT ... FOR UPDATE</code> 锁定订单，校验归属，再把待支付改为已支付。第一次更新 1 行；重复调用时订单已经 PAID，条件更新 0 行，仍返回 PAID。<strong>这里不扣库存，库存已经在下单时扣了。</strong></p>
+<p>当前只有 PENDING_PAYMENT 和 PAID 两种状态，所以可以这样处理。未来增加取消、退款状态时必须重新检查逻辑。模拟支付只改状态，没有真实资金、支付渠道或回调。</p>
+<div class="takeaway"><strong>待支付订单也占库存。</strong><p>目前没有到期取消与库存释放；刷新、关闭页面、退出登录都不会自动退回库存。</p></div>
+</section><section class="chapter" id="stale" aria-labelledby="stale-title"><h2 id="stale-title">旧响应别回来覆盖新页面</h2><p class="lead">取消请求，是叫浏览器别等；请求序号和身份版本，是让已经迟到的结果别写错地方。</p>
+<p>假设 Alice 的订单请求还在路上，界面已经退出并登录 Bob。旧响应即使最后到达，也必须丢弃；否则页面可能把 Alice 的结果塞进 Bob 的界面。</p>
+<figure class="code-block"><figcaption><strong>真实源码节选</strong><span>web/src/OrderPanel.vue · L135–142</span></figcaption><pre tabindex="0" aria-label="web/src/OrderPanel.vue 代码"><code>const request = ++listRequest
+  const identity = identityVersion
+  listLoading.value = true
+  listError.value = null
+  try {
+    const result = await fetchOrders(controller.signal)
+    if (request !== listRequest || identity !== identityVersion || controller.signal.aborted) return
+    orders.value = result</code></pre></figure>
+<dl class="glossary"><div><dt>AbortController</dt><dd>通知浏览器取消等待；不证明服务端没有创建订单。</dd></div><div><dt>request / listRequest</dt><dd>核对是不是最新一轮请求，防止旧列表覆盖新列表。</dd></div><div><dt>identity / identityVersion</dt><dd>核对当前身份有没有换代；旧账号的结果不能进入新账号界面。</dd></div></dl>
+<p><code>clearIdentityData()</code> 会增加身份版本、取消旧请求、增加请求序号并清空订单。写操作的 <code>mutate()</code> 也检查这些条件，并取消旧列表：避免支付前发出的列表，把刚显示的 PAID 覆盖回待支付。</p>
+<p>同一页面在写操作期间禁用退出，是减少竞争的交互措施；后端绑定请求身份快照，则负责服务端的身份一致性。前端保护与后端授权各有职责。</p>
+</section><section class="chapter" id="errors" aria-labelledby="errors-title"><h2 id="errors-title">错误翻译：记住“错在哪里”，显示时再翻译</h2><p class="lead">如果报错时直接保存一句中文，切成英文后它还是中文。保存结构化错误，才能随当前语言立即重译。</p>
+<figure class="code-block"><figcaption><strong>真实源码节选</strong><span>web/src/OrderPanel.vue · L53–57</span></figcaption><pre tabindex="0" aria-label="web/src/OrderPanel.vue 代码"><code>const key = error.apiCode &amp;&amp; Object.hasOwn(apiKeys, error.apiCode) ? apiKeys[error.apiCode] : undefined
+  return key ? t(key) : t(&#x27;orderErrorHttp&#x27;, { status: error.status ?? &#x27;?&#x27; })
+}
+const actionErrorMessage = computed(() =&gt; errorText(actionError.value))
+const listErrorMessage = computed(() =&gt; errorText(listError.value))</code></pre></figure>
+<p>后端返回稳定 code，api.ts 保留在 ApiError.apiCode；组件保存错误对象，<code>computed</code> 依据当前词典生成文案。切语言只重新渲染，不必重发订单请求。</p>
+<p><code>Object.hasOwn</code> 确认错误码是映射表自己登记的键，避免 <code>toString</code> 等继承属性误命中。未知码显示当前语言的通用 HTTP 提示；服务端 message 留作错误数据，不直接放到页面。</p>
+<dl class="error-list"><div><dt>401 · AUTH_REQUIRED</dt><dd>请先登录。</dd></div><div><dt>401 · INVALID_CREDENTIALS</dt><dd>用户名或密码错误。</dd></div><div><dt>403 · CSRF_INVALID</dt><dd>会话校验失败，刷新后重试。</dd></div><div><dt>403 · ORDER_FORBIDDEN</dt><dd>不是自己的订单。</dd></div><div><dt>404 · ORDER_NOT_FOUND</dt><dd>订单不存在。</dd></div><div><dt>409 · INSUFFICIENT_STOCK</dt><dd>库存不够。</dd></div><div><dt>409 · IDEMPOTENCY_CONFLICT</dt><dd>同一个键被用于不同的购买参数。</dd></div></dl>
+<p>以上为本阶段新增 7 类错误；沿用商品阶段 4 类。后端在具体处理器返回固定、安全的中文兜底，不按语言头翻译，也不泄露 SQL 或凭据。api.ts 不依赖界面词典、不主动设置 Accept-Language；浏览器可能自动携带自己的原生语言头。</p>
+<p>UI 支持中文、英文、日文；商品名称与描述保持数据库原文，价格仍为 CNY，不换汇。本学习手册按你的要求用中文讲解。</p>
+</section><section class="chapter" id="database" aria-labelledby="database-title"><h2 id="database-title">数据库与初始化：不只靠 Java 记规矩</h2><p class="lead">应用检查负责友好拒绝，数据库约束负责守住最后一道边界。</p>
+<dl class="glossary"><div><dt>lab_user</dt><dd>存用户名和密码哈希；用户名唯一。</dd></div><div><dt>commerce_order</dt><dd>存用户、商品、数量、金额快照、幂等键、状态和创建时间。</dd></div><div><dt>UNIQUE</dt><dd>同一用户的同一个请求键不能产生两张订单。</dd></div><div><dt>CHECK</dt><dd>数量在 1～100，单价非负，总额等于单价乘数量，状态限定为两种。</dd></div><div><dt>FOREIGN KEY</dt><dd>订单引用的用户和商品必须存在。</dd></div></dl>
+<figure class="code-block"><figcaption><strong>真实源码节选</strong><span>infra/mysql/002-orders.sql · L23–29</span></figcaption><pre tabindex="0" aria-label="infra/mysql/002-orders.sql 代码"><code>UNIQUE KEY uk_order_user_request (user_id, request_key),
+    KEY idx_order_user_id (user_id, id),
+    CONSTRAINT fk_order_user FOREIGN KEY (user_id) REFERENCES lab_user(id),
+    CONSTRAINT fk_order_product FOREIGN KEY (product_id) REFERENCES product(id),
+    CONSTRAINT chk_order_quantity CHECK (quantity BETWEEN 1 AND 100),
+    CONSTRAINT chk_order_money CHECK (unit_price &gt;= 0 AND total_amount = unit_price * quantity),
+    CONSTRAINT chk_order_status CHECK (status IN (&#x27;PENDING_PAYMENT&#x27;,&#x27;PAID&#x27;))</code></pre></figure>
+<p>SQL 按 001、002 顺序增量初始化，重复执行不重置既有库存或演示密码。建表由初始化管理员执行，Java 使用受限 writer：可读商品、读改库存、读用户、读写订单；没有 DDL 和 DELETE 权限。reader 继续只读。</p>
+<p>启动入口是 <code>scripts/Run-Lab.ps1</code>；首次使用或代码变更按项目文档先构建。<code>state</code> 中的本机连接和演示凭据属于私密配置，不应复制进学习页。<code>work/mysql-data</code> 是真实数据库数据，不能当缓存清理。</p>
+</section><section class="chapter" id="review" aria-labelledby="review-title"><h2 id="review-title">把原理讲出来，就算真正懂了</h2><p class="lead">先自己回答，再展开答案。读完可以回到真实源码逐项定位。</p>
+<details class="quiz"><summary>为什么先插订单、后扣库存，缺货也不会留半张订单？</summary><p>它们在同一个 Spring / MySQL 事务里。插入后尚未提交；扣库存失败抛运行时异常，订单插入一起回滚。先唯一插入还让重复请求在扣库存前就被识别。</p></details>
+<details class="quiz"><summary>Java 已提交，但浏览器报网络错误，能换新 requestKey 重试吗？</summary><p>同一次购买应保留原键。服务器可能已经办好，只是回执丢了；同键返回原单，换键可能真的再买一遍。刷新丢键后先查询本人订单确认。</p></details>
+<details class="quiz"><summary>库存页面显示 1，为什么提交时还可能缺货？</summary><p>页面是过去查到的结果，别人在此期间可能买走。最终以 MySQL 条件 UPDATE 执行时的库存为准。</p></details>
+<details class="quiz"><summary>只要带了 userId 或 CSRF token，就能操作那个用户的订单吗？</summary><p>不能。客户端 userId 不是身份；身份来自 Session 绑定的请求快照。CSRF 只校验写请求令牌，详情和支付还要检查订单归属。</p></details>
+<details class="quiz"><summary>version 增加了，是否说明已经实现乐观锁？</summary><p>没有。当前 SQL 不比较旧 version，直接防超卖机制是条件更新与 InnoDB 行锁。</p></details>
+<details class="quiz"><summary>重复支付为什么不再扣库存？未支付会自动释放吗？</summary><p>库存创建订单时已扣；支付只条件改状态，重复仍返回 PAID。目前没有自动到期取消与库存释放。</p></details>
+<details class="quiz"><summary>TypeScript 写了 OrderView，为什么还要 isOrder？</summary><p>类型声明只在开发和编译时提供约束，不会验证服务端真正返回的 JSON。运行时必须检查 unknown 数据再交给 UI。</p></details>
+<h3>哪些已经做过验证？</h3><p>现有 HANDOFF 与证据记录：<strong>2026-10-18 的 step-03 attempt-01</strong> 后端 50 项、前端 69 项通过，并做过真实浏览器和 MySQL 验收。库存 10 件、20 次并发各买 1 件，记录为 10 次成功、10 次 409，最终 10 单、库存 0。同键并发只创建一单。</p>
+<p class="note">这些是既有业务验收记录，本次制作学习 HTML 没有重跑后端业务测试。上面的可点击演练也不构成数据库并发测试。本页的阅读布局和交互另行检查。</p>
+<h3>当前实现到哪里？</h3><p>只有本地登录、本人订单、事务扣库存、幂等与模拟支付。到期取消/释放库存、真实支付/退款、Redis、消息/Outbox、跨刷新恢复意图、分布式 Session、Docker 和公网生产验证仍未实现。阅读时把这些留作下一阶段问题。</p>
+</section><section class="chapter" id="sources" aria-labelledby="sources-title"><h2 id="sources-title">回到真实文件，继续读代码</h2><p class="lead">正文按业务顺序解释；这里按文件定位。核心文件完整原文已经装进本页，手机离线也能展开。</p>
+<p>“新增 / 修改 / 沿用”通过当前文件与冻结的 step-02 attempt-07 对比得到，指整份文件的变化。正文带路径和行号的代码从当前文件直接摘取；省略上下文的片段不能单独粘贴编译。</p>
+<details><summary>展开前后端文件索引</summary><dl class="file-index"><div><dt><span class="change">新增</span><a href="#file-0">web/src/OrderPanel.vue</a></dt><dd>订单交互主组件；建议最先阅读</dd></div><div><dt><span class="change">修改</span><a href="#file-1">web/src/api.ts</a></dt><dd>身份/订单类型、网络请求与运行时校验</dd></div><div><dt><span class="change">修改</span>web/src/App.vue</dt><dd>接入组件，下单后刷新库存</dd></div><div><dt><span class="change">修改</span>web/src/messages.ts</dt><dd>三语词条；订单与错误文案</dd></div><div><dt><span class="change">修改</span>web/src/style.css</dt><dd>订单样式与手机布局</dd></div><div><dt><span class="change">新增</span><a href="#file-5">services/commerce/src/main/java/lab/commerce/controller/AuthController.java</a></dt><dd>会话、登录、退出入口</dd></div><div><dt><span class="change">新增</span><a href="#file-6">services/commerce/src/main/java/lab/commerce/config/SessionAccess.java</a></dt><dd>CSRF、不可变身份快照与请求身份</dd></div><div><dt><span class="change">新增</span>services/commerce/src/main/java/lab/commerce/config/WebConfig.java</dt><dd>注册 API 拦截器</dd></div><div><dt><span class="change">新增</span><a href="#file-8">services/commerce/src/main/java/lab/commerce/service/AuthService.java</a></dt><dd>身份服务接口</dd></div><div><dt><span class="change">新增</span>services/commerce/src/main/java/lab/commerce/service/impl/AuthServiceImpl.java</dt><dd>PBKDF2 密码验证</dd></div><div><dt><span class="change">新增</span>services/commerce/src/main/java/lab/commerce/mapper/UserMapper.java</dt><dd>按用户名查询用户的 Mapper 接口</dd></div><div><dt><span class="change">新增</span>services/commerce/src/main/resources/mapper/UserMapper.xml</dt><dd>用户查询 SQL</dd></div><div><dt><span class="change">新增</span>services/commerce/src/main/java/lab/commerce/entity/LabUser.java</dt><dd>用户表对象</dd></div><div><dt><span class="change">新增</span><a href="#file-13">services/commerce/src/main/java/lab/commerce/vo/SessionView.java</a></dt><dd>会话与用户返回模型</dd></div><div><dt><span class="change">新增</span><a href="#file-14">services/commerce/src/main/java/lab/commerce/controller/OrderController.java</a></dt><dd>订单接口、请求参数与身份获取</dd></div><div><dt><span class="change">新增</span><a href="#file-15">services/commerce/src/main/java/lab/commerce/service/OrderService.java</a></dt><dd>订单业务接口</dd></div><div><dt><span class="change">新增</span><a href="#file-16">services/commerce/src/main/java/lab/commerce/service/impl/OrderServiceImpl.java</a></dt><dd>事务、幂等、金额、归属与支付</dd></div><div><dt><span class="change">新增</span><a href="#file-17">services/commerce/src/main/java/lab/commerce/mapper/OrderMapper.java</a></dt><dd>Java 方法与 XML 参数的连接处</dd></div><div><dt><span class="change">新增</span><a href="#file-18">services/commerce/src/main/resources/mapper/OrderMapper.xml</a></dt><dd>订单 SQL、唯一插入、条件扣库存与支付</dd></div><div><dt><span class="change">新增</span><a href="#file-19">services/commerce/src/main/java/lab/commerce/entity/CommerceOrder.java</a></dt><dd>订单表对象</dd></div><div><dt><span class="change">新增</span><a href="#file-20">services/commerce/src/main/java/lab/commerce/vo/OrderView.java</a></dt><dd>订单 API 的 9 字段返回模型</dd></div><div><dt><span class="change">新增</span><a href="#file-21">services/commerce/src/main/java/lab/commerce/exception/OrderAccessException.java</a></dt><dd>身份与订单错误原因</dd></div><div><dt><span class="change">修改</span>services/commerce/src/main/java/lab/commerce/exception/GlobalExceptionHandler.java</dt><dd>稳定 code、HTTP 状态与安全中文兜底</dd></div><div><dt><span class="change">新增</span><a href="#file-23">infra/mysql/002-orders.sql</a></dt><dd>新增表、唯一约束、外键和 CHECK</dd></div><div><dt><span class="change">修改</span>services/commerce/src/main/resources/application.yml</dt><dd>Session Cookie 与服务配置</dd></div><div><dt><span class="change">修改</span>services/commerce/openapi.yaml</dt><dd>接口契约</dd></div><div><dt><span class="change">修改</span>scripts/initialize_database.py</dt><dd>增量建库、演示用户与受限 writer</dd></div><div><dt><span class="change">修改</span>scripts/Build-Lab.ps1</dt><dd>构建与实际检查入口</dd></div><div><dt><span class="change">修改</span>scripts/Use-LabEnvironment.ps1</dt><dd>本机配置和构建/运行环境装配</dd></div><div><dt><span class="change">新增</span>services/commerce/src/test/java/lab/commerce/OrdersApiIT.java</dt><dd>真实 HTTP/MySQL 并发、权限与回滚实验</dd></div><div><dt><span class="change">新增</span>scripts/verify-orders.cjs</dt><dd>真实浏览器订单链路与丢响应验收</dd></div></dl></details>
+<h3>核心源码原文</h3><p class="note">长行默认换行。想保留代码原排版，可用页顶“代码横滑”切换；只有代码区域横向滚动，正文不横滑。</p><details class="full-source" id="file-0"><summary>OrderPanel.vue<span>web/src/OrderPanel.vue</span></summary><p class="source-hash">SHA-256 · f9199fe19c8325428d45a25baf5bc7ebcc2db7c8df59f4ef00914485a50b4d91</p><pre tabindex="0"><code>&lt;script setup lang=&quot;ts&quot;&gt;
+import { computed, onBeforeUnmount, onMounted, ref, watch } from &#x27;vue&#x27;
+import { ApiError, createOrder, fetchOrders, fetchSession, formatPrice, login, logout, payOrder } from &#x27;./api&#x27;
+import type { AuthSession, OrderView, Product } from &#x27;./api&#x27;
+import { useI18n } from &#x27;./i18n&#x27;
+import type { MessageKey } from &#x27;./messages&#x27;
+
+const props = defineProps&lt;{ product: Product | null }&gt;()
+const emit = defineEmits&lt;{ created: [productId: number] }&gt;()
+const { t } = useI18n()
+const session = ref&lt;AuthSession&gt;({ user: null, csrfToken: &#x27;&#x27; })
+const sessionReady = ref(false)
+const authBusy = ref(false)
+const username = ref(&#x27;&#x27;)
+const password = ref(&#x27;&#x27;)
+const quantity = ref&lt;number | string&gt;(1)
+const orders = ref&lt;OrderView[]&gt;([])
+const listLoading = ref(false)
+const listError = ref&lt;unknown&gt;(null)
+const actionError = ref&lt;unknown&gt;(null)
+const mutation = ref&lt;&#x27;create&#x27; | number | null&gt;(null)
+const notice = ref&lt;{ key: &#x27;orderCreated&#x27; | &#x27;orderPaid&#x27;; id: number } | null&gt;(null)
+let requestKey: string | null = null
+let intentProductId = props.product?.id
+let identityVersion = 0
+let authRequest = 0
+let listRequest = 0
+let mutationRequest = 0
+let authController: AbortController | null = null
+let listController: AbortController | null = null
+let mutationController: AbortController | null = null
+
+const quantityValid = computed(() =&gt; typeof quantity.value === &#x27;number&#x27;
+  &amp;&amp; Number.isSafeInteger(quantity.value) &amp;&amp; quantity.value &gt;= 1 &amp;&amp; quantity.value &lt;= 100)
+const canCreate = computed(() =&gt; session.value.user &amp;&amp; props.product
+  &amp;&amp; props.product.availableStock &gt; 0 &amp;&amp; quantityValid.value &amp;&amp; !authBusy.value &amp;&amp; mutation.value === null)
+
+function errorText(error: unknown): string {
+  if (!(error instanceof ApiError)) return t(&#x27;orderErrorFallback&#x27;)
+  const localKeys = {
+    TIMEOUT: &#x27;orderErrorTimeout&#x27;, NETWORK: &#x27;orderErrorNetwork&#x27;,
+    INVALID_JSON: &#x27;orderErrorInvalidJson&#x27;, INVALID_DATA: &#x27;orderErrorInvalidData&#x27;,
+  } as const
+  if (error.code !== &#x27;HTTP&#x27;) return t(localKeys[error.code])
+  const apiKeys: Record&lt;string, MessageKey&gt; = {
+    AUTH_REQUIRED: &#x27;errorAuthRequired&#x27;, INVALID_CREDENTIALS: &#x27;errorInvalidCredentials&#x27;,
+    CSRF_INVALID: &#x27;errorCsrfInvalid&#x27;, ORDER_FORBIDDEN: &#x27;errorOrderForbidden&#x27;,
+    ORDER_NOT_FOUND: &#x27;errorOrderNotFound&#x27;, INSUFFICIENT_STOCK: &#x27;errorInsufficientStock&#x27;,
+    IDEMPOTENCY_CONFLICT: &#x27;errorIdempotencyConflict&#x27;, PRODUCT_NOT_FOUND: &#x27;errorNotFound&#x27;,
+    INVALID_ARGUMENT: &#x27;orderErrorInvalidArgument&#x27;, DATABASE_UNAVAILABLE: &#x27;errorDatabaseUnavailable&#x27;,
+    INTERNAL_ERROR: &#x27;errorInternal&#x27;,
+  }
+  const key = error.apiCode &amp;&amp; Object.hasOwn(apiKeys, error.apiCode) ? apiKeys[error.apiCode] : undefined
+  return key ? t(key) : t(&#x27;orderErrorHttp&#x27;, { status: error.status ?? &#x27;?&#x27; })
+}
+const actionErrorMessage = computed(() =&gt; errorText(actionError.value))
+const listErrorMessage = computed(() =&gt; errorText(listError.value))
+
+// Loading the same detail briefly passes null; it must not discard a retry key.
+watch(() =&gt; props.product?.id, id =&gt; {
+  if (id === undefined || id === intentProductId) return
+  intentProductId = id
+  requestKey = null
+  actionError.value = null
+})
+watch(quantity, () =&gt; {
+  requestKey = null
+  actionError.value = null
+})
+
+function clearIdentityData() {
+  identityVersion++
+  listController?.abort()
+  mutationController?.abort()
+  listRequest++
+  mutationRequest++
+  orders.value = []
+  listError.value = null
+  listLoading.value = false
+  mutation.value = null
+  requestKey = null
+  notice.value = null
+}
+
+function handleFailure(error: unknown, target: &#x27;action&#x27; | &#x27;list&#x27;) {
+  if (error instanceof ApiError &amp;&amp; error.apiCode === &#x27;AUTH_REQUIRED&#x27;) {
+    clearIdentityData()
+    session.value = { user: null, csrfToken: &#x27;&#x27; }
+    actionError.value = error
+  }
+  if (target === &#x27;action&#x27;) actionError.value = error
+  else listError.value = error
+}
+
+async function authenticate(mode: &#x27;session&#x27; | &#x27;login&#x27; | &#x27;logout&#x27;) {
+  if (authBusy.value || mutation.value !== null) return
+  authController?.abort()
+  const controller = new AbortController()
+  authController = controller
+  const request = ++authRequest
+  authBusy.value = true
+  actionError.value = null
+  notice.value = null
+  const credentials = { username: username.value.trim(), password: password.value }
+  if (mode === &#x27;login&#x27;) password.value = &#x27;&#x27;
+  try {
+    let result: AuthSession
+    if (mode === &#x27;login&#x27;) {
+      // Refresh CSRF before login, including after a session has expired.
+      const current = await fetchSession(controller.signal)
+      result = await login(credentials.username, credentials.password, current.csrfToken, controller.signal)
+    } else if (mode === &#x27;logout&#x27;) {
+      result = await logout(session.value.csrfToken, controller.signal)
+    } else {
+      result = await fetchSession(controller.signal)
+    }
+    if (request !== authRequest || controller.signal.aborted) return
+    clearIdentityData()
+    session.value = result
+    sessionReady.value = true
+    if (result.user) void loadOrders()
+  } catch (error) {
+    if (request !== authRequest || controller.signal.aborted) return
+    handleFailure(error, &#x27;action&#x27;)
+  } finally {
+    if (request === authRequest) authBusy.value = false
+  }
+}
+
+async function loadOrders() {
+  if (!session.value.user) return
+  listController?.abort()
+  const controller = new AbortController()
+  listController = controller
+  const request = ++listRequest
+  const identity = identityVersion
+  listLoading.value = true
+  listError.value = null
+  try {
+    const result = await fetchOrders(controller.signal)
+    if (request !== listRequest || identity !== identityVersion || controller.signal.aborted) return
+    orders.value = result
+  } catch (error) {
+    if (request !== listRequest || identity !== identityVersion || controller.signal.aborted) return
+    handleFailure(error, &#x27;list&#x27;)
+  } finally {
+    if (request === listRequest) listLoading.value = false
+  }
+}
+
+async function submitOrder() {
+  if (!canCreate.value || !props.product || typeof quantity.value !== &#x27;number&#x27;) return
+  requestKey ??= crypto.randomUUID()
+  const intent = { productId: props.product.id, quantity: quantity.value, requestKey }
+  await mutate(&#x27;create&#x27;, signal =&gt; createOrder(intent, session.value.csrfToken, signal), result =&gt; {
+    if (props.product?.id === intent.productId &amp;&amp; quantity.value === intent.quantity) requestKey = null
+    notice.value = { key: &#x27;orderCreated&#x27;, id: result.id }
+    emit(&#x27;created&#x27;, intent.productId)
+  })
+}
+
+async function pay(order: OrderView) {
+  if (order.status !== &#x27;PENDING_PAYMENT&#x27;) return
+  await mutate(order.id, signal =&gt; payOrder(order.id, session.value.csrfToken, signal), result =&gt; {
+    notice.value = { key: &#x27;orderPaid&#x27;, id: result.id }
+  })
+}
+
+async function mutate(kind: &#x27;create&#x27; | number, execute: (signal: AbortSignal) =&gt; Promise&lt;OrderView&gt;,
+  success: (order: OrderView) =&gt; void) {
+  if (!session.value.user || authBusy.value || mutation.value !== null) return
+  const controller = new AbortController()
+  mutationController = controller
+  const request = ++mutationRequest
+  const identity = identityVersion
+  // An older list must not replace the just-created or paid order.
+  listController?.abort()
+  listRequest++
+  listLoading.value = false
+  mutation.value = kind
+  actionError.value = null
+  notice.value = null
+  try {
+    const result = await execute(controller.signal)
+    if (request !== mutationRequest || identity !== identityVersion || controller.signal.aborted) return
+    orders.value = [result, ...orders.value.filter(order =&gt; order.id !== result.id)].slice(0, 100)
+    listError.value = null
+    success(result)
+    void loadOrders()
+  } catch (error) {
+    if (request !== mutationRequest || identity !== identityVersion || controller.signal.aborted) return
+    handleFailure(error, &#x27;action&#x27;)
+  } finally {
+    if (request === mutationRequest) mutation.value = null
+  }
+}
+
+onMounted(() =&gt; authenticate(&#x27;session&#x27;))
+onBeforeUnmount(() =&gt; {
+  authRequest++
+  clearIdentityData()
+  authController?.abort()
+})
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;section class=&quot;orders-panel&quot; aria-labelledby=&quot;orders-title&quot;&gt;
+    &lt;div class=&quot;orders-heading&quot;&gt;
+      &lt;div&gt;&lt;h2 id=&quot;orders-title&quot;&gt;{{ t(&#x27;ordersTitle&#x27;) }}&lt;/h2&gt;&lt;p&gt;{{ t(&#x27;ordersSubtitle&#x27;) }}&lt;/p&gt;&lt;/div&gt;
+      &lt;div v-if=&quot;session.user&quot; class=&quot;session-actions&quot;&gt;
+        &lt;span&gt;{{ t(&#x27;signedInAs&#x27;, { username: session.user.username }) }}&lt;/span&gt;
+        &lt;button class=&quot;button secondary&quot; :disabled=&quot;authBusy || mutation !== null&quot; @click=&quot;authenticate(&#x27;logout&#x27;)&quot;&gt;{{ t(authBusy ? &#x27;signingOut&#x27; : &#x27;signOut&#x27;) }}&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;p v-if=&quot;actionError&quot; class=&quot;order-error&quot; role=&quot;alert&quot;&gt;{{ actionErrorMessage }}&lt;/p&gt;
+    &lt;p v-if=&quot;notice&quot; class=&quot;order-notice&quot; role=&quot;status&quot;&gt;{{ t(notice.key, { id: notice.id }) }}&lt;/p&gt;
+    &lt;div v-if=&quot;!sessionReady&quot; class=&quot;session-status&quot; :aria-busy=&quot;authBusy&quot;&gt;
+      &lt;p v-if=&quot;authBusy&quot; role=&quot;status&quot;&gt;{{ t(&#x27;checkingSession&#x27;) }}&lt;/p&gt;
+      &lt;button v-else class=&quot;button secondary&quot; @click=&quot;authenticate(&#x27;session&#x27;)&quot;&gt;{{ t(&#x27;retrySession&#x27;) }}&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;form v-else-if=&quot;!session.user&quot; class=&quot;login-form&quot; :aria-busy=&quot;authBusy&quot; @submit.prevent=&quot;authenticate(&#x27;login&#x27;)&quot;&gt;
+      &lt;p class=&quot;login-description&quot;&gt;{{ t(&#x27;signInDescription&#x27;) }}&lt;/p&gt;
+      &lt;div class=&quot;order-field&quot;&gt;&lt;label for=&quot;login-username&quot;&gt;{{ t(&#x27;usernameLabel&#x27;) }}&lt;/label&gt;&lt;input id=&quot;login-username&quot; v-model=&quot;username&quot; autocomplete=&quot;username&quot; required maxlength=&quot;64&quot; :disabled=&quot;authBusy&quot; /&gt;&lt;/div&gt;
+      &lt;div class=&quot;order-field&quot;&gt;&lt;label for=&quot;login-password&quot;&gt;{{ t(&#x27;passwordLabel&#x27;) }}&lt;/label&gt;&lt;input id=&quot;login-password&quot; v-model=&quot;password&quot; type=&quot;password&quot; autocomplete=&quot;current-password&quot; required maxlength=&quot;128&quot; :disabled=&quot;authBusy&quot; /&gt;&lt;/div&gt;
+      &lt;button class=&quot;button primary&quot; type=&quot;submit&quot; :disabled=&quot;authBusy || !username.trim() || !password&quot;&gt;{{ t(authBusy ? &#x27;signingIn&#x27; : &#x27;signIn&#x27;) }}&lt;/button&gt;
+    &lt;/form&gt;
+    &lt;template v-else&gt;
+      &lt;form class=&quot;create-order-form&quot; :aria-busy=&quot;mutation === &#x27;create&#x27;&quot; @submit.prevent=&quot;submitOrder&quot;&gt;
+        &lt;div class=&quot;order-selection&quot;&gt;&lt;h3&gt;{{ t(&#x27;createOrderTitle&#x27;) }}&lt;/h3&gt;&lt;p&gt;{{ product ? product.name : t(&#x27;chooseOrderProduct&#x27;) }}&lt;/p&gt;&lt;/div&gt;
+        &lt;div class=&quot;order-field quantity-field&quot;&gt;&lt;label for=&quot;order-quantity&quot;&gt;{{ t(&#x27;quantityLabel&#x27;) }}&lt;/label&gt;&lt;input id=&quot;order-quantity&quot; v-model.number=&quot;quantity&quot; type=&quot;number&quot; inputmode=&quot;numeric&quot; min=&quot;1&quot; max=&quot;100&quot; step=&quot;1&quot; required aria-describedby=&quot;quantity-help&quot; :disabled=&quot;!product || authBusy || mutation !== null&quot; /&gt;&lt;span id=&quot;quantity-help&quot;&gt;{{ t(&#x27;quantityHelp&#x27;) }}&lt;/span&gt;&lt;/div&gt;
+        &lt;div v-if=&quot;product&quot; class=&quot;order-unit-price&quot;&gt;&lt;span&gt;{{ t(&#x27;productPrice&#x27;) }}&lt;/span&gt;&lt;strong&gt;{{ formatPrice(product.price) }}&lt;/strong&gt;&lt;/div&gt;
+        &lt;button class=&quot;button primary&quot; type=&quot;submit&quot; :disabled=&quot;!canCreate&quot;&gt;{{ t(mutation === &#x27;create&#x27; ? &#x27;creatingOrder&#x27; : product?.availableStock === 0 ? &#x27;outOfStock&#x27; : &#x27;createOrder&#x27;) }}&lt;/button&gt;
+      &lt;/form&gt;
+      &lt;div class=&quot;my-orders-heading&quot;&gt;&lt;div&gt;&lt;h3&gt;{{ t(&#x27;myOrders&#x27;) }}&lt;/h3&gt;&lt;p&gt;{{ t(&#x27;recentOrdersNote&#x27;) }}&lt;/p&gt;&lt;/div&gt;&lt;button class=&quot;button secondary&quot; :disabled=&quot;listLoading || authBusy || mutation !== null&quot; @click=&quot;loadOrders&quot;&gt;{{ t(listLoading ? &#x27;loading&#x27; : &#x27;refreshOrders&#x27;) }}&lt;/button&gt;&lt;/div&gt;
+      &lt;p v-if=&quot;listLoading&quot; class=&quot;order-list-state&quot; role=&quot;status&quot;&gt;{{ t(&#x27;ordersLoading&#x27;) }}&lt;/p&gt;
+      &lt;div v-else-if=&quot;listError&quot; class=&quot;order-list-state&quot;&gt;&lt;p class=&quot;order-error&quot; role=&quot;alert&quot;&gt;{{ listErrorMessage }}&lt;/p&gt;&lt;button class=&quot;button secondary&quot; @click=&quot;loadOrders&quot;&gt;{{ t(&#x27;retryOrders&#x27;) }}&lt;/button&gt;&lt;/div&gt;
+      &lt;p v-else-if=&quot;orders.length === 0&quot; class=&quot;order-list-state&quot; role=&quot;status&quot;&gt;{{ t(&#x27;noOrders&#x27;) }}&lt;/p&gt;
+      &lt;ul v-else class=&quot;order-list&quot; :aria-label=&quot;t(&#x27;myOrders&#x27;)&quot;&gt;
+        &lt;li v-for=&quot;order in orders&quot; :key=&quot;order.id&quot; class=&quot;order-row&quot;&gt;
+          &lt;div class=&quot;order-product&quot;&gt;&lt;strong&gt;{{ order.productName }}&lt;/strong&gt;&lt;span&gt;{{ t(&#x27;orderNumber&#x27;, { id: order.id }) }} · {{ order.createdAt }}&lt;/span&gt;&lt;/div&gt;
+          &lt;div class=&quot;order-amount&quot;&gt;&lt;strong&gt;{{ formatPrice(order.totalAmount) }}&lt;/strong&gt;&lt;span&gt;{{ t(&#x27;orderQuantity&#x27;, { quantity: order.quantity }) }} · {{ formatPrice(order.unitPrice) }}&lt;/span&gt;&lt;/div&gt;
+          &lt;span :class=&quot;[&#x27;order-status&#x27;, { &#x27;order-status-paid&#x27;: order.status === &#x27;PAID&#x27; }]&quot;&gt;{{ t(order.status === &#x27;PAID&#x27; ? &#x27;statusPaid&#x27; : &#x27;statusPending&#x27;) }}&lt;/span&gt;
+          &lt;button v-if=&quot;order.status === &#x27;PENDING_PAYMENT&#x27;&quot; class=&quot;button secondary&quot; :disabled=&quot;authBusy || mutation !== null&quot; :aria-label=&quot;t(&#x27;payOrderLabel&#x27;, { id: order.id })&quot; @click=&quot;pay(order)&quot;&gt;{{ t(mutation === order.id ? &#x27;payingOrder&#x27; : &#x27;payOrder&#x27;) }}&lt;/button&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/template&gt;
+  &lt;/section&gt;
+&lt;/template&gt;
+</code></pre></details><details class="full-source" id="file-1"><summary>api.ts<span>web/src/api.ts</span></summary><p class="source-hash">SHA-256 · 57eb74d18562add4fced282fae6b769390c15175a7fd8f41693a3af2b7791371</p><pre tabindex="0"><code>export interface Product {
+  id: number
+  sku: string
+  name: string
+  description: string
+  price: string
+  availableStock: number
+}
+
+export interface ProductPage {
+  items: Product[]
+  page: number
+  size: number
+  total: number
+}
+
+export interface SessionUser {
+  id: number
+  username: string
+}
+
+export interface AuthSession {
+  user: SessionUser | null
+  csrfToken: string
+}
+
+export interface OrderView {
+  id: number
+  productId: number
+  productName: string
+  quantity: number
+  unitPrice: string
+  totalAmount: string
+  currency: &#x27;CNY&#x27;
+  status: &#x27;PENDING_PAYMENT&#x27; | &#x27;PAID&#x27;
+  createdAt: string
+}
+
+export interface CreateOrder {
+  productId: number
+  quantity: number
+  requestKey: string
+}
+
+export type ApiErrorCode = &#x27;TIMEOUT&#x27; | &#x27;NETWORK&#x27; | &#x27;INVALID_JSON&#x27; | &#x27;INVALID_DATA&#x27; | &#x27;HTTP&#x27;
+
+// Keep diagnostic messages separate from the stable codes used by the translated UI.
+export class ApiError extends Error {
+  readonly code: ApiErrorCode
+  readonly status?: number
+  readonly apiCode?: string
+
+  constructor(code: ApiErrorCode, message: string,
+    details: { cause?: unknown; status?: number; apiCode?: string } = {}) {
+    super(message, { cause: details.cause })
+    this.name = &#x27;ApiError&#x27;
+    this.code = code
+    this.status = details.status
+    this.apiCode = details.apiCode
+  }
+}
+
+async function getJson&lt;T&gt;(
+  path: string,
+  signal: AbortSignal,
+  validate: (value: unknown) =&gt; value is T,
+  post?: { body: unknown; csrfToken: string },
+): Promise&lt;T&gt; {
+  const timeoutSignal = AbortSignal.timeout(10_000)
+  const requestSignal = AbortSignal.any([signal, timeoutSignal])
+  let response: Response
+  let text: string
+  try {
+    response = await fetch(path, {
+      signal: requestSignal,
+      method: post ? &#x27;POST&#x27; : &#x27;GET&#x27;,
+      headers: {
+        Accept: &#x27;application/json&#x27;,
+        ...(post ? { &#x27;Content-Type&#x27;: &#x27;application/json&#x27;, &#x27;X-CSRF-Token&#x27;: post.csrfToken } : {}),
+      },
+      body: post ? JSON.stringify(post.body) : undefined,
+      credentials: &#x27;same-origin&#x27;,
+      cache: &#x27;no-store&#x27;,
+    })
+    // Receiving headers does not finish the request: reading the body can fail too.
+    text = await response.text()
+  } catch (error) {
+    if (signal.aborted) throw error
+    if (timeoutSignal.aborted) {
+      throw new ApiError(&#x27;TIMEOUT&#x27;, &#x27;商品服务响应超时，请稍后重试。&#x27;, { cause: error })
+    }
+    throw new ApiError(&#x27;NETWORK&#x27;, &#x27;暂时无法连接或读取商品服务，请稍后重试。&#x27;, { cause: error })
+  }
+
+  const httpMessage = `商品服务请求失败（${response.status}），请重试。`
+  let body: unknown
+  try {
+    body = JSON.parse(text)
+  } catch (error) {
+    // An HTML error page must not hide the HTTP status behind a JSON error.
+    throw new ApiError(response.ok ? &#x27;INVALID_JSON&#x27; : &#x27;HTTP&#x27;,
+      response.ok ? &#x27;商品服务返回了无法解析的 JSON，请刷新重试。&#x27; : httpMessage,
+      { cause: error, status: response.status })
+  }
+  if (!response.ok) {
+    const message = isObject(body) ? body.message : undefined
+    const apiCode = isObject(body) &amp;&amp; typeof body.code === &#x27;string&#x27; ? body.code : undefined
+    throw new ApiError(&#x27;HTTP&#x27;, typeof message === &#x27;string&#x27; &amp;&amp; message.trim() ? message : httpMessage,
+      { status: response.status, apiCode })
+  }
+  if (!validate(body)) {
+    throw new ApiError(&#x27;INVALID_DATA&#x27;, &#x27;商品服务返回的数据格式不符合约定，请刷新重试。&#x27;)
+  }
+  return body
+}
+
+function isObject(value: unknown): value is Record&lt;string, unknown&gt; {
+  return typeof value === &#x27;object&#x27; &amp;&amp; value !== null &amp;&amp; !Array.isArray(value)
+}
+
+function isIntegerAtLeast(value: unknown, minimum: number): value is number {
+  return typeof value === &#x27;number&#x27; &amp;&amp; Number.isSafeInteger(value) &amp;&amp; value &gt;= minimum
+}
+
+function isProduct(value: unknown): value is Product {
+  return isObject(value)
+    &amp;&amp; isIntegerAtLeast(value.id, 1)
+    &amp;&amp; typeof value.sku === &#x27;string&#x27;
+    &amp;&amp; typeof value.name === &#x27;string&#x27;
+    &amp;&amp; typeof value.description === &#x27;string&#x27;
+    &amp;&amp; typeof value.price === &#x27;string&#x27;
+    &amp;&amp; /^[0-9]+(?:\.[0-9]+)?$/.test(value.price)
+    &amp;&amp; isIntegerAtLeast(value.availableStock, 0)
+}
+
+function isProductPage(value: unknown): value is ProductPage {
+  return isObject(value)
+    &amp;&amp; Array.isArray(value.items)
+    &amp;&amp; value.items.every(isProduct)
+    &amp;&amp; isIntegerAtLeast(value.page, 1)
+    &amp;&amp; isIntegerAtLeast(value.size, 1)
+    &amp;&amp; isIntegerAtLeast(value.total, 0)
+    &amp;&amp; value.items.length &lt;= value.size
+    &amp;&amp; value.items.length &lt;= value.total
+}
+
+export function fetchProducts(page: number, size: number, signal: AbortSignal) {
+  return getJson(`/api/v1/products?page=${page}&amp;size=${size}`, signal, isProductPage)
+}
+
+export function fetchProduct(id: number, signal: AbortSignal) {
+  return getJson(`/api/v1/products/${id}`, signal, isProduct)
+}
+
+function isSession(value: unknown): value is AuthSession {
+  return isObject(value)
+    &amp;&amp; typeof value.csrfToken === &#x27;string&#x27; &amp;&amp; value.csrfToken.length &gt; 0
+    &amp;&amp; (value.user === null || (isObject(value.user)
+      &amp;&amp; isIntegerAtLeast(value.user.id, 1)
+      &amp;&amp; typeof value.user.username === &#x27;string&#x27; &amp;&amp; value.user.username.length &gt; 0))
+}
+
+function isOrder(value: unknown): value is OrderView {
+  return isObject(value)
+    &amp;&amp; isIntegerAtLeast(value.id, 1) &amp;&amp; isIntegerAtLeast(value.productId, 1)
+    &amp;&amp; typeof value.productName === &#x27;string&#x27;
+    &amp;&amp; isIntegerAtLeast(value.quantity, 1) &amp;&amp; value.quantity &lt;= 100
+    &amp;&amp; typeof value.unitPrice === &#x27;string&#x27; &amp;&amp; /^[0-9]+(?:\.[0-9]+)?$/.test(value.unitPrice)
+    &amp;&amp; typeof value.totalAmount === &#x27;string&#x27; &amp;&amp; /^[0-9]+(?:\.[0-9]+)?$/.test(value.totalAmount)
+    &amp;&amp; value.currency === &#x27;CNY&#x27;
+    &amp;&amp; (value.status === &#x27;PENDING_PAYMENT&#x27; || value.status === &#x27;PAID&#x27;)
+    &amp;&amp; typeof value.createdAt === &#x27;string&#x27; &amp;&amp; value.createdAt.length &gt; 0
+}
+
+function isOrders(value: unknown): value is OrderView[] {
+  return Array.isArray(value) &amp;&amp; value.length &lt;= 100 &amp;&amp; value.every(isOrder)
+}
+
+export function fetchSession(signal: AbortSignal) {
+  return getJson(&#x27;/api/v1/auth/session&#x27;, signal, isSession)
+}
+
+export function login(username: string, password: string, csrfToken: string, signal: AbortSignal) {
+  return getJson(&#x27;/api/v1/auth/login&#x27;, signal, isSession, { body: { username, password }, csrfToken })
+}
+
+export function logout(csrfToken: string, signal: AbortSignal) {
+  return getJson(&#x27;/api/v1/auth/logout&#x27;, signal, isSession, { body: {}, csrfToken })
+}
+
+export function fetchOrders(signal: AbortSignal) {
+  return getJson(&#x27;/api/v1/orders&#x27;, signal, isOrders)
+}
+
+export function fetchOrder(id: number, signal: AbortSignal) {
+  return getJson(`/api/v1/orders/${id}`, signal, isOrder)
+}
+
+export function createOrder(order: CreateOrder, csrfToken: string, signal: AbortSignal) {
+  return getJson(&#x27;/api/v1/orders&#x27;, signal, isOrder, { body: order, csrfToken })
+}
+
+export function payOrder(id: number, csrfToken: string, signal: AbortSignal) {
+  return getJson(`/api/v1/orders/${id}/pay`, signal, isOrder, { body: {}, csrfToken })
+}
+
+// 金额来自后端十进制字符串；展示时不经过 Number 浮点转换。
+export function formatPrice(value: string): string {
+  const [whole = &#x27;0&#x27;, fraction = &#x27;&#x27;] = value.split(&#x27;.&#x27;)
+  return `¥${whole.replace(/\B(?=(\d{3})+(?!\d))/g, &#x27;,&#x27;)}.${fraction.padEnd(2, &#x27;0&#x27;)}`
+}
+</code></pre></details><details class="full-source" id="file-5"><summary>AuthController.java<span>services/commerce/src/main/java/lab/commerce/controller/AuthController.java</span></summary><p class="source-hash">SHA-256 · 2e81886fee5f2f1af75367c43bc2e66a1891440fa772a134289d4cef04074333</p><pre tabindex="0"><code>package lab.commerce.controller;
+
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+import lab.commerce.config.SessionAccess;
+import lab.commerce.service.AuthService;
+import lab.commerce.vo.SessionView;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping(&quot;/api/v1/auth&quot;)
+@RequiredArgsConstructor
+public class AuthController {
+    private final AuthService service;
+    private final SessionAccess sessions;
+
+    public record LoginRequest(@NotBlank @Size(max = 64) String username,
+            @NotBlank @Size(max = 128) String password) {}
+    public record LogoutRequest() {}
+
+    @GetMapping(&quot;/session&quot;)
+    public SessionView session(HttpServletRequest request) {
+        return sessions.view(request.getSession(true));
+    }
+
+    @PostMapping(&quot;/login&quot;)
+    public SessionView login(@Valid @RequestBody LoginRequest input, HttpServletRequest request) {
+        var user = service.login(input.username(), input.password());
+        var session = request.getSession(true);
+        request.changeSessionId();
+        sessions.signIn(session, user);
+        return sessions.view(session);
+    }
+
+    @PostMapping(&quot;/logout&quot;)
+    public SessionView logout(@RequestBody(required = false) LogoutRequest input, HttpServletRequest request) {
+        request.getSession().invalidate();
+        return sessions.view(request.getSession(true));
+    }
+}
+</code></pre></details><details class="full-source" id="file-6"><summary>SessionAccess.java<span>services/commerce/src/main/java/lab/commerce/config/SessionAccess.java</span></summary><p class="source-hash">SHA-256 · b499108f7361cda6e0422c447d1f7bc9f69b2b02f9c4da01b752ce211b1a49f8</p><pre tabindex="0"><code>package lab.commerce.config;
+
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.SecureRandom;
+import java.util.Base64;
+import lab.commerce.exception.OrderAccessException;
+import lab.commerce.vo.SessionView;
+import lab.commerce.vo.SessionView.UserView;
+import org.springframework.stereotype.Component;
+import org.springframework.web.servlet.HandlerInterceptor;
+
+import static lab.commerce.exception.OrderAccessException.Reason.AUTH_REQUIRED;
+import static lab.commerce.exception.OrderAccessException.Reason.CSRF_INVALID;
+
+@Component
+public class SessionAccess implements HandlerInterceptor {
+    private static final String STATE = SessionAccess.class.getName() + &quot;.state&quot;;
+    private static final String REQUEST_USER = SessionAccess.class.getName() + &quot;.requestUser&quot;;
+    private static final SecureRandom RANDOM = new SecureRandom();
+
+    public SessionView view(HttpSession session) {
+        synchronized (session) {
+            var state = (SessionView) session.getAttribute(STATE);
+            if (state == null) {
+                state = new SessionView(null, newToken());
+                session.setAttribute(STATE, state);
+            }
+            return state;
+        }
+    }
+
+    public void signIn(HttpSession session, UserView user) {
+        // Publish identity and token atomically; readers never pair two login generations.
+        session.setAttribute(STATE, new SessionView(user, newToken()));
+    }
+
+    public long requireUser(HttpServletRequest request) {
+        var user = (UserView) request.getAttribute(REQUEST_USER);
+        if (user == null) throw new OrderAccessException(AUTH_REQUIRED);
+        return user.id();
+    }
+
+    private String newToken() {
+        byte[] bytes = new byte[32];
+        RANDOM.nextBytes(bytes);
+        return Base64.getUrlEncoder().withoutPadding().encodeToString(bytes);
+    }
+
+    @Override
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
+        String path = request.getRequestURI();
+        if (path.startsWith(&quot;/api/v1/auth/&quot;) || path.equals(&quot;/api/v1/orders&quot;) || path.startsWith(&quot;/api/v1/orders/&quot;)) {
+            response.setHeader(&quot;Cache-Control&quot;, &quot;no-store&quot;);
+        }
+        var session = request.getSession(false);
+        var state = session == null ? null : (SessionView) session.getAttribute(STATE);
+        if (state != null &amp;&amp; state.user() != null) request.setAttribute(REQUEST_USER, state.user());
+        if (!&quot;POST&quot;.equals(request.getMethod())) return true;
+        String expected = state == null ? null : state.csrfToken();
+        String actual = request.getHeader(&quot;X-CSRF-Token&quot;);
+        if (expected == null || actual == null || !MessageDigest.isEqual(
+                expected.getBytes(StandardCharsets.UTF_8), actual.getBytes(StandardCharsets.UTF_8))) {
+            throw new OrderAccessException(CSRF_INVALID);
+        }
+        return true;
+    }
+}
+</code></pre></details><details class="full-source" id="file-8"><summary>AuthService.java<span>services/commerce/src/main/java/lab/commerce/service/AuthService.java</span></summary><p class="source-hash">SHA-256 · 1c9f1639a91281c805e1da98aa3f4fa0fc17ceef37d7dae1600a9b8c5dd3803c</p><pre tabindex="0"><code>package lab.commerce.service;
+
+import lab.commerce.vo.SessionView.UserView;
+
+public interface AuthService {
+    UserView login(String username, String password);
+}
+</code></pre></details><details class="full-source" id="file-13"><summary>SessionView.java<span>services/commerce/src/main/java/lab/commerce/vo/SessionView.java</span></summary><p class="source-hash">SHA-256 · 1eabd60fe33fd2fcfd5ee2370ab14442615c6243563cc680c824859414da887c</p><pre tabindex="0"><code>package lab.commerce.vo;
+
+public record SessionView(UserView user, String csrfToken) {
+    public record UserView(long id, String username) {}
+}
+</code></pre></details><details class="full-source" id="file-14"><summary>OrderController.java<span>services/commerce/src/main/java/lab/commerce/controller/OrderController.java</span></summary><p class="source-hash">SHA-256 · a06cf5e8c7ad91c78f1677e713e2f04ef4cb9b412ee4302a585c1316271e51a1</p><pre tabindex="0"><code>package lab.commerce.controller;
+
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Positive;
+import java.util.List;
+import lab.commerce.config.SessionAccess;
+import lab.commerce.service.OrderService;
+import lab.commerce.vo.OrderView;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping(&quot;/api/v1/orders&quot;)
+@RequiredArgsConstructor
+public class OrderController {
+    private final OrderService service;
+    private final SessionAccess sessions;
+
+    public record CreateRequest(@Positive long productId, @Min(1) @Max(100) int quantity,
+            @NotBlank @Pattern(regexp = &quot;[A-Za-z0-9_-]{8,80}&quot;) String requestKey) {}
+    public record PayRequest() {}
+
+    @GetMapping
+    public List&lt;OrderView&gt; list(HttpServletRequest request) {
+        return service.list(sessions.requireUser(request));
+    }
+
+    @GetMapping(&quot;/{id}&quot;)
+    public OrderView detail(@PathVariable @Positive long id, HttpServletRequest request) {
+        return service.detail(sessions.requireUser(request), id);
+    }
+
+    @PostMapping
+    public OrderView create(@Valid @RequestBody CreateRequest input, HttpServletRequest request) {
+        return service.create(sessions.requireUser(request), input.productId(), input.quantity(), input.requestKey());
+    }
+
+    @PostMapping(&quot;/{id}/pay&quot;)
+    public OrderView pay(@PathVariable @Positive long id, @RequestBody PayRequest input, HttpServletRequest request) {
+        return service.pay(sessions.requireUser(request), id);
+    }
+}
+</code></pre></details><details class="full-source" id="file-15"><summary>OrderService.java<span>services/commerce/src/main/java/lab/commerce/service/OrderService.java</span></summary><p class="source-hash">SHA-256 · a4c8cd625b6aad4ee93c635a36913ff72d92a4b56bcd08f8f1d081f8792ab67b</p><pre tabindex="0"><code>package lab.commerce.service;
+
+import java.util.List;
+import lab.commerce.vo.OrderView;
+
+public interface OrderService {
+    List&lt;OrderView&gt; list(long userId);
+    OrderView detail(long userId, long id);
+    OrderView create(long userId, long productId, int quantity, String requestKey);
+    OrderView pay(long userId, long id);
+}
+</code></pre></details><details class="full-source" id="file-16"><summary>OrderServiceImpl.java<span>services/commerce/src/main/java/lab/commerce/service/impl/OrderServiceImpl.java</span></summary><p class="source-hash">SHA-256 · 7973cfc4018f173aa2e4565b591f5897743af37131b1c1b07422a1cb5717c674</p><pre tabindex="0"><code>package lab.commerce.service.impl;
+
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.util.List;
+import lab.commerce.entity.CommerceOrder;
+import lab.commerce.exception.OrderAccessException;
+import lab.commerce.exception.ProductNotFoundException;
+import lab.commerce.mapper.OrderMapper;
+import lab.commerce.mapper.ProductMapper;
+import lab.commerce.service.OrderService;
+import lab.commerce.vo.OrderView;
+import lombok.RequiredArgsConstructor;
+import org.springframework.dao.DuplicateKeyException;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.annotation.Isolation;
+
+import static lab.commerce.exception.OrderAccessException.Reason.*;
+
+@Service
+@RequiredArgsConstructor
+public class OrderServiceImpl implements OrderService {
+    private final OrderMapper mapper;
+    private final ProductMapper products;
+
+    @Override
+    @Transactional(readOnly = true)
+    public List&lt;OrderView&gt; list(long userId) {
+        return mapper.findForUser(userId).stream().map(OrderView::from).toList();
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public OrderView detail(long userId, long id) {
+        return OrderView.from(owned(userId, id));
+    }
+
+    private CommerceOrder owned(long userId, long id) {
+        var order = mapper.findById(id);
+        if (order == null) throw new OrderAccessException(ORDER_NOT_FOUND);
+        if (order.getUserId() != userId) throw new OrderAccessException(ORDER_FORBIDDEN);
+        return order;
+    }
+
+    @Override
+    @Transactional(isolation = Isolation.READ_COMMITTED)
+    public OrderView create(long userId, long productId, int quantity, String requestKey) {
+        if (productId &lt; 1 || quantity &lt; 1 || quantity &gt; 100 || requestKey == null
+                || !requestKey.matches(&quot;[A-Za-z0-9_-]{8,80}&quot;)) throw new IllegalArgumentException();
+        var previous = mapper.findByRequestKey(userId, requestKey);
+        if (previous != null) return repeated(previous, productId, quantity);
+        var product = products.findById(productId);
+        if (product == null) throw new ProductNotFoundException();
+        var order = new CommerceOrder();
+        order.setUserId(userId);
+        order.setProductId(productId);
+        order.setProductName(product.getProduct().getName());
+        order.setQuantity(quantity);
+        order.setUnitPrice(product.getProduct().getPrice());
+        order.setTotalAmount(order.getUnitPrice().multiply(BigDecimal.valueOf(quantity)));
+        order.setRequestKey(requestKey);
+        order.setStatus(&quot;PENDING_PAYMENT&quot;);
+        order.setCreatedAt(LocalDateTime.now(ZoneOffset.UTC).withNano(0));
+        try {
+            // The unique key serializes concurrent retries BEFORE any inventory deduction.
+            mapper.insert(order);
+        } catch (DuplicateKeyException exception) {
+            // InnoDB rolls back the failed statement only. READ_COMMITTED gives this
+            // SELECT a fresh snapshot after the winner commits, without lock upgrades.
+            var existing = mapper.findByRequestKey(userId, requestKey);
+            if (existing == null) throw exception;
+            return repeated(existing, productId, quantity);
+        }
+        if (mapper.deductStock(productId, quantity) != 1) {
+            // Runtime exception also rolls back the just-inserted order.
+            throw new OrderAccessException(INSUFFICIENT_STOCK);
+        }
+        return OrderView.from(order);
+    }
+
+    private OrderView repeated(CommerceOrder existing, long productId, int quantity) {
+        if (existing.getProductId() != productId || existing.getQuantity() != quantity) {
+            throw new OrderAccessException(IDEMPOTENCY_CONFLICT);
+        }
+        return OrderView.from(existing);
+    }
+
+    @Override
+    @Transactional
+    public OrderView pay(long userId, long id) {
+        var order = mapper.findByIdForUpdate(id);
+        if (order == null) throw new OrderAccessException(ORDER_NOT_FOUND);
+        if (order.getUserId() != userId) throw new OrderAccessException(ORDER_FORBIDDEN);
+        // Conditional transition is idempotent; no money moves in this learning simulation.
+        mapper.markPaid(id, userId);
+        order.setStatus(&quot;PAID&quot;);
+        return OrderView.from(order);
+    }
+}
+</code></pre></details><details class="full-source" id="file-17"><summary>OrderMapper.java<span>services/commerce/src/main/java/lab/commerce/mapper/OrderMapper.java</span></summary><p class="source-hash">SHA-256 · 02299ea17d84aa864ea2613a86aaef7e0821baf6060b82590575ccd508ae0477</p><pre tabindex="0"><code>package lab.commerce.mapper;
+
+import java.util.List;
+import lab.commerce.entity.CommerceOrder;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+
+@Mapper
+public interface OrderMapper {
+    List&lt;CommerceOrder&gt; findForUser(@Param(&quot;userId&quot;) long userId);
+    CommerceOrder findById(@Param(&quot;id&quot;) long id);
+    CommerceOrder findByIdForUpdate(@Param(&quot;id&quot;) long id);
+    CommerceOrder findByRequestKey(@Param(&quot;userId&quot;) long userId, @Param(&quot;requestKey&quot;) String requestKey);
+    int insert(CommerceOrder order);
+    int deductStock(@Param(&quot;productId&quot;) long productId, @Param(&quot;quantity&quot;) int quantity);
+    int markPaid(@Param(&quot;id&quot;) long id, @Param(&quot;userId&quot;) long userId);
+}
+</code></pre></details><details class="full-source" id="file-18"><summary>OrderMapper.xml<span>services/commerce/src/main/resources/mapper/OrderMapper.xml</span></summary><p class="source-hash">SHA-256 · c57f54586e815d741b8faa7d5574045173eda09754b73f51e14b99f891495c04</p><pre tabindex="0"><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE mapper PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot; &quot;https://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;
+&lt;mapper namespace=&quot;lab.commerce.mapper.OrderMapper&quot;&gt;
+    &lt;resultMap id=&quot;OrderMap&quot; type=&quot;lab.commerce.entity.CommerceOrder&quot; autoMapping=&quot;false&quot;&gt;
+        &lt;id property=&quot;id&quot; column=&quot;id&quot;/&gt;
+        &lt;result property=&quot;userId&quot; column=&quot;user_id&quot;/&gt;
+        &lt;result property=&quot;productId&quot; column=&quot;product_id&quot;/&gt;
+        &lt;result property=&quot;productName&quot; column=&quot;product_name&quot;/&gt;
+        &lt;result property=&quot;quantity&quot; column=&quot;quantity&quot;/&gt;
+        &lt;result property=&quot;unitPrice&quot; column=&quot;unit_price&quot;/&gt;
+        &lt;result property=&quot;totalAmount&quot; column=&quot;total_amount&quot;/&gt;
+        &lt;result property=&quot;requestKey&quot; column=&quot;request_key&quot;/&gt;
+        &lt;result property=&quot;status&quot; column=&quot;status&quot;/&gt;
+        &lt;result property=&quot;createdAt&quot; column=&quot;created_at&quot;/&gt;
+    &lt;/resultMap&gt;
+    &lt;select id=&quot;findForUser&quot; resultMap=&quot;OrderMap&quot;&gt;
+        SELECT * FROM commerce_order WHERE user_id = #{userId} ORDER BY id DESC LIMIT 100
+    &lt;/select&gt;
+    &lt;select id=&quot;findById&quot; resultMap=&quot;OrderMap&quot;&gt;
+        SELECT * FROM commerce_order WHERE id = #{id}
+    &lt;/select&gt;
+    &lt;select id=&quot;findByIdForUpdate&quot; resultMap=&quot;OrderMap&quot;&gt;
+        SELECT * FROM commerce_order WHERE id = #{id} FOR UPDATE
+    &lt;/select&gt;
+    &lt;select id=&quot;findByRequestKey&quot; resultMap=&quot;OrderMap&quot;&gt;
+        SELECT * FROM commerce_order WHERE user_id = #{userId} AND request_key = #{requestKey}
+    &lt;/select&gt;
+    &lt;insert id=&quot;insert&quot; useGeneratedKeys=&quot;true&quot; keyProperty=&quot;id&quot;&gt;
+        INSERT INTO commerce_order
+            (user_id, product_id, product_name, quantity, unit_price, total_amount, request_key, status, created_at)
+        VALUES (#{userId}, #{productId}, #{productName}, #{quantity}, #{unitPrice}, #{totalAmount},
+                #{requestKey}, &#x27;PENDING_PAYMENT&#x27;, #{createdAt})
+    &lt;/insert&gt;
+    &lt;!-- InnoDB locks the row and evaluates the predicate against current stock. --&gt;
+    &lt;update id=&quot;deductStock&quot;&gt;
+        UPDATE inventory SET available_stock = available_stock - #{quantity}, version = version + 1
+        WHERE product_id = #{productId} AND available_stock &gt;= #{quantity}
+    &lt;/update&gt;
+    &lt;update id=&quot;markPaid&quot;&gt;
+        UPDATE commerce_order SET status = &#x27;PAID&#x27;
+        WHERE id = #{id} AND user_id = #{userId} AND status = &#x27;PENDING_PAYMENT&#x27;
+    &lt;/update&gt;
+&lt;/mapper&gt;
+</code></pre></details><details class="full-source" id="file-19"><summary>CommerceOrder.java<span>services/commerce/src/main/java/lab/commerce/entity/CommerceOrder.java</span></summary><p class="source-hash">SHA-256 · 9ebbbf019c5031ee08b4a7a73d143342df33829372afc7d19502ef78e9cfcf23</p><pre tabindex="0"><code>package lab.commerce.entity;
+
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@NoArgsConstructor
+public class CommerceOrder {
+    private Long id;
+    private Long userId;
+    private Long productId;
+    private String productName;
+    private Integer quantity;
+    private BigDecimal unitPrice;
+    private BigDecimal totalAmount;
+    private String requestKey;
+    private String status;
+    private LocalDateTime createdAt;
+}
+</code></pre></details><details class="full-source" id="file-20"><summary>OrderView.java<span>services/commerce/src/main/java/lab/commerce/vo/OrderView.java</span></summary><p class="source-hash">SHA-256 · 4dc115afdefb25496a987c709d0c04b5dd92bc13b0bc5addc3d9176168655f4c</p><pre tabindex="0"><code>package lab.commerce.vo;
+
+import lab.commerce.entity.CommerceOrder;
+
+public record OrderView(long id, long productId, String productName, int quantity,
+        String unitPrice, String totalAmount, String currency, String status, String createdAt) {
+    public static OrderView from(CommerceOrder order) {
+        return new OrderView(order.getId(), order.getProductId(), order.getProductName(),
+                order.getQuantity(), order.getUnitPrice().toPlainString(),
+                order.getTotalAmount().toPlainString(), &quot;CNY&quot;, order.getStatus(),
+                order.getCreatedAt().toString() + &quot;Z&quot;);
+    }
+}
+</code></pre></details><details class="full-source" id="file-21"><summary>OrderAccessException.java<span>services/commerce/src/main/java/lab/commerce/exception/OrderAccessException.java</span></summary><p class="source-hash">SHA-256 · 61182f0defca8ae5858128e9892c1374fe925d4327408cd1795f47786c7a4287</p><pre tabindex="0"><code>package lab.commerce.exception;
+
+/** A closed set of safe business failures; never constructed from an SQL/driver message. */
+public class OrderAccessException extends RuntimeException {
+    public enum Reason {
+        AUTH_REQUIRED, INVALID_CREDENTIALS, CSRF_INVALID, ORDER_NOT_FOUND,
+        ORDER_FORBIDDEN, INSUFFICIENT_STOCK, IDEMPOTENCY_CONFLICT
+    }
+
+    private final Reason reason;
+
+    public OrderAccessException(Reason reason) {
+        super(reason.name());
+        this.reason = reason;
+    }
+
+    public Reason reason() { return reason; }
+}
+</code></pre></details><details class="full-source" id="file-23"><summary>002-orders.sql<span>infra/mysql/002-orders.sql</span></summary><p class="source-hash">SHA-256 · 2a09fce45bd5a868dcd1941abbf03e954bd35904df5ddd149ae3e927ff50279b</p><pre tabindex="0"><code>-- Additive migration. Setup administrator runs DDL; application never does.
+USE commerce;
+CREATE TABLE IF NOT EXISTS lab_user (
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    username VARCHAR(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+    password_hash VARCHAR(255) NOT NULL,
+    PRIMARY KEY (id),
+    UNIQUE KEY uk_lab_user_username (username)
+) ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS commerce_order (
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    user_id BIGINT NOT NULL,
+    product_id BIGINT NOT NULL,
+    product_name VARCHAR(120) NOT NULL,
+    quantity INT NOT NULL,
+    unit_price DECIMAL(12,2) NOT NULL,
+    total_amount DECIMAL(16,2) NOT NULL,
+    request_key VARCHAR(80) CHARACTER SET ascii COLLATE ascii_bin NOT NULL,
+    status VARCHAR(32) NOT NULL DEFAULT &#x27;PENDING_PAYMENT&#x27;,
+    created_at DATETIME(6) NOT NULL,
+    PRIMARY KEY (id),
+    UNIQUE KEY uk_order_user_request (user_id, request_key),
+    KEY idx_order_user_id (user_id, id),
+    CONSTRAINT fk_order_user FOREIGN KEY (user_id) REFERENCES lab_user(id),
+    CONSTRAINT fk_order_product FOREIGN KEY (product_id) REFERENCES product(id),
+    CONSTRAINT chk_order_quantity CHECK (quantity BETWEEN 1 AND 100),
+    CONSTRAINT chk_order_money CHECK (unit_price &gt;= 0 AND total_amount = unit_price * quantity),
+    CONSTRAINT chk_order_status CHECK (status IN (&#x27;PENDING_PAYMENT&#x27;,&#x27;PAID&#x27;))
+) ENGINE=InnoDB;
+</code></pre></details>
+<h3>本页依据</h3><p>项目 README、DEVELOPMENT-CONTEXT、step-03 的 CODE-GUIDE / HANDOFF、当前真实源码、step-02 attempt-07 冻结基线，以及 SQLite 当前阶段状态。本页是独立学习补充，没有改写原阶段代码、冻结产物或学习进度。</p>
+<p>原工程讲解入口：<code>docs/step-03/CODE-GUIDE.md</code>；交接和历史验收：<code>docs/step-03/HANDOFF-step-03.md</code>；完整工程快照：<code>evidence/step-03-source-snapshot.json</code>。路径均相对工程根目录。</p>
+</section><footer class="footer"><p>下次看见一个写接口，先问：身份从哪里来？重复请求怎么办？中途失败能否一起回滚？这就是第三阶段留给你的读代码方法。</p><a href="#top">返回页首</a></footer></main></div><script>
+(() => {
+  const font = document.getElementById('font-toggle');
+  const wrap = document.getElementById('wrap-toggle');
+  const toc = document.getElementById('contents');
+  if (matchMedia('(max-width: 900px)').matches) toc.open = false;
+  function fontState(large) {
+    document.body.classList.toggle('large', large);
+    font.setAttribute('aria-pressed', String(large));
+    font.textContent = large ? '标准字号' : '放大字号';
+  }
+  try { fontState(localStorage.getItem('step03-guide-large') === '1'); } catch {}
+  font.addEventListener('click', () => {
+    const large = !document.body.classList.contains('large');
+    fontState(large);
+    try { localStorage.setItem('step03-guide-large', large ? '1' : '0'); } catch {}
+  });
+  wrap.addEventListener('click', () => {
+    const scrolling = document.body.classList.toggle('code-scroll');
+    wrap.setAttribute('aria-pressed', String(scrolling));
+    wrap.textContent = scrolling ? '代码换行' : '代码横滑';
+  });
+  document.querySelectorAll('.toc a').forEach(link => link.addEventListener('click', () => {
+    if (matchMedia('(max-width: 900px)').matches) toc.open = false;
+  }));
+  document.querySelectorAll('a[href^="#file-"]').forEach(link => link.addEventListener('click', () => {
+    const target = document.getElementById(link.hash.slice(1));
+    if (target) target.open = true;
+  }));
+  const scenarios = {"normal": [["提交前", "前端发送商品 101、数量 1、键 lesson-A；初始库存是 1。", "0 单", "1 件", "正在创建订单"], ["唯一 INSERT 成功", "订单 501 在事务内插入，尚未提交。其他普通查询还看不到这张新订单。", "0 单（事务内暂有 1 单）", "1 件", "仍在等待"], ["条件扣减成功", "UPDATE 影响 1 行。事务内库存变成 0，订单与库存修改都还没提交。", "0 单（事务内暂有 1 单）", "事务内 0 件；提交前旧值为 1", "仍在等待"], ["一起提交成功", "Spring 事务代理提交后，返回 200 和订单 501。界面更新订单，再刷新商品库存。", "1 单 · 501", "0 件", "订单创建成功，待支付"]], "stock": [["库存已经没了", "本场景初始库存 0。假设页面显示的是过去的旧值，仍发来购买数量 1 的请求。", "0 单", "0 件", "正在创建订单"], ["先插入，暂不提交", "唯一键没有冲突，所以事务内先插入待支付订单。此时还不能叫下单成功。", "0 单（事务内暂有 1 单）", "0 件", "仍在等待"], ["扣不到，抛异常", "库存 0 不满足 available_stock >= 1，UPDATE 影响 0 行，Service 抛缺货运行时异常。", "0 单（等待事务回滚）", "0 件", "尚未收到结果"], ["整个事务回滚", "刚插入的订单撤销，库存保持 0。返回 409 INSUFFICIENT_STOCK，没有缺货残单。", "0 单", "0 件", "库存不足"]], "lost": [["第一次用键 lesson-A", "初始库存 2，用户购买 1 件。前端把这张取号票留在当前页面内存。", "0 单", "2 件", "正在创建订单"], ["数据库已提交", "订单 501 已创建，库存已扣到 1。但响应在网络中丢失。", "1 单 · 501", "1 件", "网络错误，结果尚未确认"], ["保持同键重试", "用户不改商品和数量，再点提交，发送的仍是 lesson-A。", "1 单 · 501", "1 件", "正在重试原意图"], ["返回原订单", "后端查到相同用户和键，参数也相同，返回订单 501；不会再扣库存。", "仍为 1 单 · 501", "仍为 1 件", "确认原订单创建成功"]], "conflict": [["原订单已经存在", "用户用 lesson-A 买过商品 101、数量 1。初始库存 3，已扣到 2。", "1 单 · 501", "2 件", "原订单数量 1"], ["故意沿用旧键改数量", "假设绕过正常页面，仍带 lesson-A，却把 quantity 改为 2。正常页面改数量会清键，这里演示后端防御。", "1 单 · 501", "2 件", "提交冲突请求"], ["核对旧意图", "repeated 比较 productId 与 quantity，发现与旧单不同，拒绝用同一取号票办另一件事。", "仍为 1 单 · 501", "仍为 2 件", "409 IDEMPOTENCY_CONFLICT"], ["数据库保持原样", "原订单数量仍为 1，也没有新的扣减。想再购买需要明确发起新的购买意图。", "仍为 1 单 · 501", "仍为 2 件", "提示参数与原请求冲突"]]};
+  const select = document.getElementById('scenario');
+  const prev = document.getElementById('lab-prev');
+  const next = document.getElementById('lab-next');
+  let step = 0;
+  function render() {
+    const frames = scenarios[select.value];
+    const frame = frames[step];
+    ['lab-title','lab-copy','lab-orders','lab-stock','lab-ui'].forEach((id, i) => {
+      document.getElementById(id).textContent = frame[i];
+    });
+    document.getElementById('lab-step').textContent = `第 ${step + 1} / ${frames.length} 步`;
+    prev.disabled = step === 0;
+    next.disabled = step === frames.length - 1;
+  }
+  select.addEventListener('change', () => { step = 0; render(); });
+  prev.addEventListener('click', () => { if (step > 0) step--; render(); });
+  next.addEventListener('click', () => { if (step < scenarios[select.value].length - 1) step++; render(); });
+  document.getElementById('lab-reset').addEventListener('click', () => { step = 0; render(); });
+  render();
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(entries => {
+      const current = entries.filter(entry => entry.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
+      if (!current) return;
+      document.querySelectorAll('.toc a').forEach(link => {
+        if (link.hash === '#' + current.target.id) link.setAttribute('aria-current', 'true');
+        else link.removeAttribute('aria-current');
+      });
+    }, { rootMargin: '-12% 0px -65% 0px' });
+    document.querySelectorAll('.chapter').forEach(section => observer.observe(section));
+  }
+})();
+</script><script type="application/json" id="source-metadata">{"source_step": "step-03", "source_attempt": 1, "source_status": "COMPLETED", "created_at": "2026-10-19T02:28:50.011173+00:00", "source_files": [{"path": "web/src/App.vue", "sha256": "8c56ce6e46f4e96c70de2db17b5d37ffed6335dfc61cd5a985368976c9fa4ee4"}, {"path": "web/src/OrderPanel.vue", "sha256": "f9199fe19c8325428d45a25baf5bc7ebcc2db7c8df59f4ef00914485a50b4d91"}, {"path": "services/commerce/src/main/java/lab/commerce/controller/AuthController.java", "sha256": "2e81886fee5f2f1af75367c43bc2e66a1891440fa772a134289d4cef04074333"}, {"path": "services/commerce/src/main/java/lab/commerce/config/SessionAccess.java", "sha256": "b499108f7361cda6e0422c447d1f7bc9f69b2b02f9c4da01b752ce211b1a49f8"}, {"path": "web/src/api.ts", "sha256": "57eb74d18562add4fced282fae6b769390c15175a7fd8f41693a3af2b7791371"}, {"path": "services/commerce/src/main/java/lab/commerce/controller/OrderController.java", "sha256": "a06cf5e8c7ad91c78f1677e713e2f04ef4cb9b412ee4302a585c1316271e51a1"}, {"path": "services/commerce/src/main/java/lab/commerce/service/impl/OrderServiceImpl.java", "sha256": "7973cfc4018f173aa2e4565b591f5897743af37131b1c1b07422a1cb5717c674"}, {"path": "services/commerce/src/main/resources/mapper/OrderMapper.xml", "sha256": "c57f54586e815d741b8faa7d5574045173eda09754b73f51e14b99f891495c04"}, {"path": "infra/mysql/002-orders.sql", "sha256": "2a09fce45bd5a868dcd1941abbf03e954bd35904df5ddd149ae3e927ff50279b"}, {"path": "web/src/messages.ts", "sha256": "69293a873dec3bcc036853965844de61946a250068301f7ab6ce56e7b5ac61ca"}, {"path": "web/src/style.css", "sha256": "31044e0ad8bd7691822d77ba3091faff138acf6765544c308069f2413be04585"}, {"path": "services/commerce/src/main/java/lab/commerce/config/WebConfig.java", "sha256": "e53904f0ebc5952a91734c1f3486fb0b2092323207c4fc2e3a8547d0524116d3"}, {"path": "services/commerce/src/main/java/lab/commerce/service/AuthService.java", "sha256": "1c9f1639a91281c805e1da98aa3f4fa0fc17ceef37d7dae1600a9b8c5dd3803c"}, {"path": "services/commerce/src/main/java/lab/commerce/service/impl/AuthServiceImpl.java", "sha256": "709b7c72305e807a0583ce340364ae7a50fed89cc18c024996bef41dda8b6c01"}, {"path": "services/commerce/src/main/java/lab/commerce/mapper/UserMapper.java", "sha256": "de8fb11ea2a8406472089457474f480962eb2e696d34c52a7836636090fde3d0"}, {"path": "services/commerce/src/main/resources/mapper/UserMapper.xml", "sha256": "eba3185b6f6b2b801f11b99b27c81b455e6abcc810529c78c2301811546f2171"}, {"path": "services/commerce/src/main/java/lab/commerce/entity/LabUser.java", "sha256": "2964b6b36352a05bb9688692862ac7fb578a5d7eeee1483c27b122d629b10275"}, {"path": "services/commerce/src/main/java/lab/commerce/vo/SessionView.java", "sha256": "1eabd60fe33fd2fcfd5ee2370ab14442615c6243563cc680c824859414da887c"}, {"path": "services/commerce/src/main/java/lab/commerce/service/OrderService.java", "sha256": "a4c8cd625b6aad4ee93c635a36913ff72d92a4b56bcd08f8f1d081f8792ab67b"}, {"path": "services/commerce/src/main/java/lab/commerce/mapper/OrderMapper.java", "sha256": "02299ea17d84aa864ea2613a86aaef7e0821baf6060b82590575ccd508ae0477"}, {"path": "services/commerce/src/main/java/lab/commerce/entity/CommerceOrder.java", "sha256": "9ebbbf019c5031ee08b4a7a73d143342df33829372afc7d19502ef78e9cfcf23"}, {"path": "services/commerce/src/main/java/lab/commerce/vo/OrderView.java", "sha256": "4dc115afdefb25496a987c709d0c04b5dd92bc13b0bc5addc3d9176168655f4c"}, {"path": "services/commerce/src/main/java/lab/commerce/exception/OrderAccessException.java", "sha256": "61182f0defca8ae5858128e9892c1374fe925d4327408cd1795f47786c7a4287"}, {"path": "services/commerce/src/main/java/lab/commerce/exception/GlobalExceptionHandler.java", "sha256": "f62b79bc3ce787ed8f397a9593db8a654b5a6274b407055646f7580476961d79"}, {"path": "services/commerce/src/main/resources/application.yml", "sha256": "1b9a8c0349ce5e3d1d4854a8729f1fcac16ae7319c6652d0653ab8c7524419e6"}, {"path": "services/commerce/openapi.yaml", "sha256": "a48e2273d5a6cc3706a16d733c0f12db23f89a0d1e80766706a9013fccd2c858"}, {"path": "scripts/initialize_database.py", "sha256": "1c1132764f2e09798c337620ddfe9d555d1398e4a0a96ac4fc17ddf620060086"}, {"path": "scripts/Build-Lab.ps1", "sha256": "6ffa0af77fd17c93ce14dd674f00471406e202a8fd11f8ea0550751ce789fef4"}, {"path": "scripts/Use-LabEnvironment.ps1", "sha256": "3eaa2b356f5a256d4ecbb11abfe4c7e37f0f178865808115a95152c617191292"}, {"path": "services/commerce/src/test/java/lab/commerce/OrdersApiIT.java", "sha256": "378bbe8aa76d867a7e1d84cb1674b4ba7c1753868d277a0caf9bc42c76156134"}, {"path": "scripts/verify-orders.cjs", "sha256": "184b4ac5da8d870f3ae2076290b78cc592e67ddee8aae80a9ccff097c5a6c627"}], "excerpt_count": 24, "scope": "Independent offline teaching companion; original registered artifacts and ledger unchanged."}</script></body></html>

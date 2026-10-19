@@ -1,0 +1,17 @@
+state/*
+!state/.gitkeep
+node_modules/
+target/
+dist/
+__pycache__/
+*.pyc
+.env
+.env.*
+!.env.example
+evidence/*.log
+docs/mindmaps/*-scan.json
+docs/mindmaps/*.html
+docs/mindmaps/*.json
+.test-tmp/
+work/
+docs/history/

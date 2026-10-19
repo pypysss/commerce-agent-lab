@@ -1,0 +1,5 @@
+{
+  "passed": true,
+  "attempt": "no-op UPDATE rejected",
+  "sql_error": "ERROR 1142 (42000) at line 1: UPDATE command denied to user 'commerce_reader'@'localhost' for table 'inventory'"
+}

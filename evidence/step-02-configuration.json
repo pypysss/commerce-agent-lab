@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "scope": "Actual Vite configuration resolution; no runtime config file changes",
+  "cases": [
+    {
+      "name": "default",
+      "port": 15173,
+      "target": "http://127.0.0.1:18080",
+      "previewTarget": "http://127.0.0.1:18080",
+      "strictPort": true
+    },
+    {
+      "name": "environment override",
+      "port": 17173,
+      "target": "http://127.0.0.1:19080",
+      "previewTarget": "http://127.0.0.1:19080",
+      "strictPort": true
+    }
+  ]
+}

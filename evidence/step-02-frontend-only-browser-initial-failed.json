@@ -1,0 +1,31 @@
+{
+  "realRequests": [
+    {
+      "scenario": "initial list",
+      "uiLocale": "zh-CN",
+      "nativeAcceptLanguage": "zh-CN,zh;q=0.9",
+      "status": 200
+    },
+    {
+      "scenario": "UI-independent product request",
+      "uiLocale": "zh-CN",
+      "nativeAcceptLanguage": "zh-CN,zh;q=0.9",
+      "status": 200
+    }
+  ],
+  "reactiveErrors": [],
+  "businessData": [
+    {
+      "locale": "zh-CN",
+      "unchanged": true,
+      "firstName": "Java 并发学习手册",
+      "price": "129.90"
+    }
+  ],
+  "injectedCases": [],
+  "mobile": [],
+  "pageErrors": [],
+  "nativeAcceptLanguage": "zh-CN,zh;q=0.9",
+  "passed": false,
+  "failure": "AssertionError [ERR_ASSERTION]: URL-mutated real400: UI language must not override the browser-native header\n+ actual - expected\n\n+ undefined\n- 'zh-CN,zh;q=0.9'\n\n    at checkResponse (E:\\ai_agent_learning\\java_python\\scripts\\verify-error-i18n.cjs:49:12)\n    at async E:\\ai_agent_learning\\java_python\\scripts\\verify-error-i18n.cjs:98:7"
+}

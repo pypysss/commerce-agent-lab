@@ -1,0 +1,18 @@
+{
+  ".mindmap-config.json": "3d447f984f9ee06fb720392aaf2f4e9e17cf72c87278abb48d3f5d556f58cdd5",
+  "README.md": "cd90c1f8595ac0679dc234a0f1951cb599a773c5e508619cb79d2a417ff9216c",
+  "learning/curriculum.json": "2685bd398260161ff58d64394fac46fe94462b2b3cc6c4ca7bba3fc140ac8009",
+  "learning/ledger.py": "7a3b53ae22a1013a2ae4c6438063e88060cbe53d7adc596dcb4170fac161e008",
+  "learning/plan.md": "2f38b62461e6cd5d624350238e94270159b345a9bb211d7e90e9ae1cabde7db7",
+  "learning/test_ledger.py": "4fb5d9b2adf12fa45a57d628c04375868641a2225148dc9bb0aed3b777d22bbd",
+  "learning/__init__.py": "d79763967a76efb0842137b77b5c12f9695c1b4b0efc225703470233eb2232d7",
+  "scripts/build_mindmap.py": "4287a3f6a2cad3e33177da05216f51ce6b47a28ef4955711859ea7712a3ac328",
+  "scripts/Start-MySQL.ps1": "1c5901f3ce0c433fc5083f96db962584823f844719eb3b2981bc5202e7b4bcea",
+  "scripts/Use-LabEnvironment.ps1": "6efd0dfa994f2ebc30e25772f63267388306a7d03dbb3912ab4bcc18c388ad88",
+  "scripts/verify-map.cjs": "3efac7201caa7ab3b98f3db1c2414d745397ccfa264141e52ddca399e78f008e",
+  "docs/step-01/CODE-GUIDE.md": "7c2d41b48a656452ebe9a07e2d782fbc7b47a6512e41747666071975e91fa5fd",
+  "docs/step-01/ENVIRONMENT.md": "61f5d21649fc8b0b019d554851ecb35988360d538f9b8cb10cb4b414af3f78e3",
+  "docs/step-01/HANDOFF-step-01.md": "ef1deb6200c2a54bb8e1f3dedb59e0451eecdf6ff71b545359dc4d95d311ce86",
+  "docs/step-01/LEDGER-CODE-GUIDE.md": "d389a2b3d3ca4c0b16de1bde177bac7076a9188824f09a4c277fbfccb1343ca6",
+  "services/agent/README.md": "ed44b51d067435c648b93698c7d94cd22be8a8481619baf25d267ea605bb0648"
+}

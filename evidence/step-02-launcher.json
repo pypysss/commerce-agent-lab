@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "command": "scripts/Run-Lab.ps1",
+  "readiness": [
+    {
+      "case": "real services",
+      "expected_exit": 0,
+      "actual_exit": 0
+    },
+    {
+      "case": "HTTP200 HTML is not a product API",
+      "expected_exit": 1,
+      "actual_exit": 1
+    }
+  ],
+  "launcher_source_exists": true
+}

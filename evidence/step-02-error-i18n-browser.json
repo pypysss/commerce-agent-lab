@@ -1,0 +1,266 @@
+{
+  "realRequests": [
+    {
+      "scenario": "initial list",
+      "uiLocale": "zh-CN",
+      "nativeAcceptLanguage": "zh-CN,zh;q=0.9",
+      "requestMetadata": "direct browser request",
+      "status": 200
+    },
+    {
+      "scenario": "UI-independent product request",
+      "uiLocale": "zh-CN",
+      "nativeAcceptLanguage": "zh-CN,zh;q=0.9",
+      "requestMetadata": "direct browser request",
+      "status": 200
+    },
+    {
+      "scenario": "URL-mutated real400",
+      "uiLocale": "zh-CN",
+      "nativeAcceptLanguage": null,
+      "requestMetadata": "Playwright URL-mutated; native header may be unreported",
+      "status": 400,
+      "code": "INVALID_ARGUMENT",
+      "message": "参数必须为整数且在有效范围内",
+      "contentLanguage": null
+    },
+    {
+      "scenario": "list retry after UI language switch",
+      "uiLocale": "en",
+      "nativeAcceptLanguage": "zh-CN,zh;q=0.9",
+      "requestMetadata": "direct browser request",
+      "status": 200
+    },
+    {
+      "scenario": "URL-mutated real404",
+      "uiLocale": "zh-CN",
+      "nativeAcceptLanguage": null,
+      "requestMetadata": "Playwright URL-mutated; native header may be unreported",
+      "status": 404,
+      "code": "PRODUCT_NOT_FOUND",
+      "message": "商品不存在或未上架",
+      "contentLanguage": null
+    },
+    {
+      "scenario": "detail retry after UI language switch",
+      "uiLocale": "en",
+      "nativeAcceptLanguage": "zh-CN,zh;q=0.9",
+      "requestMetadata": "direct browser request",
+      "status": 200
+    },
+    {
+      "scenario": "UI-independent product request",
+      "uiLocale": "en",
+      "nativeAcceptLanguage": "zh-CN,zh;q=0.9",
+      "requestMetadata": "direct browser request",
+      "status": 200
+    },
+    {
+      "scenario": "URL-mutated real400",
+      "uiLocale": "en",
+      "nativeAcceptLanguage": null,
+      "requestMetadata": "Playwright URL-mutated; native header may be unreported",
+      "status": 400,
+      "code": "INVALID_ARGUMENT",
+      "message": "参数必须为整数且在有效范围内",
+      "contentLanguage": null
+    },
+    {
+      "scenario": "list retry after UI language switch",
+      "uiLocale": "ja",
+      "nativeAcceptLanguage": "zh-CN,zh;q=0.9",
+      "requestMetadata": "direct browser request",
+      "status": 200
+    },
+    {
+      "scenario": "URL-mutated real404",
+      "uiLocale": "en",
+      "nativeAcceptLanguage": null,
+      "requestMetadata": "Playwright URL-mutated; native header may be unreported",
+      "status": 404,
+      "code": "PRODUCT_NOT_FOUND",
+      "message": "商品不存在或未上架",
+      "contentLanguage": null
+    },
+    {
+      "scenario": "detail retry after UI language switch",
+      "uiLocale": "ja",
+      "nativeAcceptLanguage": "zh-CN,zh;q=0.9",
+      "requestMetadata": "direct browser request",
+      "status": 200
+    },
+    {
+      "scenario": "UI-independent product request",
+      "uiLocale": "ja",
+      "nativeAcceptLanguage": "zh-CN,zh;q=0.9",
+      "requestMetadata": "direct browser request",
+      "status": 200
+    },
+    {
+      "scenario": "URL-mutated real400",
+      "uiLocale": "ja",
+      "nativeAcceptLanguage": null,
+      "requestMetadata": "Playwright URL-mutated; native header may be unreported",
+      "status": 400,
+      "code": "INVALID_ARGUMENT",
+      "message": "参数必须为整数且在有效范围内",
+      "contentLanguage": null
+    },
+    {
+      "scenario": "list retry after UI language switch",
+      "uiLocale": "zh-CN",
+      "nativeAcceptLanguage": "zh-CN,zh;q=0.9",
+      "requestMetadata": "direct browser request",
+      "status": 200
+    },
+    {
+      "scenario": "URL-mutated real404",
+      "uiLocale": "ja",
+      "nativeAcceptLanguage": null,
+      "requestMetadata": "Playwright URL-mutated; native header may be unreported",
+      "status": 404,
+      "code": "PRODUCT_NOT_FOUND",
+      "message": "商品不存在或未上架",
+      "contentLanguage": null
+    },
+    {
+      "scenario": "detail retry after UI language switch",
+      "uiLocale": "zh-CN",
+      "nativeAcceptLanguage": "zh-CN,zh;q=0.9",
+      "requestMetadata": "direct browser request",
+      "status": 200
+    },
+    {
+      "scenario": "recovery after injected unknown error",
+      "uiLocale": "ja",
+      "nativeAcceptLanguage": "zh-CN,zh;q=0.9",
+      "requestMetadata": "direct browser request",
+      "status": 200
+    },
+    {
+      "scenario": "mobile initial list",
+      "uiLocale": "zh-CN",
+      "nativeAcceptLanguage": "zh-CN,zh;q=0.9",
+      "requestMetadata": "direct browser request",
+      "status": 200
+    },
+    {
+      "scenario": "mobile UI-independent request",
+      "uiLocale": "zh-CN",
+      "nativeAcceptLanguage": "zh-CN,zh;q=0.9",
+      "requestMetadata": "direct browser request",
+      "status": 200
+    },
+    {
+      "scenario": "mobile UI-independent request",
+      "uiLocale": "en",
+      "nativeAcceptLanguage": "zh-CN,zh;q=0.9",
+      "requestMetadata": "direct browser request",
+      "status": 200
+    },
+    {
+      "scenario": "mobile UI-independent request",
+      "uiLocale": "ja",
+      "nativeAcceptLanguage": "zh-CN,zh;q=0.9",
+      "requestMetadata": "direct browser request",
+      "status": 200
+    }
+  ],
+  "reactiveErrors": [
+    {
+      "kind": "list400",
+      "from": "zh-CN",
+      "to": "en",
+      "refetchedOnSwitch": false
+    },
+    {
+      "kind": "detail404",
+      "from": "zh-CN",
+      "to": "en",
+      "refetchedOnSwitch": false
+    },
+    {
+      "kind": "list400",
+      "from": "en",
+      "to": "ja",
+      "refetchedOnSwitch": false
+    },
+    {
+      "kind": "detail404",
+      "from": "en",
+      "to": "ja",
+      "refetchedOnSwitch": false
+    },
+    {
+      "kind": "list400",
+      "from": "ja",
+      "to": "zh-CN",
+      "refetchedOnSwitch": false
+    },
+    {
+      "kind": "detail404",
+      "from": "ja",
+      "to": "zh-CN",
+      "refetchedOnSwitch": false
+    }
+  ],
+  "businessData": [
+    {
+      "locale": "zh-CN",
+      "unchanged": true,
+      "firstName": "Java 并发学习手册",
+      "price": "129.90"
+    },
+    {
+      "locale": "en",
+      "unchanged": true,
+      "firstName": "Java 并发学习手册",
+      "price": "129.90"
+    },
+    {
+      "locale": "ja",
+      "unchanged": true,
+      "firstName": "Java 并发学习手册",
+      "price": "129.90"
+    }
+  ],
+  "injectedCases": [
+    {
+      "scenario": "unknown Chinese backend message",
+      "code": "FUTURE_ERROR",
+      "status": 418,
+      "locales": [
+        "zh-CN",
+        "en",
+        "ja"
+      ],
+      "localizedGenericFallback": true,
+      "rawMessageHidden": true,
+      "refetchedOnSwitch": false,
+      "retryRecovered": true
+    }
+  ],
+  "mobile": [
+    {
+      "locale": "zh-CN",
+      "width": 390,
+      "overflow": false,
+      "productDataUnchanged": true
+    },
+    {
+      "locale": "en",
+      "width": 390,
+      "overflow": false,
+      "productDataUnchanged": true
+    },
+    {
+      "locale": "ja",
+      "width": 390,
+      "overflow": false,
+      "productDataUnchanged": true
+    }
+  ],
+  "pageErrors": [],
+  "nativeAcceptLanguage": "zh-CN,zh;q=0.9",
+  "passed": true
+}

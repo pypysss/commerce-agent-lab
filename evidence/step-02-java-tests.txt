@@ -1,0 +1,13 @@
+Access is denied.
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------------< lab.commerce:commerce-service >--------------------
+[INFO] Building commerce-service 0.1.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ commerce-service ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 0 resource from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ commerce-service ---

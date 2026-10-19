@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lab.commerce.mapper.ProductMapper">
+    <!-- Product is a table entity. The association below applies product_ aliases. -->
+    <resultMap id="ProductEntityMap" type="lab.commerce.entity.Product" autoMapping="false">
+        <id property="id" column="id"/>
+        <result property="sku" column="sku"/>
+        <result property="name" column="name"/>
+        <result property="description" column="description"/>
+        <result property="price" column="price" javaType="java.math.BigDecimal" jdbcType="DECIMAL"/>
+        <result property="status" column="status"/>
+    </resultMap>
+
+    <resultMap id="ProductStockRowMap" type="lab.commerce.dto.ProductStockRow" autoMapping="false">
+        <!-- Explicit row identity keeps different products with the same stock separate. -->
+        <id property="productId" column="product_id"/>
+        <result property="availableStock" column="available_stock"/>
+        <association property="product" resultMap="ProductEntityMap" columnPrefix="product_"/>
+    </resultMap>
+
+    <sql id="ProductColumns">
+        p.id AS product_id,
+        p.sku AS product_sku,
+        p.name AS product_name,
+        p.description AS product_description,
+        p.price AS product_price,
+        p.status AS product_status
+    </sql>
+
+    <sql id="ActiveProductCondition">
+        p.status = 'ACTIVE'
+    </sql>
+
+    <sql id="ActiveProductWithInventory">
+        FROM product p
+        LEFT JOIN inventory i ON i.product_id = p.id
+        WHERE <include refid="ActiveProductCondition"/>
+    </sql>
+
+    <select id="findPage" resultMap="ProductStockRowMap">
+        SELECT <include refid="ProductColumns"/>,
+               COALESCE(i.available_stock, 0) AS available_stock
+        <include refid="ActiveProductWithInventory"/>
+        ORDER BY p.id
+        LIMIT #{limit} OFFSET #{offset}
+    </select>
+
+    <select id="findById" resultMap="ProductStockRowMap">
+        SELECT <include refid="ProductColumns"/>,
+               COALESCE(i.available_stock, 0) AS available_stock
+        <include refid="ActiveProductWithInventory"/>
+        AND p.id = #{id}
+    </select>
+
+    <select id="countActive" resultType="long">
+        SELECT COUNT(*) FROM product p
+        WHERE <include refid="ActiveProductCondition"/>
+    </select>
+</mapper>
